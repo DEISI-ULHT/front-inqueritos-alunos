@@ -1,13 +1,24 @@
 import * as React from 'react'
 import  DEISI from './deisi_logo.png'
 import 'bootswatch/dist/cyborg/bootstrap.css';
+import axios from 'axios'
+import disciplinas from '../components/disciplinas'
 
 
 class Home extends React.Component{
+
+    state = { disciplinas: disciplinas }
+   /* componentDidMount() {
+        axios.get('localhost:8080')
+          .then(res => {
+            const disciplinas = res.data;
+            this.setState({ disciplinas });
+          })
+      }*/
+
     proximaPagina = () =>{
         this.props.history.push('/perguntaGeral2')
     };
-
     render(){
         return(
             <div className="container ">
