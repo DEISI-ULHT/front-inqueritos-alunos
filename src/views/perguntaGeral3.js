@@ -2,9 +2,22 @@ import * as React from 'react';
 import Home from './home';
 
 class PerguntaGeral3 extends Home {
-    proximaPagina2 = () =>{
+
+    constructor(props){
+        super(props);
+        this.state = {
+            respostaPerguntaGeral3:"",
+            texto: "",
+        };
+    }
+    proximaPagina2(){
         this.props.history.push('/perguntaGeral4')
     };
+    handleClick(){
+        this.proximaPagina2();
+        console.log('Resposta da pergunta 3:' + this.state.texto);  
+
+       }
     render(){
         return(
             <div className="container ">
@@ -15,8 +28,8 @@ class PerguntaGeral3 extends Home {
                         <div className="form-group">
                         <label htmlFor="exampleTextarea"></label>
                             
-                             <textarea className="form-control" id="exampleTextarea" style={{borderBottomRightRadius: '0px', borderBottomLeftRadius: '0px'}} rows="7" placeholder="Escreva o texto aqui"></textarea>
-                             <button onClick={this.proximaPagina2} style= {{ borderTopLeftRadius: '0px',borderTopRightRadius: '0px', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Responda e continue</button>
+                             <textarea onInput={(e) => this.setState({texto: e.target.value})} className="form-control" id="exampleTextarea" style={{borderBottomRightRadius: '0px', borderBottomLeftRadius: '0px'}} rows="7" placeholder="Escreva o texto aqui"></textarea>
+                             <button onClick={() => this.handleClick()} style= {{ borderTopLeftRadius: '0px',borderTopRightRadius: '0px', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Responda e continue</button>
  
                         </div>
                 </div>

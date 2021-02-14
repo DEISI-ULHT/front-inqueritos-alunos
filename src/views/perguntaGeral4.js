@@ -24,7 +24,7 @@ class PerguntaGeral4 extends Home {
     handleClick(valor){
          this.setRespostaPergunta4(valor);
          this.proximaPagina3();
-        console.log('pergunta 4: ' + this.state.respostaPergunta4);
+        console.log('Resposta da pergunta 4: ' + this.state.respostaPergunta4);
         }
     
     

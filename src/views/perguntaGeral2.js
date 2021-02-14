@@ -1,6 +1,6 @@
 import * as React from 'react'
-
-import disciplinas from '../components/disciplinas'
+import axios from 'axios'
+// import disciplinas from '../components/disciplinas'
 
 
 class PerguntaGeral2 extends React.Component {
@@ -9,40 +9,48 @@ class PerguntaGeral2 extends React.Component {
         this.state = {
             respostaPerguntaGeral2:"",
             texto: "",
-           
-
+            disciplinas:[],
+            perguntasGerais:[],
+            ready:0
         };
+        
     }
+   
      proximaPagina1(){
         this.props.history.push('/perguntaGeral3')
     };
-    state1 = { disciplinas: disciplinas }
-    /*state = { disciplinas: [] }
-    componentDidMount() {
-        axios.get('localhost:8080')
+   
+    
+     async componentDidMount() {
+         await axios.get('http://localhost:8080/disciplina/exportacao?disciplina=213088')
           .then(res => {
-            const disciplinas = res.data;
-            this.setState({ disciplinas });
+            const disciplinas = res.data.disciplina;
+            const perguntasGerais = res.data.perguntasGerais;
+            this.setState({ disciplinas,perguntasGerais,ready:1 });
+        
           })
-      }*/
+      }
 
 
     handleClick(){
         this.proximaPagina1();
-        console.log('Resposta :' + this.state.texto);  
+        console.log('Resposta da pergunta 2:' + this.state.texto);  
 
        }
 
     render(){
-        return(
+        
+        return( this.state.ready?
             <div className="container ">
             <div className="row" style={{ display: 'flex', justifyContent: 'center'}}>
                 <div className="col-md-6" style={{justifyContent:'center', position: 'absolute', color: 'white', top: '25%', textAlign: 'center'}}>
                         
                         <p className="alert alert-danger">
-                            { this.state1.disciplinas.find(disciplina => disciplina.id === 1).nome}
-                         </p>
-                        <p  style= {{fontSize: '28pt', top: '50%'}}> { this.state1.disciplinas.find(disciplina => disciplina.id === 1).perguntaGerais.find(pergunta => pergunta.id === 2).enunciado}</p>
+                            {this.state.disciplinas.nome}
+                        </p>
+                        <p  style= {{fontSize: '28pt', top: '50%'}}> 
+                            { this.state.perguntasGerais.find(pg=>pg.id===2).enunciado}
+                        </p>
                         <br/>
                         <div className="form-group">
                         <label htmlFor="exampleTextarea"></label>
@@ -54,10 +62,14 @@ class PerguntaGeral2 extends React.Component {
             </div>
                 
         </div>
-
+        :<div>loading...</div>
         )
 
     }
 
+   
+   
+
 }
+
 export default PerguntaGeral2

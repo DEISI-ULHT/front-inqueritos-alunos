@@ -27,10 +27,10 @@ class perguntasProfessorTeorica extends Home {
                         <p  style= {{fontSize: '28pt', top: '50%'}}> O que gostaste mais nessa disciplina? </p>
                         <br/>
                     
-                        <div class="form-group">
+                        <div className="form-group">
                         <label for="exampleTextarea"></label>
                             
-                             <textarea class="form-control" id="exampleTextarea"  style={{borderBottomRightRadius: '0px', borderBottomLeftRadius: '0px'}} rows="7" placeholder="Escreva o texto aqui"></textarea>
+                             <textarea className="form-control" id="exampleTextarea"  style={{borderBottomRightRadius: '0px', borderBottomLeftRadius: '0px'}} rows="7" placeholder="Escreva o texto aqui"></textarea>
                               
                              <button onClick={this.proximaPagina4} style= {{ borderTopLeftRadius: '0px',borderTopRightRadius: '0px', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Responda e continue</button>
  
