@@ -1,25 +1,56 @@
 import * as React from 'react';
 import Home from './home';
+import axios from 'axios'
 
-class PerguntaGeral3 extends Home {
+
+class PerguntaGeral3 extends React.Component {
 
     constructor(props){
         super(props);
         this.state = {
-            respostaPerguntaGeral3:"",
+            respostas: this.props.location.state.respostas,
+           // respostaPerguntaGeral3:"",
             texto: "",
+            ready:0,
+            id: props.match.params.id
+            
         };
+        console.log(props.match.params.id)
+        console.log(this.props)
     }
     proximaPagina2(){
-        this.props.history.push('/perguntaGeral4')
+        this.props.match.params.respostaPerguntaGeral3 = this.state.texto
+        this.props.match.params.estado = this.state
+
+        console.log(this.props)
+
+       // this.props.history.push('/perguntaGeral4')
+        this.props.history.push({
+            pathname: `/perguntaGeral4/${this.state.id}`,
+            state: this.state
+
+        })
     };
     handleClick(){
-        this.proximaPagina2();
+        
         console.log('Resposta da pergunta 3:' + this.state.texto);  
+        this.setState({
+            respostas: [...this.state.texto]
+        })
+        this.proximaPagina2();
 
        }
+       async componentDidMount() {
+        await axios.get(`http://localhost:8080/disciplina/exportacao?disciplina=${this.state.id}`)
+         .then(res => {
+           const disciplinas = res.data.disciplina;
+           const perguntasGerais = res.data.perguntasGerais;
+           this.setState({ disciplinas,perguntasGerais,ready:1 });
+       
+         })
+     }
     render(){
-        return(
+        return(this.state.ready?
             <div className="container ">
             <div className="row" style={{ display: 'flex', justifyContent: 'center'}}>
                 <div className="col-md-6" style={{justifyContent:'center', position: 'absolute', color: 'white', top: '25%', textAlign: 'center'}}>
@@ -36,8 +67,11 @@ class PerguntaGeral3 extends Home {
             </div>
                 
         </div>
+                :<div>loading...</div>
+
 
         )
+        
 
     }
 
