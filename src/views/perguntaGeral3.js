@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Home from './home';
 import axios from 'axios'
 
 
@@ -8,8 +7,9 @@ class PerguntaGeral3 extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            respostas: this.props.location.state.respostas,
+          //  respostas: this.props.location.state.respostas,
            // respostaPerguntaGeral3:"",
+           respostas:[],
             texto: "",
             ready:0,
             id: props.match.params.id

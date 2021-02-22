@@ -1,7 +1,7 @@
 import * as React from 'react'
 import  DEISI from './deisi_logo.png'
 import 'bootswatch/dist/cyborg/bootstrap.css';
-//import axios from 'axios'
+import axios from 'axios'
 import disciplinas from '../components/disciplinas'
 
 
@@ -15,10 +15,26 @@ class Home extends React.Component{
             this.setState({ disciplinas });
           })
       }*/
+  /*    async componentDidMount() {
+        await axios.get(`http://localhost:8080/disciplina/exportacao?disciplina=${this.state.id}`)
+         .then(res => {
+           const disciplinas = res.data.disciplina;
+           const perguntasGerais = res.data.perguntasGerais;
+           this.setState({ disciplinas,perguntasGerais,ready:1 });
+       
+         })
+     }*/
+    
 
     proximaPagina = () =>{
-        this.props.history.push('/perguntaGeral2')
+        this.props.history.push({
+            pathname: `/perguntaGeral1/${this.state.id}`,
+            state: this.state
+
+        })
+        
     };
+    
     render(){
         return(
             <div className="container ">

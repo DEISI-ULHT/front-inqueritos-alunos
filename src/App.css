@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+.nm-custom-decoration {
+  height: 55px;
+  background: white;
+  width: 1%;
+  margin-top: 20px;
+  display: block;
+}
+
+
+.image-option{
+  max-width:  300px;
+  max-height: 300px;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-left: 1.5%;
+
+}

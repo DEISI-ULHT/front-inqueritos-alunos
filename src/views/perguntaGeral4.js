@@ -10,6 +10,8 @@ class PerguntaGeral4 extends Home {
             respostaPergunta4:"",
 
         };
+        console.log(this.props)
+
     }
     setRespostaPergunta4 (valor) {
         this.setState({
@@ -20,6 +22,7 @@ class PerguntaGeral4 extends Home {
     }
     proximaPagina3 () {
         this.props.history.push('/professorTeorica')
+        console.log(this.props)
     };
     handleClick(valor){
          this.setRespostaPergunta4(valor);

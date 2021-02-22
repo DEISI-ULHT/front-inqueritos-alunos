@@ -4,22 +4,24 @@ import PerguntaGeral3 from './perguntaGeral3';
 // import disciplinas from '../components/disciplinas'
 import '../App.css'
 
-class PerguntaGeral2 extends React.Component {
+
+class EscolheCurso extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             respostas:[],
           //  respostaPerguntaGeral2:"",
-            texto: "",
+          respostaQualCurso:"",
             disciplinas:[],
             perguntasGerais:[],
             ready:0,
             id: props.match.params.id
         };
-        console.log(props.match.params.id)       
+        console.log(props.match.params.id)
+        
     }   
-     proximaPagina1(){
-         this.setState({respostas:[...this.state.texto]})
+     proximaPagina6(){
+         this.setState({respostas:[...this.state.respostaQualCurso]})
          //this.props.match.params.respostaPerguntaGeral2 = this.state.texto
          this.props.match.params.estado = this.state
          //PerguntaGeral3(this.state)
@@ -28,21 +30,32 @@ class PerguntaGeral2 extends React.Component {
              state: this.state
 
          })
-        // return <PerguntaGeral3 state= {this.state} />        
-    };   
+        // return <PerguntaGeral3 state= {this.state} />
+        
+    };
+   
+    
      async componentDidMount() {
          await axios.get(`http://localhost:8080/disciplina/exportacao?disciplina=${this.state.id}`)
           .then(res => {
             const disciplinas = res.data.disciplina;
             const perguntasGerais = res.data.perguntasGerais;
+            //const cursos = res.data.cursos;
+
             this.setState({ disciplinas,perguntasGerais,ready:1 });
         
           })
       }
+
+
     handleClick(){
-        this.proximaPagina1();
-        console.log('Resposta da pergunta 2:' + this.state.texto);  
+        this.proximaPagina6();
+        console.log('Meu curso é:' + this.state.respostaQualCurso); 
+        
+
+
        }
+
     render(){
         
         return( this.state.ready?
@@ -55,14 +68,16 @@ class PerguntaGeral2 extends React.Component {
             <div className="row" style={{ display: 'flex', justifyContent: 'center'}}>
                 <div className="col-md-6" style={{justifyContent:'center', position: 'absolute', color: 'white', top: '25%', textAlign: 'center'}}>
                         <p  style= {{fontSize: '28pt', top: '50%'}}> 
-                            {this.state.perguntasGerais.find(pg=>pg.id===2).enunciado}
+                            { this.state.perguntasGerais.find(pg=>pg.id===2).enunciado}
                         </p>
                         <br/>
                         <div className="form-group">
-                        <label htmlFor="exampleTextarea"></label>
-                             <textarea onInput={(e) => this.setState({texto: e.target.value})} type="text" name="message"className="form-control" id="exampleTextarea"  style={{borderBottomRightRadius: '0px', borderBottomLeftRadius: '0px'}} rows="7" placeholder="Escreva o texto aqui"></textarea> 
-                             <button onClick={() => {this.handleClick(); return <PerguntaGeral3 state= {this.state} />}}  style= {{ borderTopLeftRadius: '0px',borderTopRightRadius: '0px', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Responda e continue</button>
+                             <button onClick={() => {this.handleClick(); return <PerguntaGeral3 state= {this.state} />}}  style= {{ padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">{ this.state.disciplinas.cursos.find(pg=>pg.id===1).nome}</button>
+                             <button onClick={() => {this.handleClick(); return <PerguntaGeral3 state= {this.state} />}}  style= {{ marginTop: '1%', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">{ this.state.disciplinas.cursos.find(pg=>pg.id===2).nome}</button>
+                             <button onClick={() => {this.handleClick(); return <PerguntaGeral3 state= {this.state} />}}  style= {{ marginTop: '1%', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">{ this.state.disciplinas.cursos.find(pg=>pg.id===3).nome}</button>
+  
                         </div>
+
                 </div>
             </div>
             
@@ -79,4 +94,4 @@ class PerguntaGeral2 extends React.Component {
 
 }
 
-export default PerguntaGeral2
+export default EscolheCurso

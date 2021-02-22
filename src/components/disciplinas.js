@@ -1,5 +1,4 @@
-import PerguntaGeral2 from "../views/perguntaGeral2"
-import React from 'react'
+
 
     const disciplinas = [
         {
