@@ -7,7 +7,7 @@ import { Button, Container, Card, Row, Carousel} from 'react-bootstrap';
 
 
 
-class perguntasProfessorTeorica extends React.Component {
+class perguntasProfessorPratica extends React.Component {
     
       constructor(props) {
         super(props);
@@ -57,7 +57,7 @@ class perguntasProfessorTeorica extends React.Component {
         }
         if(count >= 6 && index2 === 6){
           this.props.history.push({
-                pathname:`/professorPratica/${this.state.id}`,
+                pathname:`/final/${this.state.id}`,
                 state: this.state
             })
         }
@@ -159,7 +159,7 @@ class perguntasProfessorTeorica extends React.Component {
                 <ProgressBar animated now={50} />
                 </ProgressBar>
             </div>
-            <div style={{backgroundColor:'#3960BA'}} className="nm-custom-decoration" >
+            <div style={{backgroundColor:'#008B8B'}} className="nm-custom-decoration" >
                <div style={{color: 'white',marginLeft: '120%', whiteSpace: 'nowrap',paddingTop:'160%'}}> {this.state.disciplinas.nome}
             </div>
             </div>
@@ -168,7 +168,7 @@ class perguntasProfessorTeorica extends React.Component {
           <div className="container ">
             <div className="row" style={{ display: 'flex', justifyContent: 'center', marginTop: '14%'}}>
             <p style= {{color: 'white' ,fontSize: '20pt', marginTop: '-5%',textAlign: 'center'}}> 
-                { this.state.perguntasGerais.find(pg=>pg.id===17).enunciado}
+                { this.state.perguntasGerais.find(pg=>pg.id===18).enunciado}
              </p>
                </div>
               </div>
@@ -251,7 +251,7 @@ class perguntasProfessorTeorica extends React.Component {
                     </h2> 
                     <h2>
                     <p  style= {{color: 'black', fontSize: '16pt', top: '50%', textAlign: 'center'}}> 
-                            {this.state.perguntasGerais.find(pg=>pg.id===14).enunciado}
+                            {this.state.perguntasGerais.find(pg=>pg.id===16).enunciado}
                         </p>
                     </h2>     
                     <h2>
@@ -667,4 +667,4 @@ class perguntasProfessorTeorica extends React.Component {
       :<div>loading...</div>
       );}
     }
-export default perguntasProfessorTeorica
+export default perguntasProfessorPratica

@@ -2,6 +2,7 @@ import * as React from 'react'
 import axios from 'axios'
 import '../App.css'
 import { Row, Col, Image, Container} from 'react-bootstrap';
+import { ProgressBar} from 'react-bootstrap';
 
 
 
@@ -43,10 +44,14 @@ class PerguntaGeral1 extends React.Component {
             const disciplinas = res.data.disciplina;
             const perguntasGerais = res.data.perguntasGerais;
             this.setState({ disciplinas,perguntasGerais,ready:1 });
+            window.onbeforeunload = function() { return "Your work will be lost."; };
+            window.history.pushState(null, "", window.location.href);
+            window.onpopstate = function () {
+                window.history.pushState(null, "", window.location.href);
+            }
         
           })
       }
-
 
       handleClick(valor){
         this.setRespostaPergunta1(valor);
@@ -58,10 +63,15 @@ class PerguntaGeral1 extends React.Component {
         
         return( this.state.ready?
             <div>
-            <div className="nm-custom-decoration" >
-               <div style={{marginLeft: '110%'}}> {this.state.disciplinas.nome}
-               </div>
-             </div>  
+                <div>      
+                <ProgressBar style= {{marginTop: "0px"}}> 
+                <ProgressBar animated now={12.5} />
+                </ProgressBar>
+            </div>
+            <div style={{backgroundColor:'#4B0082'}} className="nm-custom-decoration" >
+               <div style={{color: 'white',marginLeft: '120%', whiteSpace: 'nowrap',paddingTop:'160%'}}> {this.state.disciplinas.nome}
+            </div>
+            </div>
             
              <div className="container ">
             <div className="row" style={{ display: 'flex', justifyContent: 'center'}}>

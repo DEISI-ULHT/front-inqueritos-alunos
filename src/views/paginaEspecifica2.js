@@ -6,7 +6,7 @@ import '../App.css'
 import { ProgressBar} from 'react-bootstrap';
 
 
-class PerguntaGeral2 extends React.Component {
+class PaginaEspecifica2 extends React.Component {
     constructor(props){
         super(props);
         this.state = {
@@ -23,30 +23,30 @@ class PerguntaGeral2 extends React.Component {
         console.log(this.props)
     }   
     
-      // Add a listener to prevent browser page refresh
-     
-    
-      // Clear listener
-     
-
-     proximaPagina2(){
+     proximaPagina10(){
          this.setState({respostas:[...this.state.texto]})
          //this.props.match.params.respostaPerguntaGeral2 = this.state.texto
          this.props.match.params.estado = this.state
          //PerguntaGeral3(this.state)
          console.log(this.state)
-         
-         this.props.history.push({
-          pathname: `/perguntaGeral3/${this.state.id}`,
-          state: this.state.onClick
+         var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x=> x.tipo==='T' || x.tipo=== 'T+TP' )
+        
+         if(listaProfessoresTeorico.length===0){
+            this.props.history.push({
+                pathname: `/professorTeorica/${this.state.id}`,
+                state: this.state
+                
+            })  
+         }else{
+            this.props.history.push({
+                pathname: `/perguntasProfessorTeorica/${this.state.id}`,
+                state: this.state
+                
+            })
 
-      })
-      
-      
-           // return <PerguntaGeral3 state= {this.state} />        
+         }
+        // return <PerguntaGeral3 state= {this.state} />        
     };   
-
-    
      async componentDidMount() {
          await axios.get(`http://localhost:8080/disciplina/exportacao?disciplina=${this.state.id}`)
           .then(res => {
@@ -61,11 +61,9 @@ class PerguntaGeral2 extends React.Component {
         
           })
       }
-      
     handleClick(){
-        this.proximaPagina2();
+        this.proximaPagina10();
         console.log('Resposta da pergunta 2:' + this.state.texto);  
-       
        }
        myChangeHandler = (event) => {
 
@@ -75,29 +73,28 @@ class PerguntaGeral2 extends React.Component {
           if (val.length < 10 && val !=="" ) {
             err = <strong class="text-extra-info" style={{color: "white"}}>Escreva um pouco mais</strong>;
           }
-          if (val.length > 10 && val !=="" && val.length < 50) {
+          if (val.length > 10 && val !=="") {
             err = <strong class="text-extra-info2" style={{color: "white"}}>Obrigada pelo feedback</strong>;
-          
+            
           }
-             
           if (val ==="") {
             err = <strong style={{color: "white"}}></strong>;
           }
     
-        this.setState({errormessage: err}); 
+        this.setState({errormessage: err});
+        
       }
        
     render(){
         
         return( this.state.ready?
             <div>
-              
                 <div> 
                 <ProgressBar style= {{marginTop: "0px"}}> 
                 <ProgressBar animated now={25} />
                 </ProgressBar>
                 </div>
-                <div style={{backgroundColor:'#C71585'}} className="nm-custom-decoration" >
+                <div style={{backgroundColor:'#3960BA'}} className="nm-custom-decoration" >
                <div style={{color: 'white',marginLeft: '120%', whiteSpace: 'nowrap',paddingTop:'160%'}}> {this.state.disciplinas.nome}
             </div>
             </div>  
@@ -105,15 +102,32 @@ class PerguntaGeral2 extends React.Component {
             <div className="row" style={{ display: 'flex', justifyContent: 'center'}}>
                 <div className="col-md-6" style={{justifyContent:'center', position: 'absolute', color: 'white', top: '25%', textAlign: 'center'}}>
                         <p  style= {{fontSize: '28pt', top: '50%'}}> 
-                            {this.state.perguntasGerais.find(pg=>pg.id===3).enunciado}
+                            {this.state.disciplinas.perguntaEspecifica.find(pg=>pg.id===2).enunciado}
                         </p>
                         <br/>
+                        {(() => {
+                         // console.log(this.state.disciplinas.perguntaEspecifica)
+                         if (this.state.disciplinas.perguntaEspecifica[1].tipo=='A') {
+                         return (
+                       
                         <div className="form-group">
                         <label htmlFor="exampleTextarea"></label>
-                        <div style={{marginBottom: '2%', marginTop: '-3%'}} ><div class="extra-info-icon-box"><div class="engine-sprite icon-engine-info"></div></div><div class="extra-info-text-box">{this.state.errormessage} </div></div>  
-                             <textarea  onChange={this.myChangeHandler}  onInput={(e) => this.setState({texto: e.target.value})} type="text" name="message"className="form-control" id="exampleTextarea"  style={{borderBottomRightRadius: '0px', borderBottomLeftRadius: '0px'}} rows="7" placeholder="Escreva o texto aqui"></textarea> 
+                        <div style={{marginBottom: '2%', marginTop: '-3%'}} ><div className="extra-info-icon-box"><div className="engine-sprite icon-engine-info"></div></div><div className="extra-info-text-box">{this.state.errormessage} </div></div>  
+                             <textarea /* onChange={this.myChangeHandler}  */onInput={(e) => this.setState({texto: e.target.value})} type="text" name="message"className="form-control" id="exampleTextarea"  style={{borderBottomRightRadius: '0px', borderBottomLeftRadius: '0px'}} rows="7" placeholder="Escreva o texto aqui"></textarea> 
                              <button onClick={() => {this.handleClick()}}   style= {{ borderTopLeftRadius: '0px',borderTopRightRadius: '0px', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Responda e continue</button>
                         </div>
+                         )}else{
+                           return(
+                     <div className="form-group">
+                     <button onClick={() => this.handleClick("Nenhuma Ligação")}  style= {{ padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">{this.state.disciplinas.perguntaEspecifica.find(pg=>pg.id===1).opcoes}</button>
+                     <button onClick={() => this.handleClick("Pouca ligação")}   style= {{ marginTop: '1%', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Pouca ligação</button>
+                     <button onClick={() => this.handleClick("Muita ligação")}  style= {{ marginTop: '1%', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Muita ligação</button>
+                     <button onClick={() => this.handleClick("Não faz sentido nessa disciplina")}  style= {{ marginTop: '1%', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Não faz sentido nessa disciplina</button>
+
+                 </div>
+                           )}
+                          })()}
+
                 </div>
             </div>
             
@@ -130,4 +144,4 @@ class PerguntaGeral2 extends React.Component {
 
 }
 
-export default PerguntaGeral2
+export default PaginaEspecifica2
