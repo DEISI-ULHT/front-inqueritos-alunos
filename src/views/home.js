@@ -33,10 +33,8 @@ class Home extends React.Component{
          //this.props.match.params.respostaPerguntaGeral2 = this.state.texto
          this.props.match.params.estado = this.state
          //PerguntaGeral3(this.state)
-         debugger;
          console.log(this.props)
         // var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x=> x.tipo=='T' || x.tipo== 'T+TP' )
-          debugger;
          if(this.state.disciplinas.cursos.length > 1){
             this.props.history.push({
                 pathname: `/EscolheCurso/${this.state.id}`,

@@ -36,7 +36,7 @@ class EscolheCurso extends React.Component {
         // return <PerguntaGeral3 state= {this.state} />
         
     };
-   
+  
     
      async componentDidMount() {
          await axios.get(`http://localhost:8080/disciplina/exportacao?disciplina=${this.state.id}`)
@@ -44,7 +44,6 @@ class EscolheCurso extends React.Component {
             const disciplinas = res.data.disciplina;
             const perguntasGerais = res.data.perguntasGerais;
             //const cursos = res.data.cursos;
-            debugger
             this.setState({ disciplinas,perguntasGerais,ready:1 });
             window.onbeforeunload = function() { return "Your work will be lost."; };
             window.history.pushState(null, "", window.location.href);

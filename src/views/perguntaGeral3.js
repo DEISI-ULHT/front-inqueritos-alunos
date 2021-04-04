@@ -8,28 +8,38 @@ class PerguntaGeral3 extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = {
-           // respostas:[],
-          //  respostaPerguntaGeral2:"",
-            texto: "",
-            disciplinas:[],
-            perguntasGerais:[],
-            ready:0,
-            errormessage: '',
-            id: props.match.params.id
-        };
+        this.state = props.location.state2;
+        this.state.texto = "";
+        this.state.texto_pergunta3 = "";  
+        this.state.disciplinas=[];
+        this.state.perguntasGerais=[];
+        this.state.errormessage= '';
+        this.state.ready=0;
+        this.state.id = props.match.params.id
+
+        // this.state = {
+        //    // respostas:[],
+        //   //  respostaPerguntaGeral2:"",
+        //     texto: "",
+        //     disciplinas:[],
+        //     perguntasGerais:[],
+        //     ready:0,
+        //     errormessage: '',
+        //     id: props.match.params.id
+        // };
         console.log(props.match.params.id)
         console.log(this.props)
     }   
     
      proximaPagina3(){
-         this.setState({respostas:[...this.state.texto]})
+         this.setState({respostas:[...this.state.texto_pergunta3]})
          //this.props.match.params.respostaPerguntaGeral2 = this.state.texto
          this.props.match.params.estado = this.state
          //PerguntaGeral3(this.state)
          this.props.history.push({
              pathname: `/perguntaGeral4/${this.state.id}`,
-             state: this.state.onClick
+             state: this.state.onClick,
+             state3:this.state,
 
          })
         // return <PerguntaGeral3 state= {this.state} />        
@@ -58,10 +68,10 @@ class PerguntaGeral3 extends React.Component {
         let err = '';
     
           if (val.length < 10 && val !=="" ) {
-            err = <strong class="text-extra-info" style={{color: "white"}}>Escreva um pouco mais</strong>;
+            err = <strong className="text-extra-info" style={{color: "white"}}>Escreva um pouco mais</strong>;
           }
           if (val.length > 10 && val !=="") {
-            err = <strong class="text-extra-info2" style={{color: "white"}}>Obrigada pelo feedback</strong>;
+            err = <strong className="text-extra-info2" style={{color: "white"}}>Obrigada pelo feedback</strong>;
           }
           if (val ==="") {
             err = <strong style={{color: "white"}}></strong>;
@@ -99,7 +109,7 @@ class PerguntaGeral3 extends React.Component {
                               <div  className="extra-info-text-box">{this.state.errormessage} 
                               </div>
                               </div>  
-                             <textarea style={{marginTop: '2%'}} onInput={(e) => this.setState({texto: e.target.value})} onChange={this.myChangeHandler} className="form-control" id="exampleTextarea" style={{borderBottomRightRadius: '0px', borderBottomLeftRadius: '0px'}} rows="7" placeholder="Escreva o texto aqui"></textarea>
+                             <textarea style={{marginTop: '2%'}} onInput={(e) => this.setState({texto_pergunta3: e.target.value})} onChange={this.myChangeHandler} className="form-control" id="exampleTextarea" style={{borderBottomRightRadius: '0px', borderBottomLeftRadius: '0px'}} rows="7" placeholder="Escreva o texto aqui"></textarea>
                              <button onClick={() => this.handleClick()} style= {{ borderTopLeftRadius: '0px',borderTopRightRadius: '0px', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Responda e continue</button>
 
                         </div>

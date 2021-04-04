@@ -18,20 +18,31 @@ const customStyles = {
 class ProfessorPratica extends Home {
   constructor(props){
     super(props);
-    this.state = {
+    this.state = props.location.state;
+    this.state.texto = "";
+    this.state.texto_profPratica = "";
+    this.state.disciplinas=[];
+    this.state.perguntasGerais=[];
+    this.state.options = [];
+    this.state.selectOptions = [];
+    this.state.selectedId = "";
+    this.state.selectedName = "";
+    this.state.ready=0;
+    this.state.id = props.match.params.id
+   // this.state = {
        // respostas:[],
       //  respostaPerguntaGeral2:"",
-        texto: "",
-        disciplinas:[],
-        perguntasGerais:[],
-        professorTeorica:[],
-        options: [],
-        selectOptions:[],
-        selectedId: "",
-        selectedName: "",
-        ready:0,
-        id: props.match.params.id
-    };
+       // texto: "",
+      //  disciplinas:[],
+      //  perguntasGerais:[],
+      //  professorTeorica:[],
+      //  options: [],
+      //  selectOptions:[],
+      //  selectedId: "",
+      //  selectedName: "",
+      //  ready:0,
+      //  id: props.match.params.id
+    //};
     console.log(props.match.params.id)
     console.log(this.props)
 }
@@ -39,7 +50,7 @@ class ProfessorPratica extends Home {
 
   
   proximaPagina7 = () =>{
-    this.setState({respostas:[...this.state.texto]})
+    this.setState({respostas:[...this.state.texto_profPratica]})
          //this.props.match.params.respostaPerguntaGeral2 = this.state.texto
          this.props.match.params.estado = this.state
          //PerguntaGeral3(this.state)        
@@ -63,7 +74,7 @@ class ProfessorPratica extends Home {
 };
  handleClick(){
   this.proximaPagina7();
-  console.log('Resposta do professor teórico:' + this.state.texto);  
+  console.log('Resposta do professor teórico:' + this.state.texto_profPratica);  
  }
   async getOptions(){
     await  axios.get(`http://localhost:8080/disciplina/exportacao?disciplina=${this.state.id}`)

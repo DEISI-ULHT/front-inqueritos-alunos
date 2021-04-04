@@ -11,26 +11,27 @@ class perguntasProfessorTeorica extends React.Component {
     
       constructor(props) {
         super(props);
-        this.state = {
-          index: 0,
-          index2: 0,
-          direction: null,
-          carouselItemCount: 6,
-          childVisible: 1,
-          count: 0,
-          pergunta1: 0,
-          pergunta2: 0,
-          pergunta3: 0,
-          pergunta4: 0,
-          pergunta5: 0,
-          pergunta6: 0,
-          texto: "",
-          disciplinas:[],
-          perguntasGerais:[],
-          ready:0,
-          errormessage: '',
-          id: props.match.params.id
-        }
+        this.state = props.location.state;
+        this.state.index = 0;
+        this.state.index2 = 0;
+        this.state.direction = null;
+        this.state.carouselItemCount = 6;
+        this.state.childVisible = 1;
+        this.state.count = 0;
+        this.state.pergunta1 = 0;
+        this.state.pergunta2 = 0;
+        this.state.pergunta3 = 0;
+        this.state.pergunta4 = 0;
+        this.state.pergunta5 = 0;
+        this.state.pergunta6 = 0;
+        this.state.texto = "";
+        this.state.texto_perguntasProfTeorica = "";
+        this.state.disciplinas=[];
+        this.state.perguntasGerais=[];
+        this.state.ready=0;
+        this.state.id = props.match.params.id
+        this.state = props.location.state;
+       
         console.log(props.match.params.id)
         console.log(this.props)
       }
@@ -101,35 +102,34 @@ class perguntasProfessorTeorica extends React.Component {
 
         if(key === 1){
         this.setState({
-          pergunta1: valor
+          pergunta1: resposta
         })
         }
         if(key === 2){
           this.setState({
-            pergunta2: valor
+            pergunta2: resposta
           })
         }
         if(key === 3){
           this.setState({
-            pergunta3: valor
+            pergunta3: resposta
           })
 
           }
         if(key === 4){
         this.setState({
-            pergunta4: valor
+            pergunta4: resposta
         })
      
      }
         if(key === 5){
             this.setState({
-                pergunta5: valor
+                pergunta5: resposta
             })
         }
         if(key === 6){
-            this.setState({
-              pergunta6: valor,
-            })
+          this.state.pergunta6 = resposta;
+
         }
     
         this.toggleCarousel('next', true);
@@ -168,7 +168,7 @@ class perguntasProfessorTeorica extends React.Component {
           <div className="container ">
             <div className="row" style={{ display: 'flex', justifyContent: 'center', marginTop: '14%'}}>
             <p style= {{color: 'white' ,fontSize: '20pt', marginTop: '-5%',textAlign: 'center'}}> 
-                { this.state.perguntasGerais.find(pg=>pg.id===17).enunciado}
+                { this.state.perguntasGerais.find(pg=>pg.id===7).enunciado}
              </p>
                </div>
               </div>
@@ -348,42 +348,42 @@ class perguntasProfessorTeorica extends React.Component {
                 <Row style = {centralizar}>
                     
                     <div style = {{marginLeft: "0%"}} >
-                      <button className={this.state.pergunta2 === 7 ? "blackButton" : "whiteButton"} 
+                      <button className={this.state.pergunta2 === 1 ? "blackButton" : "whiteButton"} 
                                 onClick={() => this.handleClick(7,2,1)}>
                                 1
                       </button>
                     </div>
     
                     <div style = {{marginLeft: "2%"}} >
-                      <button className={this.state.pergunta2 === 8 ? "blackButton" : "whiteButton"}
+                      <button className={this.state.pergunta2 === 2 ? "blackButton" : "whiteButton"}
                               onClick={() => this.handleClick(8,2,2)}>
                                 2
                       </button>
                     </div>
     
                     <div style = {{marginLeft: "2%"}} >
-                      <button className={this.state.pergunta2 === 9 ? "blackButton" : "whiteButton"}
+                      <button className={this.state.pergunta2 === 3 ? "blackButton" : "whiteButton"}
                               onClick={() => this.handleClick(9,2,3)}>
                                 3
                       </button>
                     </div>
     
                     <div style = {{marginLeft: "2%"}} >
-                      <button className={this.state.pergunta2 === 10 ? "blackButton" : "whiteButton"}
+                      <button className={this.state.pergunta2 === 4 ? "blackButton" : "whiteButton"}
                               onClick={() => this.handleClick(10,2,4)}>
                                 4
                       </button>
                     </div>
     
                     <div style = {{marginLeft: "2%"}} >
-                      <button className={this.state.pergunta2 === 11 ? "blackButton" : "whiteButton"}
+                      <button className={this.state.pergunta2 === 5 ? "blackButton" : "whiteButton"}
                               onClick={() => this.handleClick(11,2,5)}>
                                 5
                       </button>
                     </div>
     
                     <div style = {{marginLeft: "2%"}} >
-                      <button className={this.state.pergunta2 === 12 ? "blackButton" : "whiteButton"}
+                      <button className={this.state.pergunta2 === 6 ? "blackButton" : "whiteButton"}
                               onClick={() => this.handleClick(12,2,6)}>
                                 6
                       </button>
@@ -411,42 +411,42 @@ class perguntasProfessorTeorica extends React.Component {
                 <Row style = {centralizar}>
                     
                     <div style = {{marginLeft: "0%"}} >
-                      <button className={this.state.pergunta3 === 13 ? "blackButton" : "whiteButton"} 
+                      <button className={this.state.pergunta3 === 1 ? "blackButton" : "whiteButton"} 
                                 onClick={() => this.handleClick(13,3,1)}>
                                 1
                       </button>
                     </div>
     
                     <div style = {{marginLeft: "2%"}} >
-                      <button className={this.state.pergunta3 === 14 ? "blackButton" : "whiteButton"}
+                      <button className={this.state.pergunta3 === 2 ? "blackButton" : "whiteButton"}
                               onClick={() => this.handleClick(14,3,2)}>
                                 2
                       </button>
                     </div>
     
                     <div style = {{marginLeft: "2%"}} >
-                      <button className={this.state.pergunta3 === 15 ? "blackButton" : "whiteButton"}
+                      <button className={this.state.pergunta3 === 3 ? "blackButton" : "whiteButton"}
                               onClick={() => this.handleClick(15,3,3)}>
                                 3
                       </button>
                     </div>
     
                     <div style = {{marginLeft: "2%"}} >
-                      <button className={this.state.pergunta3 === 16 ? "blackButton" : "whiteButton"}
+                      <button className={this.state.pergunta3 === 4 ? "blackButton" : "whiteButton"}
                               onClick={() => this.handleClick(16,3,4)}>
                                 4
                       </button>
                     </div>
     
                     <div style = {{marginLeft: "2%"}} >
-                      <button className={this.state.pergunta3 === 17 ? "blackButton" : "whiteButton"}
+                      <button className={this.state.pergunta3 === 5 ? "blackButton" : "whiteButton"}
                               onClick={() => this.handleClick(17,3,5)}>
                                 5
                       </button>
                     </div>
     
                     <div style = {{marginLeft: "2%"}} >
-                      <button className={this.state.pergunta3 === 18 ? "blackButton" : "whiteButton"}
+                      <button className={this.state.pergunta3 === 6 ? "blackButton" : "whiteButton"}
                               onClick={() => this.handleClick(18,3,6)}>
                                 6
                       </button>
@@ -476,42 +476,42 @@ class perguntasProfessorTeorica extends React.Component {
                 <Row style = {centralizar}>
                     
                     <div style = {{marginLeft: "0%"}} >
-                      <button className={this.state.pergunta4 === 19 ? "blackButton" : "whiteButton"} 
+                      <button className={this.state.pergunta4 === 1 ? "blackButton" : "whiteButton"} 
                                 onClick={() => this.handleClick(19,4,1)}>
                                 1
                       </button>
                     </div>
     
                     <div style = {{marginLeft: "2%"}} >
-                      <button className={this.state.pergunta4 === 20 ? "blackButton" : "whiteButton"}
+                      <button className={this.state.pergunta4 === 2 ? "blackButton" : "whiteButton"}
                               onClick={() => this.handleClick(20,4,2)}>
                                 2
                       </button>
                     </div>
     
                     <div style = {{marginLeft: "2%"}} >
-                      <button className={this.state.pergunta4 === 21 ? "blackButton" : "whiteButton"}
+                      <button className={this.state.pergunta4 === 3 ? "blackButton" : "whiteButton"}
                               onClick={() => this.handleClick(21,4,3)}>
                                 3
                       </button>
                     </div>
     
                     <div style = {{marginLeft: "2%"}} >
-                      <button className={this.state.pergunta4 === 22 ? "blackButton" : "whiteButton"}
+                      <button className={this.state.pergunta4 === 4 ? "blackButton" : "whiteButton"}
                               onClick={() => this.handleClick(22,4,4)}>
                                 4
                       </button>
                     </div>
     
                     <div style = {{marginLeft: "2%"}} >
-                      <button className={this.state.pergunta4 === 23 ? "blackButton" : "whiteButton"}
+                      <button className={this.state.pergunta4 === 5 ? "blackButton" : "whiteButton"}
                               onClick={() => this.handleClick(23,4,5)}>
                                 5
                       </button>
                     </div>
     
                     <div style = {{marginLeft: "2%"}} >
-                      <button className={this.state.pergunta4 === 24 ? "blackButton" : "whiteButton"}
+                      <button className={this.state.pergunta4 === 6 ? "blackButton" : "whiteButton"}
                               onClick={() => this.handleClick(24,4,6)}>
                                 6
                       </button>
@@ -539,42 +539,42 @@ class perguntasProfessorTeorica extends React.Component {
                 <Row style = {centralizar}>
                     
                     <div style = {{marginLeft: "0%"}} >
-                      <button className={this.state.pergunta5 === 25 ? "blackButton" : "whiteButton"} 
+                      <button className={this.state.pergunta5 === 1 ? "blackButton" : "whiteButton"} 
                                 onClick={() => this.handleClick(25,5,1)}>
                                 1
                       </button>
                     </div>
     
                     <div style = {{marginLeft: "2%"}} >
-                      <button className={this.state.pergunta5 === 26 ? "blackButton" : "whiteButton"}
+                      <button className={this.state.pergunta5 === 2 ? "blackButton" : "whiteButton"}
                               onClick={() => this.handleClick(26,5,2)}>
                                 2
                       </button>
                     </div>
     
                     <div style = {{marginLeft: "2%"}} >
-                      <button className={this.state.pergunta5 === 27 ? "blackButton" : "whiteButton"}
+                      <button className={this.state.pergunta5 === 3 ? "blackButton" : "whiteButton"}
                               onClick={() => this.handleClick(27,5,3)}>
                                 3
                       </button>
                     </div>
     
                     <div style = {{marginLeft: "2%"}} >
-                      <button className={this.state.pergunta5 === 28 ? "blackButton" : "whiteButton"}
+                      <button className={this.state.pergunta5 === 4 ? "blackButton" : "whiteButton"}
                               onClick={() => this.handleClick(28,5,4)}>
                                 4
                       </button>
                     </div>
     
                     <div style = {{marginLeft: "2%"}} >
-                      <button className={this.state.pergunta5 === 29 ? "blackButton" : "whiteButton"}
+                      <button className={this.state.pergunta5 === 5 ? "blackButton" : "whiteButton"}
                               onClick={() => this.handleClick(29,5,5)}>
                                 5
                       </button>
                     </div>
     
                     <div style = {{marginLeft: "2%"}} >
-                      <button className={this.state.pergunta5 === 30 ? "blackButton" : "whiteButton"}
+                      <button className={this.state.pergunta5 === 6 ? "blackButton" : "whiteButton"}
                               onClick={() => this.handleClick(30,5,6)}>
                                 6
                       </button>
@@ -602,42 +602,42 @@ class perguntasProfessorTeorica extends React.Component {
                 <Row style = {centralizar}>
                     
                     <div style = {{marginLeft: "0%"}} >
-                      <button className={this.state.pergunta6 === 31 ? "blackButton" : "whiteButton"} 
+                      <button className={this.state.pergunta6 === 1 ? "blackButton" : "whiteButton"} 
                                 onClick={() => this.handleClick(31,6,1)}>
                                 1
                       </button>
                     </div>
     
                     <div style = {{marginLeft: "2%"}} >
-                      <button className={this.state.pergunta6 === 32 ? "blackButton" : "whiteButton"}
+                      <button className={this.state.pergunta6 === 2 ? "blackButton" : "whiteButton"}
                               onClick={() => this.handleClick(32,6,2)}>
                                 2
                       </button>
                     </div>
     
                     <div style = {{marginLeft: "2%"}} >
-                      <button className={this.state.pergunta6 === 33 ? "blackButton" : "whiteButton"}
+                      <button className={this.state.pergunta6 === 3 ? "blackButton" : "whiteButton"}
                               onClick={() => this.handleClick(33,6,3)}>
                                 3
                       </button>
                     </div>
     
                     <div style = {{marginLeft: "2%"}} >
-                      <button className={this.state.pergunta6 === 34 ? "blackButton" : "whiteButton"}
+                      <button className={this.state.pergunta6 === 4 ? "blackButton" : "whiteButton"}
                               onClick={() => this.handleClick(34,6,4)}>
                                 4
                       </button>
                     </div>
     
                     <div style = {{marginLeft: "2%"}} >
-                      <button className={this.state.pergunta6 === 35 ? "blackButton" : "whiteButton"}
+                      <button className={this.state.pergunta6 === 5 ? "blackButton" : "whiteButton"}
                               onClick={() => this.handleClick(35,6,5)}>
                                 5
                       </button>
                     </div>
     
                     <div style = {{marginLeft: "2%"}} >
-                      <button className={this.state.pergunta6 === 36 ? "blackButton" : "whiteButton"}
+                      <button className={this.state.pergunta6 === 6 ? "blackButton" : "whiteButton"}
                               onClick={() => this.handleClick(36,6,6)}>
                                 6
                       </button>

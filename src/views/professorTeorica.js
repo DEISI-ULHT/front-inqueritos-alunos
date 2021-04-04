@@ -18,20 +18,31 @@ const customStyles = {
 class ProfessorTeorica extends Home {
   constructor(props){
     super(props);
-    this.state = {
+    this.state = props.location.state;
+    this.state.texto = "";
+    this.state.texto_profTeorica = "";
+    this.state.disciplinas=[];
+    this.state.perguntasGerais=[];
+    this.state.options = [];
+    this.state.selectOptions = [];
+    this.state.selectedId = "";
+    this.state.selectedName = "";
+    this.state.ready=0;
+    this.state.id = props.match.params.id
+   // this.state = {
        // respostas:[],
       //  respostaPerguntaGeral2:"",
-        texto: "",
-        disciplinas:[],
-        perguntasGerais:[],
-        professorTeorica:[],
-        options: [],
-        selectOptions:[],
-        selectedId: "",
-        selectedName: "",
-        ready:0,
-        id: props.match.params.id
-    };
+    //    texto: "",
+     //   disciplinas:[],
+     //   perguntasGerais:[],
+    //    professorTeorica:[],
+    //    options: [],
+    //selectOptions:[],
+    //    selectedId: "",
+    //    selectedName: "",
+    //    ready:0,
+    //    id: props.match.params.id
+    //};
     console.log(props.match.params.id)
     console.log(this.props)
 }
@@ -39,7 +50,7 @@ class ProfessorTeorica extends Home {
 
   
   proximaPagina6 = () =>{
-    this.setState({respostas:[...this.state.texto]})
+    this.setState({respostas:[...this.state.texto_profTeorica]})
          //this.props.match.params.respostaPerguntaGeral2 = this.state.texto
          this.props.match.params.estado = this.state
          //PerguntaGeral3(this.state)

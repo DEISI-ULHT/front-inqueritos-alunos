@@ -8,23 +8,30 @@ import { ProgressBar} from 'react-bootstrap';
 
 class PaginaEspecifica extends React.Component {
     constructor(props){
-        super(props);
-        this.state = {
+      super(props);
+      this.state = props.location.state;
+      this.state.texto_especifica1 = "";
+      this.state.disciplinas=[];
+      this.state.perguntasGerais=[];
+      this.state.errormessage= '';
+      this.state.ready=0;
+      this.state.id = props.match.params.id
+        //this.state = {
           //  respostas:[],
           //  respostaPerguntaGeral2:"",
-            texto: "",
-            disciplinas:[],
-            perguntasGerais:[],
-            errormessage: '',
-            ready:0,
-            id: props.match.params.id
-        };
+          //  texto: "",
+          //  disciplinas:[],
+          //  perguntasGerais:[],
+          //  errormessage: '',
+          //  ready:0,
+          //  id: props.match.params.id
+       // };
         console.log(props.match.params.id)
         console.log(this.props)
     }   
     
      proximaPagina10(){
-         this.setState({respostas:[...this.state.texto]})
+         this.setState({respostas:[...this.state.texto_especifica1]})
          //this.props.match.params.respostaPerguntaGeral2 = this.state.texto
          this.props.match.params.estado = this.state
          //PerguntaGeral3(this.state)
@@ -66,9 +73,13 @@ class PaginaEspecifica extends React.Component {
         
           })
       }
-    handleClick(){
+    handleClick(valor){
+      if (this.state.disciplinas.perguntaEspecifica[0].tipo=='F') {
+
+      this.setState({texto_especifica1:this.state.texto_especifica1=valor})
+      }
         this.proximaPagina10();
-        console.log('Resposta da pergunta 2:' + this.state.texto);  
+        console.log('Resposta da pergunta 2:' + this.state.texto_especifica1);  
        }
        myChangeHandler = (event) => {
 
@@ -118,13 +129,13 @@ class PaginaEspecifica extends React.Component {
                         <div className="form-group">
                         <label htmlFor="exampleTextarea"></label>
                         <div style={{marginBottom: '2%', marginTop: '-3%'}} ><div className="extra-info-icon-box"><div className="engine-sprite icon-engine-info"></div></div><div className="extra-info-text-box">{this.state.errormessage} </div></div>  
-                             <textarea /* onChange={this.myChangeHandler}  */onInput={(e) => this.setState({texto: e.target.value})} type="text" name="message"className="form-control" id="exampleTextarea"  style={{borderBottomRightRadius: '0px', borderBottomLeftRadius: '0px'}} rows="7" placeholder="Escreva o texto aqui"></textarea> 
+                             <textarea /* onChange={this.myChangeHandler}  */onInput={(e) => this.setState({texto_especifica1: e.target.value})} type="text" name="message"className="form-control" id="exampleTextarea"  style={{borderBottomRightRadius: '0px', borderBottomLeftRadius: '0px'}} rows="7" placeholder="Escreva o texto aqui"></textarea> 
                              <button onClick={() => {this.handleClick()}}   style= {{ borderTopLeftRadius: '0px',borderTopRightRadius: '0px', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Responda e continue</button>
                         </div>
                          )}else{
                            return(
                      <div className="form-group">
-                     <button onClick={() => this.handleClick("Nenhuma Ligação")}  style= {{ padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">{this.state.disciplinas.perguntaEspecifica.find(pg=>pg.id===1).opcoes}</button>
+                     <button onClick={() => this.handleClick("Nenhuma Ligação")}  style= {{ padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Ta</button>
                      <button onClick={() => this.handleClick("Pouca ligação")}   style= {{ marginTop: '1%', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Pouca ligação</button>
                      <button onClick={() => this.handleClick("Muita ligação")}  style= {{ marginTop: '1%', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Muita ligação</button>
                      <button onClick={() => this.handleClick("Não faz sentido nessa disciplina")}  style= {{ marginTop: '1%', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Não faz sentido nessa disciplina</button>

@@ -9,16 +9,25 @@ import { ProgressBar} from 'react-bootstrap';
 class PerguntaGeral2 extends React.Component {
     constructor(props){
         super(props);
-        this.state = {
-          //  respostas:[],
-          //  respostaPerguntaGeral2:"",
-            texto: "",
-            disciplinas:[],
-            perguntasGerais:[],
-            errormessage: '',
-            ready:0,
-            id: props.match.params.id
-        };
+        this.state = props.location.state;
+        this.state.texto = "";
+        this.state.texto_pergunta2 = "";
+        this.state.disciplinas=[];
+        this.state.perguntasGerais=[];
+        this.state.errormessage= '';
+        this.state.ready=0;
+        this.state.id = props.match.params.id
+
+        // this.state = {
+        //   //  respostas:[],
+        //   //  respostaPerguntaGeral2:"",
+        //     texto: "",
+        //     disciplinas:[],
+        //     perguntasGerais:[],
+        //     errormessage: '',
+        //     ready:0,
+        //     id: props.match.params.id
+        // };
         console.log(props.match.params.id)
         console.log(this.props)
     }   
@@ -30,7 +39,7 @@ class PerguntaGeral2 extends React.Component {
      
 
      proximaPagina2(){
-         this.setState({respostas:[...this.state.texto]})
+         this.setState({respostas:[...this.state.texto_pergunta2]})
          //this.props.match.params.respostaPerguntaGeral2 = this.state.texto
          this.props.match.params.estado = this.state
          //PerguntaGeral3(this.state)
@@ -38,7 +47,8 @@ class PerguntaGeral2 extends React.Component {
          
          this.props.history.push({
           pathname: `/perguntaGeral3/${this.state.id}`,
-          state: this.state.onClick
+          state: this.state.onClick,
+          state2:this.state,
 
       })
       
@@ -73,10 +83,10 @@ class PerguntaGeral2 extends React.Component {
         let err = '';
     
           if (val.length < 10 && val !=="" ) {
-            err = <strong class="text-extra-info" style={{color: "white"}}>Escreva um pouco mais</strong>;
+            err = <strong className="text-extra-info" style={{color: "white"}}>Escreva um pouco mais</strong>;
           }
           if (val.length > 10 && val !=="" && val.length < 50) {
-            err = <strong class="text-extra-info2" style={{color: "white"}}>Obrigada pelo feedback</strong>;
+            err = <strong className="text-extra-info2" style={{color: "white"}}>Obrigada pelo feedback</strong>;
           
           }
              
@@ -110,8 +120,8 @@ class PerguntaGeral2 extends React.Component {
                         <br/>
                         <div className="form-group">
                         <label htmlFor="exampleTextarea"></label>
-                        <div style={{marginBottom: '2%', marginTop: '-3%'}} ><div class="extra-info-icon-box"><div class="engine-sprite icon-engine-info"></div></div><div class="extra-info-text-box">{this.state.errormessage} </div></div>  
-                             <textarea  onChange={this.myChangeHandler}  onInput={(e) => this.setState({texto: e.target.value})} type="text" name="message"className="form-control" id="exampleTextarea"  style={{borderBottomRightRadius: '0px', borderBottomLeftRadius: '0px'}} rows="7" placeholder="Escreva o texto aqui"></textarea> 
+                        <div style={{marginBottom: '2%', marginTop: '-3%'}} ><div className="extra-info-icon-box"><div className="engine-sprite icon-engine-info"></div></div><div className="extra-info-text-box">{this.state.errormessage} </div></div>  
+                             <textarea  onChange={this.myChangeHandler}  onInput={(e) => this.setState({texto_pergunta2: e.target.value})} type="text" name="message"className="form-control" id="exampleTextarea"  style={{borderBottomRightRadius: '0px', borderBottomLeftRadius: '0px'}} rows="7" placeholder="Escreva o texto aqui"></textarea> 
                              <button onClick={() => {this.handleClick()}}   style= {{ borderTopLeftRadius: '0px',borderTopRightRadius: '0px', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Responda e continue</button>
                         </div>
                 </div>

@@ -10,14 +10,22 @@ class PerguntaGeral4 extends Home {
     
     constructor(props){
         super(props);
-        this.state = {
-           // respostas:[],
-            texto:"",
-            disciplinas:[],
-            perguntasGerais:[],
-            ready:0,
-            id: props.match.params.id
-        };
+        this.state = props.location.state3;
+        this.state.texto = "";
+        this.state.texto_pergunta4 = ""; 
+        this.state.disciplinas=[];
+        this.state.perguntasGerais=[];
+        this.state.errormessage= '';
+        this.state.ready=0;
+        this.state.id = props.match.params.id
+        // this.state = {
+        //    // respostas:[],
+        //     texto:"",
+        //     disciplinas:[],
+        //     perguntasGerais:[],
+        //     ready:0,
+        //     id: props.match.params.id
+        // };
         console.log(props.match.params.id)  
         console.log(this.props)
   
@@ -31,14 +39,12 @@ class PerguntaGeral4 extends Home {
         
   //  }
     proximaPagina4 () {
-        this.setState({respostas:[...this.state.texto]})
+        this.setState({respostas:[...this.state.texto_pergunta4]})
          //this.props.match.params.respostaPerguntaGeral2 = this.state.texto
          this.props.match.params.estado = this.state
          //PerguntaGeral3(this.state)
-         debugger;
          console.log(this.props)
         // var listaProfessoresTeorico = this.state.disciplinas.cursos
-          debugger;
          if(this.state.disciplinas.perguntaEspecifica.length > 0){
             this.props.history.push({
                 pathname: `/paginaEspecifica/${this.state.id}`,
@@ -65,7 +71,7 @@ class PerguntaGeral4 extends Home {
     };
     
     handleClick(valor){
-        this.setState({texto:this.state.texto=valor})
+        this.setState({texto_pergunta4:this.state.texto_pergunta4=valor})
 
         // this.setRespostaPergunta4(valor);
          this.proximaPagina4();
