@@ -74,11 +74,13 @@ class perguntasProfessorPratica extends React.Component {
         if(valida === true){
            count++
         }
+        
         if(count >= 6 && index2 === 6){
           this.props.history.push({
                 pathname:`/final/${this.state.id}`,
                 state: this.state
             })
+            
         }
     
         if (index > max) {
@@ -114,6 +116,7 @@ class perguntasProfessorPratica extends React.Component {
        
          })
      }
+   
     
       handleClick(valor, key, resposta){    
    

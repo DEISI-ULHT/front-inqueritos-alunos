@@ -33,31 +33,38 @@ class Final extends React.Component{
         console.log(this.props)
     } 
 
-
-
     async componentDidMount() {
-        // POST request using fetch with async/await
-        const requestOptions = {
+        await axios.get(`http://localhost:8080/disciplina/exportacao?disciplina=${this.state.id}`)
+         .then(res => {
+           const disciplinas = res.data.disciplina;
+           const perguntasGerais = res.data.perguntasGerais;
+           this.setState({ disciplinas,perguntasGerais,ready:1 });
+           window.onbeforeunload = function() { return "Your work will be lost."; };
+           window.history.pushState(null, "", window.location.href);
+           window.onpopstate = function () {
+               window.history.pushState(null, "", window.location.href);
+           }
+       
+         })
+         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             //body: JSON.stringify({ title: 'React POST Request Example' })
             body: JSON.stringify({ 
-            "disciplinaId": '1',
-             "perguntaId": '1',
+            "disciplinaId": '0',
+             "perguntaId": '0',
             "professorId": 'null',
-            "conteudo": '5', })
+            "conteudo": 'nossa', })
         };
-
+  
         const response = await fetch('http://localhost:8080/resposta/submit', requestOptions);
-        debugger;
-        if(response.status == 202){
-            // deu certo
-        } else{
-            //deu erro
-        }
+        
         //const data = await response.json();
-        //this.setState({ postId: data.id });
-    }
+       // this.setState({ postId: data.id });
+          
+     }
+
+     
     render(){
         const centralizar={
             justifyContent: "center",
@@ -74,6 +81,7 @@ class Final extends React.Component{
                     
                  <img style={{marginTop: '25%'}} src="https://cdn.pixabay.com/photo/2015/12/07/22/53/paper-planes-1081560_1280.png"  height= "15%" width=" 10%"  />
                  <p style={{marginTop: '25%', fontSize: '28pt'}}  >Enviado!</p>
+
   
                 </div>
                 </div>
