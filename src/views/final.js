@@ -46,19 +46,8 @@ class Final extends React.Component{
            }
        
          })
-         const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            //body: JSON.stringify({ title: 'React POST Request Example' })
-            body: JSON.stringify({ 
-            "disciplinaId": '0',
-             "perguntaId": '0',
-            "professorId": 'null',
-            "conteudo": 'nossa', })
-        };
-  
-        const response = await fetch('http://localhost:8080/resposta/submit', requestOptions);
         
+          
         //const data = await response.json();
        // this.setState({ postId: data.id });
           

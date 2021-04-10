@@ -52,11 +52,13 @@ class ProfessorPratica extends Home {
   proximaPagina7 = () =>{
     this.setState({respostas:[...this.state.texto_profPratica]})
          //this.props.match.params.respostaPerguntaGeral2 = this.state.texto
+        
          this.props.match.params.estado = this.state
          //PerguntaGeral3(this.state)        
           //debugger;      
             this.props.history.push({
                 pathname: `/perguntasProfessorPratica/${this.state.id}`,
+                 teacher: this.state.selectedId,
                 state: this.state    
             })  
          
@@ -72,8 +74,21 @@ class ProfessorPratica extends Home {
 //  console.log('Resposta qual professor da teorica: ', this.state.selectedOption);
   console.log(this.props)
 };
- handleClick(){
+ async handleClick(){
   this.proximaPagina7();
+  debugger;
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    //body: JSON.stringify({ title: 'React POST Request Example' })
+    body: JSON.stringify({ 
+    "disciplinaId": this.state.disciplinas.id,
+    "perguntaId": this.state.perguntasGerais[9].id,
+    "professorId": this.state.selectedId,
+    "conteudo": this.state.selectedName, })
+};
+
+const response = await fetch('http://localhost:8080/resposta/submit', requestOptions);
   console.log('Resposta do professor teórico:' + this.state.texto_profPratica);  
  }
   async getOptions(){
@@ -85,7 +100,7 @@ class ProfessorPratica extends Home {
       const options = disciplinas.professores.filter(x => { 
           return( x.tipo==='P' || x.tipo=== 'T+TP')
       }).map(x => {
-        return {value: x.professor.id, label: x.professor.nome}
+        return {value: x.professor.id_lusofona, label: x.professor.nome}
       })    
       this.setState({ disciplinas,perguntasGerais,selectOptions: options,ready:1 });
       window.onbeforeunload = function() { return "Your work will be lost."; };

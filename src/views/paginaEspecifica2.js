@@ -31,12 +31,25 @@ class PaginaEspecifica2 extends React.Component {
         console.log(this.props)
     }   
     
-     proximaPagina10(){
+   async proximaPagina10(){
          this.setState({respostas:[...this.state.texto_especifica2]})
          //this.props.match.params.respostaPerguntaGeral2 = this.state.texto
+         const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          //body: JSON.stringify({ title: 'React POST Request Example' })
+          body: JSON.stringify({ 
+          "disciplinaId": this.state.disciplinas.id,
+          "perguntaId": this.state.perguntasGerais[7].id,
+          "professorId": 'null',
+          "conteudo": this.state.texto_especifica2, })
+      };
+
+      const response = await fetch('http://localhost:8080/resposta/submit', requestOptions);
          this.props.match.params.estado = this.state
          //PerguntaGeral3(this.state)
          console.log(this.state)
+         debugger;
          var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x=> x.tipo==='T' || x.tipo=== 'T+TP' )
         
          if(listaProfessoresTeorico.length===0){
@@ -48,6 +61,7 @@ class PaginaEspecifica2 extends React.Component {
          }else{
             this.props.history.push({
                 pathname: `/perguntasProfessorTeorica/${this.state.id}`,
+                teacher: listaProfessoresTeorico[0].professor.id_lusofona,
                 state: this.state
                 
             })

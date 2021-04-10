@@ -12,6 +12,7 @@ class perguntasProfessorPratica extends React.Component {
       constructor(props) {
         super(props);
         this.state = props.location.state;
+        this.state.teacher=props.location.teacher;
         this.state.index = 0;
         this.state.index2 = 0;
         this.state.direction = null;
@@ -76,10 +77,7 @@ class perguntasProfessorPratica extends React.Component {
         }
         
         if(count >= 6 && index2 === 6){
-          this.props.history.push({
-                pathname:`/final/${this.state.id}`,
-                state: this.state
-            })
+          this.enviaDados();
             
         }
     
@@ -115,6 +113,34 @@ class perguntasProfessorPratica extends React.Component {
            }
        
          })
+     }
+     async enviaDados(){
+      var listaPerguntas = [10,11,12,13,14,15];
+      var perguntasFiltradas = this.state.perguntasGerais.filter(x=>listaPerguntas.includes(x.id));
+      debugger
+      for (let i = 0; i < perguntasFiltradas.length; i++) {
+        var contador = i+1;
+        const element = perguntasFiltradas[i];
+        const idPergunta = perguntasFiltradas[i].id;
+        const resposta = this.state["pergunta"+contador];
+        const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          //body: JSON.stringify({ title: 'React POST Request Example' })
+          body: JSON.stringify({ 
+          "disciplinaId": this.state.disciplinas.id,
+          "perguntaId": idPergunta,
+          "professorId": this.state.teacher,
+          "conteudo": resposta, })
+      };
+
+      const response = await fetch('http://localhost:8080/resposta/submit', requestOptions);
+        
+      }
+      this.props.history.push({
+        pathname:`/final/${this.state.id}`,
+        state: this.state
+      })
      }
    
     
