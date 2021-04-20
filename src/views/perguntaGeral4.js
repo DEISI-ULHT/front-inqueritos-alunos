@@ -57,13 +57,14 @@ class PerguntaGeral4 extends Home {
          //PerguntaGeral3(this.state)
          console.log(this.props)
         // var listaProfessoresTeorico = this.state.disciplinas.cursos
+       // debugger;
          if(this.state.disciplinas.perguntaEspecifica.length > 0){
             this.props.history.push({
                 pathname: `/paginaEspecifica/${this.state.id}`,
                 state: this.state       
             })  
          }else{
-            var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x=> x.tipo==='T' || x.tipo=== 'T+TP' )
+            var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x=> x.teorico)
 
          if(listaProfessoresTeorico.length===0){
             this.props.history.push({
@@ -112,7 +113,7 @@ class PerguntaGeral4 extends Home {
             <div>
                 <div>
                 <ProgressBar style= {{marginTop: "0px"}}> 
-                <ProgressBar animated now={50} />
+                <ProgressBar animated now={60} />
                 </ProgressBar>
             </div>
             <div style={{backgroundColor:'#FFD700'}} className="nm-custom-decoration" >
@@ -123,9 +124,9 @@ class PerguntaGeral4 extends Home {
                 <div className="row" style={{ display: 'flex', justifyContent: 'center'}}>
                     <div className="col-md-6" style={{justifyContent:'center', position: 'absolute', color: 'white', top: '25%', textAlign: 'center'}}>
                     <p  style= {{fontSize: '18pt', top: '50%'}}> 
-                            { this.state.perguntasGerais.find(pg=>pg.id===5).enunciado}
+                            { this.state.perguntasGerais.find(pg=>pg.id===4).enunciado}
                         </p>
-                        <p  style= {{fontSize: '12pt', verticalAlign: 'middle'}}>{ this.state.perguntasGerais.find(pg=>pg.id===20).enunciado}</p>
+                        <p  style= {{fontSize: '12pt', verticalAlign: 'middle'}}>{ this.state.perguntasGerais.find(pg=>pg.id===4).enunciado}</p>
                         <div className="form-group">
                             <button onClick={() => this.handleClick("Nenhuma Ligação")}  style= {{ padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Nenhuma ligação</button>
                             <button onClick={() => this.handleClick("Pouca ligação")}   style= {{ marginTop: '1%', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Pouca ligação</button>

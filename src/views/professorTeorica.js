@@ -56,8 +56,9 @@ class ProfessorTeorica extends Home {
          this.props.match.params.estado = this.state
          //PerguntaGeral3(this.state)
          
-          //debugger;
-          var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x=> x.tipo==='P' || x.tipo=== 'T+TP' )
+          debugger;
+          
+          var listaProfessoresTeorico = this.state.disciplinas.professores.nome.filter(x=> x.pratico )
 
           debugger;
          if(listaProfessoresTeorico.length===0){
@@ -111,7 +112,7 @@ const response = await fetch('http://localhost:8080/resposta/submit', requestOpt
       const perguntasGerais = res.data.perguntasGerais;
       console.log(disciplinas)
       const options = disciplinas.professores.filter(x => { 
-          return( x.tipo==='T' || x.tipo=== 'T+TP')
+          return( x.teorico)
       }).map(x => {
         return {value: x.professor.id_lusofona, label: x.professor.nome}
       })    
@@ -138,7 +139,7 @@ const response = await fetch('http://localhost:8080/resposta/submit', requestOpt
       <div>
         <div>
           <ProgressBar style= {{marginTop: "0px"}}> 
-          <ProgressBar animated now={75} />
+          <ProgressBar animated now={70} />
           </ProgressBar>
             </div>
             <div style={{backgroundColor:'#A9A9A9	'}} className="nm-custom-decoration" >
@@ -150,7 +151,7 @@ const response = await fetch('http://localhost:8080/resposta/submit', requestOpt
             <div className="row" style={{ display: 'flex', justifyContent: 'center'}}>
                 <div className="col-md-6" style={{justifyContent:'center', position: 'absolute',  top: '30%', textAlign: 'center'}}>
                 <p  style= {{fontSize: '25pt', top: '50%'}}> 
-                            {this.state.perguntasGerais.find(pg=>pg.id===6).enunciado}
+                            {this.state.perguntasGerais.find(pg=>pg.id===5).enunciado}
                 </p>
                         <br/>              
                            <Select 

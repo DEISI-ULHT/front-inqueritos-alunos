@@ -97,7 +97,7 @@ class PerguntaGeral3 extends React.Component {
             <div>
                 <div>
                 <ProgressBar style= {{marginTop: "0px"}}> 
-                <ProgressBar animated now={37.5} />
+                <ProgressBar animated now={50} />
                 </ProgressBar>
             </div>
             <div style={{backgroundColor:'#800000'}} className="nm-custom-decoration" >
@@ -108,7 +108,7 @@ class PerguntaGeral3 extends React.Component {
             <div className="row" style={{ display: 'flex', justifyContent: 'center'}}>
                 <div className="col-md-6" style={{justifyContent:'center', position: 'absolute', color: 'white', top: '21%', textAlign: 'center'}}>
                 <p  style= {{fontSize: '28pt', top: '50%'}}> 
-                            {this.state.perguntasGerais.find(pg=>pg.id===4).enunciado}
+                            {this.state.perguntasGerais.find(pg=>pg.id===3).enunciado}
                             <p  style= {{fontSize: '15pt', verticalAlign: 'middle'}}> As críticas só são úteis se forem respeitosas e construtivas.</p>
                         </p>
                         <div className="form-group">

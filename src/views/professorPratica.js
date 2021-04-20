@@ -98,7 +98,7 @@ const response = await fetch('http://localhost:8080/resposta/submit', requestOpt
       const perguntasGerais = res.data.perguntasGerais;
       console.log(disciplinas)
       const options = disciplinas.professores.filter(x => { 
-          return( x.tipo==='P' || x.tipo=== 'T+TP')
+          return( x.pratico)
       }).map(x => {
         return {value: x.professor.id_lusofona, label: x.professor.nome}
       })    
@@ -122,7 +122,7 @@ const response = await fetch('http://localhost:8080/resposta/submit', requestOpt
       <div>
         <div>
           <ProgressBar style= {{marginTop: "0px"}}> 
-          <ProgressBar animated now={62.5} />
+          <ProgressBar animated now={80} />
           </ProgressBar>
             </div>
             <div style={{backgroundColor:'#483D8B'}} className="nm-custom-decoration" >
@@ -134,7 +134,7 @@ const response = await fetch('http://localhost:8080/resposta/submit', requestOpt
             <div className="row" style={{ display: 'flex', justifyContent: 'center'}}>
                 <div className="col-md-6" style={{justifyContent:'center', position: 'absolute',  top: '30%', textAlign: 'center'}}>
                 <p  style= {{fontSize: '25pt', top: '50%'}}> 
-                            {this.state.perguntasGerais.find(pg=>pg.id===8).enunciado}
+                            {this.state.perguntasGerais.find(pg=>pg.id===17).enunciado}
                 </p>
                         <br/>              
                            <Select 

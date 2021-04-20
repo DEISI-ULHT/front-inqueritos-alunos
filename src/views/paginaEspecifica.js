@@ -48,7 +48,7 @@ class PaginaEspecifica extends React.Component {
          this.props.match.params.estado = this.state
          //PerguntaGeral3(this.state)
          console.log(this.state)
-         var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x=> x.tipo==='T' || x.tipo=== 'T+TP')
+         var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x=> x.teorico)
 
          if(this.state.disciplinas.perguntaEspecifica.length == 2){
           this.props.history.push({
@@ -119,7 +119,7 @@ class PaginaEspecifica extends React.Component {
             <div>
                 <div> 
                 <ProgressBar style= {{marginTop: "0px"}}> 
-                <ProgressBar animated now={25} />
+                <ProgressBar animated now={20} />
                 </ProgressBar>
                 </div>
                 <div style={{backgroundColor:'#228B22'}} className="nm-custom-decoration" >

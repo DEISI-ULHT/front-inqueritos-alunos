@@ -92,7 +92,7 @@ class EscolheCurso extends React.Component {
             <div>
                 <div>      
                 <ProgressBar striped variant="success" style= {{marginTop: "0px"}}> 
-                <ProgressBar animated now={12.5} />
+                <ProgressBar animated now={20} />
                 </ProgressBar>
             </div>
             <div style={{backgroundColor:'#008B8B'}} className="nm-custom-decoration" >
@@ -103,7 +103,7 @@ class EscolheCurso extends React.Component {
             <div className="row" style={{ display: 'flex', justifyContent: 'center'}}>
                 <div className="col-md-6" style={{justifyContent:'center', position: 'absolute', color: 'white', top: '25%', textAlign: 'center'}}>
                         <p  style= {{fontSize: '28pt', top: '50%'}}> 
-                            { this.state.perguntasGerais.find(pg=>pg.id===1).enunciado}
+                            { this.state.perguntasGerais.find(pg=>pg.id===0).enunciado}
                         </p>
                         <br/>
                         <div className="form-group">
@@ -118,8 +118,8 @@ class EscolheCurso extends React.Component {
                              : null }
                              </div> 
                              <div>
-                            {this.state.disciplinas.cursos.find(pg=>pg.id===3) ? 
-                             <button onClick={() => {this.handleClick("LEIRT"); return <PerguntaGeral3 state= {this.state} />}}  style= {{ marginTop: '1%', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">{ this.state.disciplinas.cursos.find(pg=>pg.id===3).nome}</button>
+                            {this.state.disciplinas.cursos.find(pg=>pg.id===0) ? 
+                             <button onClick={() => {this.handleClick("LEIRT"); return <PerguntaGeral3 state= {this.state} />}}  style= {{ marginTop: '1%', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">{ this.state.disciplinas.cursos.find(pg=>pg.id===0).nome}</button>
                              : null }
                              </div> 
                         </div>

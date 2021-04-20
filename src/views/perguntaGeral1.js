@@ -77,7 +77,7 @@ class PerguntaGeral1 extends React.Component {
             <div>
                 <div>      
                 <ProgressBar style= {{marginTop: "0px"}}> 
-                <ProgressBar animated now={12.5} />
+                <ProgressBar animated now={30} />
                 </ProgressBar>
             </div>
             <div style={{backgroundColor:'#4B0082'}} className="nm-custom-decoration" >
@@ -89,7 +89,7 @@ class PerguntaGeral1 extends React.Component {
             <div className="row" style={{ display: 'flex', justifyContent: 'center'}}>
                 <div className="col-md-6" style={{justifyContent:'center', position: 'absolute', color: 'white', top: '25%', textAlign: 'center'}}>
                         <p  style= {{fontSize: '28pt', top: '50%'}}> 
-                            { this.state.perguntasGerais.find(pg=>pg.id===2).enunciado}
+                            { this.state.perguntasGerais.find(pg=>pg.id===1).enunciado}
                         </p>
      
                        

@@ -122,7 +122,7 @@ class perguntasProfessorTeorica extends React.Component {
       const response = await fetch('http://localhost:8080/resposta/submit', requestOptions);
         
       }
-      var listaProfessoresPratica = this.state.disciplinas.professores.filter(x=> x.tipo==='P' || x.tipo=== 'T+TP' )
+      var listaProfessoresPratica = this.state.disciplinas.professores.filter(x=> x.pratico )
         
       if(listaProfessoresPratica.length===0){
         this.props.history.push({
@@ -200,7 +200,7 @@ class perguntasProfessorTeorica extends React.Component {
           <div>
              <div>
                 <ProgressBar style= {{marginTop: "0px"}}> 
-                <ProgressBar animated now={50} />
+                <ProgressBar animated now={75} />
                 </ProgressBar>
             </div>
             <div style={{backgroundColor:'#3960BA'}} className="nm-custom-decoration" >
@@ -212,7 +212,7 @@ class perguntasProfessorTeorica extends React.Component {
           <div className="container ">
             <div className="row" style={{ display: 'flex', justifyContent: 'center', marginTop: '14%'}}>
             <p style= {{color: 'white' ,fontSize: '20pt', marginTop: '-5%',textAlign: 'center'}}> 
-                { this.state.perguntasGerais.find(pg=>pg.id===7).enunciado}
+                { this.state.perguntasGerais.find(pg=>pg.id===6).enunciado}
              </p>
                </div>
               </div>
@@ -227,7 +227,7 @@ class perguntasProfessorTeorica extends React.Component {
                     </h2> 
                     <h2>
                       <p  style= {{color: 'black', fontSize: '16pt', top: '50%', textAlign: 'center'}}> 
-                            {this.state.perguntasGerais.find(pg=>pg.id===10).enunciado}
+                            {this.state.perguntasGerais.find(pg=>pg.id===7).enunciado}
                         </p>
                     </h2>     
                     <h2>
@@ -244,7 +244,7 @@ class perguntasProfessorTeorica extends React.Component {
                     </h2> 
                     <h2>
                     <p  style= {{color: 'black', fontSize: '16pt', top: '50%', textAlign: 'center'}}> 
-                            {this.state.perguntasGerais.find(pg=>pg.id===11).enunciado}
+                            {this.state.perguntasGerais.find(pg=>pg.id===8).enunciado}
                         </p>
                     </h2>     
                     <h2>
@@ -261,7 +261,7 @@ class perguntasProfessorTeorica extends React.Component {
                     </h2> 
                     <h2>
                     <p  style= {{color: 'black', fontSize: '16pt', top: '50%', textAlign: 'center'}}> 
-                            {this.state.perguntasGerais.find(pg=>pg.id===12).enunciado}
+                            {this.state.perguntasGerais.find(pg=>pg.id===9).enunciado}
                         </p>
                     </h2>     
                     <h2>
@@ -278,7 +278,7 @@ class perguntasProfessorTeorica extends React.Component {
                     </h2> 
                     <h2>
                     <p  style= {{color: 'black', fontSize: '16pt', top: '50%', textAlign: 'center'}}> 
-                            {this.state.perguntasGerais.find(pg=>pg.id===13).enunciado}
+                            {this.state.perguntasGerais.find(pg=>pg.id===10).enunciado}
                         </p>
                     </h2>     
                     <h2>
@@ -295,7 +295,7 @@ class perguntasProfessorTeorica extends React.Component {
                     </h2> 
                     <h2>
                     <p  style= {{color: 'black', fontSize: '16pt', top: '50%', textAlign: 'center'}}> 
-                            {this.state.perguntasGerais.find(pg=>pg.id===14).enunciado}
+                            {this.state.perguntasGerais.find(pg=>pg.id===11).enunciado}
                         </p>
                     </h2>     
                     <h2>
@@ -312,7 +312,7 @@ class perguntasProfessorTeorica extends React.Component {
                     </h2> 
                     <h2>
                     <p  style= {{color: 'black', fontSize: '16pt', top: '50%', textAlign: 'center'}}> 
-                            {this.state.perguntasGerais.find(pg=>pg.id===15).enunciado}
+                            {this.state.perguntasGerais.find(pg=>pg.id===12).enunciado}
                         </p>
                     </h2>     
                     <h2>

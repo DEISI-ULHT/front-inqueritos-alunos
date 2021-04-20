@@ -50,7 +50,7 @@ class PaginaEspecifica2 extends React.Component {
          //PerguntaGeral3(this.state)
          console.log(this.state)
          debugger;
-         var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x=> x.tipo==='T' || x.tipo=== 'T+TP' )
+         var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x=> x.teorico )
         
          if(listaProfessoresTeorico.length===0){
             this.props.history.push({
