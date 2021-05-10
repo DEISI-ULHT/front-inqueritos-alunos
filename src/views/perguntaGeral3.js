@@ -83,7 +83,7 @@ class PerguntaGeral3 extends React.Component {
             err = <strong className="text-extra-info" style={{color: "white"}}>Escreva um pouco mais</strong>;
           }
           if (val.length > 10 && val !=="") {
-            err = <strong className="text-extra-info2" style={{color: "white"}}>Obrigada pelo feedback</strong>;
+            err = <strong className="text-extra-info2" style={{color: "white"}}>Obrigado pelo feedback</strong>;
           }
           if (val ==="") {
             err = <strong style={{color: "white"}}></strong>;

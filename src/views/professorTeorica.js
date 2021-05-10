@@ -66,12 +66,14 @@ class ProfessorTeorica extends Home {
                 pathname: `/professorPratica/${this.state.id}`,
                 state: this.state
                 
+                
             })  
          }else{
             this.props.history.push({
                 pathname: `/perguntasProfessorPratica/${this.state.id}`,
                 teacher: this.state.selectedName,
-                state: this.state
+                state: this.state,
+                professor:this.state.selectedName
                 
             })
 

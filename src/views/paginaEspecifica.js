@@ -16,18 +16,8 @@ class PaginaEspecifica extends React.Component {
       this.state.errormessage= '';
       this.state.ready=0;
       this.state.id = props.match.params.id
-        //this.state = {
-          //  respostas:[],
-          //  respostaPerguntaGeral2:"",
-          //  texto: "",
-          //  disciplinas:[],
-          //  perguntasGerais:[],
-          //  errormessage: '',
-          //  ready:0,
-          //  id: props.match.params.id
-       // };
-        console.log(props.match.params.id)
-        console.log(this.props)
+      console.log(props.match.params.id)
+      console.log(this.props)
     }   
     
      async proximaPagina10(){
@@ -40,7 +30,7 @@ class PaginaEspecifica extends React.Component {
           body: JSON.stringify({ 
           "disciplinaId": this.state.disciplinas.id,
           "perguntaId": this.state.perguntasGerais[6].id,
-          "professorId": 'null',
+          "professorId": this.state.teacher,
           "conteudo": this.state.texto_especifica1, })
       };
 
@@ -48,6 +38,7 @@ class PaginaEspecifica extends React.Component {
          this.props.match.params.estado = this.state
          //PerguntaGeral3(this.state)
          console.log(this.state)
+         
          var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x=> x.teorico)
 
          if(this.state.disciplinas.perguntaEspecifica.length == 2){
@@ -55,13 +46,21 @@ class PaginaEspecifica extends React.Component {
               pathname: `/paginaEspecifica2/${this.state.id}`,
               state: this.state       
           })  
-       }else if(listaProfessoresTeorico.length===0){
+       }else if(listaProfessoresTeorico.length===1){
+        debugger;
             this.props.history.push({
-                pathname: `/professorTeorica/${this.state.id}`,
-                state: this.state
-                
+                pathname: `/perguntasProfessorTeorica/${this.state.id}`,
+              
+                state: this.state,
+              
+                professor:(listaProfessoresTeorico[0].professor.nome)  
             })  
-         }else{
+         }else if(listaProfessoresTeorico.length>1){
+          this.props.history.push({
+              pathname: `/professorTeorica/${this.state.id}`,
+              state: this.state,
+          })  
+       }else{
             this.props.history.push({
                 pathname: `/perguntasProfessorTeorica/${this.state.id}`,
                 state: this.state
@@ -85,36 +84,32 @@ class PaginaEspecifica extends React.Component {
         
           })
       }
-    handleClick(valor){
-      if (this.state.disciplinas.perguntaEspecifica[0].tipo=='F') {
 
+      getPerguntas(value){
+        return this.state.disciplinas.perguntaEspecifica[value];
+      }
+    handleClick(valor){
+      if (this.getPerguntas(0).tipo=='F') {   
       this.setState({texto_especifica1:this.state.texto_especifica1=valor})
       }
         this.proximaPagina10();
         console.log('Resposta da pergunta 2:' + this.state.texto_especifica1);  
        }
        myChangeHandler = (event) => {
-
         let val = event.target.value;
         let err = '';
-    
           if (val.length < 10 && val !=="" ) {
             err = <strong class="text-extra-info" style={{color: "white"}}>Escreva um pouco mais</strong>;
           }
           if (val.length > 10 && val !=="") {
-            err = <strong class="text-extra-info2" style={{color: "white"}}>Obrigada pelo feedback</strong>;
-            
+            err = <strong class="text-extra-info2" style={{color: "white"}}>Obrigada pelo feedback</strong>; 
           }
           if (val ==="") {
             err = <strong style={{color: "white"}}></strong>;
           }
-    
-        this.setState({errormessage: err});
-        
+        this.setState({errormessage: err}); 
       }
-       
     render(){
-        
         return( this.state.ready?
             <div>
                 <div> 
@@ -129,15 +124,27 @@ class PaginaEspecifica extends React.Component {
             <div className="container ">
             <div className="row" style={{ display: 'flex', justifyContent: 'center'}}>
                 <div className="col-md-6" style={{justifyContent:'center', position: 'absolute', color: 'white', top: '25%', textAlign: 'center'}}>
+                        
                         <p  style= {{fontSize: '28pt', top: '50%'}}> 
-                            {this.state.disciplinas.perguntaEspecifica.find(pg=>pg.id===1).enunciado}
+                      
+                            {this.getPerguntas(0).enunciado}
                         </p>
                         <br/>
                         {(() => {
                          // console.log(this.state.disciplinas.perguntaEspecifica)
-                         if (this.state.disciplinas.perguntaEspecifica[0].tipo=='A') {
+                        let teste = this.getPerguntas(0);
+                          if(teste.tipo=='F'){
+                            let valores = teste.opcoes.split(',');
+                            let vetor = [];
+                            valores.forEach(element => {
+                                vetor.push(
+                                  <button  onClick={() => this.handleClick(element)}  style= {{ padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">{element}</button>
+                                  );
+                            });
+                            return vetor;
+                          }
+                         if (this.getPerguntas(0).tipo=='A') {
                          return (
-                       
                         <div className="form-group">
                         <label htmlFor="exampleTextarea"></label>
                         <div style={{marginBottom: '2%', marginTop: '-3%'}} ><div className="extra-info-icon-box"><div className="engine-sprite icon-engine-info"></div></div><div className="extra-info-text-box">{this.state.errormessage} </div></div>  
@@ -147,29 +154,16 @@ class PaginaEspecifica extends React.Component {
                          )}else{
                            return(
                      <div className="form-group">
-                     <button onClick={() => this.handleClick("Nenhuma Ligação")}  style= {{ padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Ta</button>
-                     <button onClick={() => this.handleClick("Pouca ligação")}   style= {{ marginTop: '1%', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Pouca ligação</button>
-                     <button onClick={() => this.handleClick("Muita ligação")}  style= {{ marginTop: '1%', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Muita ligação</button>
-                     <button onClick={() => this.handleClick("Não faz sentido nessa disciplina")}  style= {{ marginTop: '1%', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Não faz sentido nessa disciplina</button>
-
                  </div>
                            )}
                           })()}
 
                 </div>
-            </div>
-            
-            </div>
-                
+            </div> 
+            </div>      
         </div>
         :<div>loading...</div>
         )
-
     }
-
-   
-   
-
 }
-
 export default PaginaEspecifica

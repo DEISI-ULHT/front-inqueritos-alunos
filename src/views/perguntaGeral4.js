@@ -48,7 +48,7 @@ class PerguntaGeral4 extends Home {
             body: JSON.stringify({ 
             "disciplinaId": this.state.disciplinas.id,
             "perguntaId": this.state.perguntasGerais[5].id,
-            "professorId": 'null',
+            "professorId": this.state.teacher,
             "conteudo": this.state.texto_pergunta4, })
         };
   
@@ -57,7 +57,6 @@ class PerguntaGeral4 extends Home {
          //PerguntaGeral3(this.state)
          console.log(this.props)
         // var listaProfessoresTeorico = this.state.disciplinas.cursos
-       // debugger;
          if(this.state.disciplinas.perguntaEspecifica.length > 0){
             this.props.history.push({
                 pathname: `/paginaEspecifica/${this.state.id}`,
@@ -66,13 +65,21 @@ class PerguntaGeral4 extends Home {
          }else{
             var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x=> x.teorico)
 
-         if(listaProfessoresTeorico.length===0){
+         if(listaProfessoresTeorico.length===1){
+             debugger;
+            this.props.history.push({
+                pathname: `/perguntasProfessorTeorica/${this.state.id}`,
+                state: this.state,
+                professor:(listaProfessoresTeorico[0].professor.nome)
+                //professor:(listaProfessoresTeorico[0].disciplinas.professores.nome
+            })  
+         }else if(listaProfessoresTeorico.length>1){
             this.props.history.push({
                 pathname: `/professorTeorica/${this.state.id}`,
-                state: this.state
-                
+                state: this.state,
             })  
-         }else{
+         }
+         else{
             this.props.history.push({
                 pathname: `/perguntasProfessorTeorica/${this.state.id}`,
                 state: this.state
@@ -126,7 +133,8 @@ class PerguntaGeral4 extends Home {
                     <p  style= {{fontSize: '18pt', top: '50%'}}> 
                             { this.state.perguntasGerais.find(pg=>pg.id===4).enunciado}
                         </p>
-                        <p  style= {{fontSize: '12pt', verticalAlign: 'middle'}}>{ this.state.perguntasGerais.find(pg=>pg.id===4).enunciado}</p>
+                      
+                        <p  style= {{fontSize: '12pt', verticalAlign: 'middle'}}>{ this.state.perguntasGerais.find(pg=>pg.id===16).enunciado}</p>
                         <div className="form-group">
                             <button onClick={() => this.handleClick("Nenhuma Ligação")}  style= {{ padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Nenhuma ligação</button>
                             <button onClick={() => this.handleClick("Pouca ligação")}   style= {{ marginTop: '1%', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Pouca ligação</button>

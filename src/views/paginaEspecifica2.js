@@ -34,6 +34,8 @@ class PaginaEspecifica2 extends React.Component {
    async proximaPagina10(){
          this.setState({respostas:[...this.state.texto_especifica2]})
          //this.props.match.params.respostaPerguntaGeral2 = this.state.texto
+         debugger;
+
          const requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -41,7 +43,7 @@ class PaginaEspecifica2 extends React.Component {
           body: JSON.stringify({ 
           "disciplinaId": this.state.disciplinas.id,
           "perguntaId": this.state.perguntasGerais[7].id,
-          "professorId": 'null',
+          "professorId": this.state.teacher,
           "conteudo": this.state.texto_especifica2, })
       };
 
@@ -52,20 +54,25 @@ class PaginaEspecifica2 extends React.Component {
          debugger;
          var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x=> x.teorico )
         
-         if(listaProfessoresTeorico.length===0){
+         if(listaProfessoresTeorico.length===1){
             this.props.history.push({
-                pathname: `/professorTeorica/${this.state.id}`,
-                state: this.state
+                pathname: `/perguntasProfessorTeorica/${this.state.id}`,
+                state: this.state,
+                professor:(listaProfessoresTeorico[0].professor.nome)
+
                 
             })  
-         }else{
+         }else if(listaProfessoresTeorico.length>1){
+          this.props.history.push({
+              pathname: `/professorTeorica/${this.state.id}`,
+              state: this.state,
+          }) 
+        } else{
             this.props.history.push({
                 pathname: `/perguntasProfessorTeorica/${this.state.id}`,
                 teacher: listaProfessoresTeorico[0].professor.id_lusofona,
-                state: this.state
-                
+                state: this.state  
             })
-
          }
         // return <PerguntaGeral3 state= {this.state} />        
     };   
@@ -83,8 +90,11 @@ class PaginaEspecifica2 extends React.Component {
         
           })
       }
+      getPerguntas(value){
+        return this.state.disciplinas.perguntaEspecifica[value];
+      }
     handleClick(valor){
-      if (this.state.disciplinas.perguntaEspecifica[1].tipo=='F') {
+      if ( this.getPerguntas(1).tipo=='F') {
         this.setState({texto_especifica2:this.state.texto_especifica2=valor})
       }
         this.proximaPagina10();
@@ -127,30 +137,36 @@ class PaginaEspecifica2 extends React.Component {
             <div className="row" style={{ display: 'flex', justifyContent: 'center'}}>
                 <div className="col-md-6" style={{justifyContent:'center', position: 'absolute', color: 'white', top: '25%', textAlign: 'center'}}>
                         <p  style= {{fontSize: '28pt', top: '50%'}}> 
-                            {this.state.disciplinas.perguntaEspecifica.find(pg=>pg.id===2).enunciado}
+                            { this.getPerguntas(1).enunciado}
                         </p>
                         <br/>
+
                         {(() => {
                          // console.log(this.state.disciplinas.perguntaEspecifica)
-                         if (this.state.disciplinas.perguntaEspecifica[1].tipo=='A') {
-                         return (
-                       
+                        let teste = this.getPerguntas(1);
+                          if(teste.tipo=='F'){
+                            let valores = teste.opcoes.split(',');
+                            let vetor = [];
+                            valores.forEach(element => {
+                                vetor.push(
+                                  <button  onClick={() => this.handleClick(element)}  style= {{ padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">{element}</button>
+                                  );
+                            });
+                            return vetor;
+                          }
+                          if (this.getPerguntas(1).tipo=='A') {
+                            return (
+                           <div className="form-group">
+                           <label htmlFor="exampleTextarea"></label>
+                           <div style={{marginBottom: '2%', marginTop: '-3%'}} ><div className="extra-info-icon-box"><div className="engine-sprite icon-engine-info"></div></div><div className="extra-info-text-box">{this.state.errormessage} </div></div>  
+                                <textarea /* onChange={this.myChangeHandler}  */onInput={(e) => this.setState({texto_especifica1: e.target.value})} type="text" name="message"className="form-control" id="exampleTextarea"  style={{borderBottomRightRadius: '0px', borderBottomLeftRadius: '0px'}} rows="7" placeholder="Escreva o texto aqui"></textarea> 
+                                <button onClick={() => {this.handleClick()}}   style= {{ borderTopLeftRadius: '0px',borderTopRightRadius: '0px', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Responda e continue</button>
+                           </div>
+                            )}else{
+                              return(
                         <div className="form-group">
-                        <label htmlFor="exampleTextarea"></label>
-                        <div style={{marginBottom: '2%', marginTop: '-3%'}} ><div className="extra-info-icon-box"><div className="engine-sprite icon-engine-info"></div></div><div className="extra-info-text-box">{this.state.errormessage} </div></div>  
-                             <textarea /* onChange={this.myChangeHandler}  */onInput={(e) => this.setState({texto_especifica2: e.target.value})} type="text" name="message"className="form-control" id="exampleTextarea"  style={{borderBottomRightRadius: '0px', borderBottomLeftRadius: '0px'}} rows="7" placeholder="Escreva o texto aqui"></textarea> 
-                             <button onClick={() => {this.handleClick()}}   style= {{ borderTopLeftRadius: '0px',borderTopRightRadius: '0px', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Responda e continue</button>
-                        </div>
-                         )}else{
-                           return(
-                     <div className="form-group">
-                     <button onClick={() => this.handleClick("Nenhuma Ligação")}  style= {{ padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">{this.state.disciplinas.perguntaEspecifica.find(pg=>pg.id===1).opcoes}</button>
-                     <button onClick={() => this.handleClick("Pouca ligação")}   style= {{ marginTop: '1%', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Pouca ligação</button>
-                     <button onClick={() => this.handleClick("Muita ligação")}  style= {{ marginTop: '1%', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Muita ligação</button>
-                     <button onClick={() => this.handleClick("Não faz sentido nessa disciplina")}  style= {{ marginTop: '1%', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Não faz sentido nessa disciplina</button>
-
-                 </div>
-                           )}
+                    </div>
+                              )}
                           })()}
 
                 </div>

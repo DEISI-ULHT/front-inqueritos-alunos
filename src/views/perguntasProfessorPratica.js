@@ -223,6 +223,9 @@ class perguntasProfessorPratica extends React.Component {
             <div className="row" style={{ display: 'flex', justifyContent: 'center', marginTop: '14%'}}>
             <p style= {{color: 'white' ,fontSize: '20pt', marginTop: '-5%',textAlign: 'center'}}> 
                 { this.state.perguntasGerais.find(pg=>pg.id===18).enunciado}
+                <p  style= {{fontSize: '13pt', top: '50%'}}> 
+                          Estas questões são referentes ao professor <strong style={{color: '#008B8B'}}>{this.props.location.professor}</strong> 
+                        </p>
              </p>
                </div>
               </div>
@@ -238,7 +241,9 @@ class perguntasProfessorPratica extends React.Component {
                     <h2>
                       <p  style= {{color: 'black', fontSize: '16pt', top: '50%', textAlign: 'center'}}> 
                             {this.state.perguntasGerais.find(pg=>pg.id===7).enunciado}
+                           
                         </p>
+                        
                     </h2>     
                     <h2>
                       <Button variant="white" className="carousel-control-next-icon right carousel-control" style = {{marginLeft:"105%", border: "none"}} onClick={() => this.toggleCarousel('next', false)}></Button>
@@ -305,7 +310,7 @@ class perguntasProfessorPratica extends React.Component {
                     </h2> 
                     <h2>
                     <p  style= {{color: 'black', fontSize: '16pt', top: '50%', textAlign: 'center'}}> 
-                            {this.state.perguntasGerais.find(pg=>pg.id===11).enunciado}
+                            {this.state.perguntasGerais.find(pg=>pg.id===14).enunciado}
                         </p>
                     </h2>     
                     <h2>

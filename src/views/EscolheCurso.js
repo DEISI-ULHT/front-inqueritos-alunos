@@ -102,9 +102,15 @@ class EscolheCurso extends React.Component {
             <div className="container ">
             <div className="row" style={{ display: 'flex', justifyContent: 'center'}}>
                 <div className="col-md-6" style={{justifyContent:'center', position: 'absolute', color: 'white', top: '25%', textAlign: 'center'}}>
-                        <p  style= {{fontSize: '28pt', top: '50%'}}> 
-                            { this.state.perguntasGerais.find(pg=>pg.id===0).enunciado}
+                        <p  style= {{fontSize: '26pt', top: '50%'}}> 
+                            { this.state.perguntasGerais.find(pg=>pg.id===0).enunciado + " " + this.state.disciplinas.nome}
+                            
                         </p>
+                       
+                        <p  style= {{fontSize: '15pt', top: '50%'}}> 
+                            <p  style= {{fontSize: '15pt', verticalAlign: 'middle'}}>{ this.state.perguntasGerais.find(pg=>pg.id===15).enunciado}</p>
+                        </p>
+
                         <br/>
                         <div className="form-group">
                             <div>

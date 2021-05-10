@@ -123,7 +123,7 @@ class perguntasProfessorTeorica extends React.Component {
         
       }
       var listaProfessoresPratica = this.state.disciplinas.professores.filter(x=> x.pratico )
-        
+      
       if(listaProfessoresPratica.length===0){
         this.props.history.push({
             pathname: `/perguntasProfessorPratica/${this.state.id}`,
@@ -213,7 +213,11 @@ class perguntasProfessorTeorica extends React.Component {
             <div className="row" style={{ display: 'flex', justifyContent: 'center', marginTop: '14%'}}>
             <p style= {{color: 'white' ,fontSize: '20pt', marginTop: '-5%',textAlign: 'center'}}> 
                 { this.state.perguntasGerais.find(pg=>pg.id===6).enunciado}
+                <p  style= {{fontSize: '13pt', top: '50%'}}> 
+                          Estas questões são referentes ao professor <strong style={{color: '#3960BA'}}> {this.props.location.professor}</strong>
+                </p>
              </p>
+            
                </div>
               </div>
             <Carousel className = "carousel1" id="quote-carousel" interval={null} indicators={false} controls={false} activeIndex={this.state.index2} direction={this.state.direction}>

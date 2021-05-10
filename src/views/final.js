@@ -2,7 +2,7 @@ import * as React from 'react'
 import  DEISI from './deisi_logo.png'
 import 'bootswatch/dist/cyborg/bootstrap.css';
 import axios from 'axios'
-import disciplinas from '../components/disciplinas'
+import discilinas from '../components/disciplinas'
 import { Button, Container, Card, Row, Carousel} from 'react-bootstrap';
 
 
