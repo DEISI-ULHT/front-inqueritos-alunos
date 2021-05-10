@@ -6,7 +6,6 @@ import '../App.css';
 import { Button, Container, Card, Row, Carousel} from 'react-bootstrap';
 
 
-
 class perguntasProfessorPratica extends React.Component {
     
       constructor(props) {
@@ -31,28 +30,6 @@ class perguntasProfessorPratica extends React.Component {
         this.state.perguntasGerais=[];
         this.state.ready=0;
         this.state.id = props.match.params.id
-       // this.state = {
-       //   index: 0,
-       //   index2: 0,
-       //   direction: null,
-       //   carouselItemCount: 6,
-       //    childVisible: 1,
-       //   count: 0,
-       //   pergunta1: 0,
-       //   pergunta2: 0,
-       //   pergunta3: 0,
-       //   pergunta4: 0,
-       //   pergunta5: 0,
-       //   pergunta6: 0,
-       //   texto: "",
-       //   disciplinas:[],
-       //   perguntasGerais:[],
-       //   ready:0,
-       //   errormessage: '',
-       //   id: props.match.params.id
-       // }
-        console.log(props.match.params.id)
-        console.log(this.props)
       }
     
       toggleCarousel = (direction, valida) => {
@@ -82,13 +59,11 @@ class perguntasProfessorPratica extends React.Component {
         }
     
         if (index > max) {
-          // at max, start from top
           index = 0
           index2 = 0
         }
     
         if (index < min) {
-          // at min, start from max
           index = max
           index2 = max
         }
@@ -117,7 +92,6 @@ class perguntasProfessorPratica extends React.Component {
      async enviaDados(){
       var listaPerguntas = [10,11,12,13,14,15];
       var perguntasFiltradas = this.state.perguntasGerais.filter(x=>listaPerguntas.includes(x.id));
-      debugger
       for (let i = 0; i < perguntasFiltradas.length; i++) {
         var contador = i+1;
         const element = perguntasFiltradas[i];
@@ -126,7 +100,6 @@ class perguntasProfessorPratica extends React.Component {
         const requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          //body: JSON.stringify({ title: 'React POST Request Example' })
           body: JSON.stringify({ 
           "disciplinaId": this.state.disciplinas.id,
           "perguntaId": idPergunta,
@@ -134,19 +107,14 @@ class perguntasProfessorPratica extends React.Component {
           "conteudo": resposta, })
       };
 
-      const response = await fetch('http://localhost:8080/resposta/submit', requestOptions);
-        
+      const response = await fetch('http://localhost:8080/resposta/submit', requestOptions); 
       }
       this.props.history.push({
         pathname:`/final/${this.state.id}`,
         state: this.state
       })
      }
-   
-    
       handleClick(valor, key, resposta){    
-   
-
         if(key === 1){
         this.setState({
           pergunta7: resposta
@@ -165,14 +133,12 @@ class perguntasProfessorPratica extends React.Component {
             pergunta9: resposta
           })
           console.log('Resposta da pergunta : ' + resposta);
-
           }
         if(key === 4){
         this.setState({
             pergunta10: resposta
         })
         console.log('Resposta da pergunta : ' + resposta);
-     
      }
         if(key === 5){
             this.setState({
@@ -188,24 +154,18 @@ class perguntasProfessorPratica extends React.Component {
     
         this.toggleCarousel('next', true);
       };
-      
-    
-      
       render(){
     
         const centralizar={
           justifyContent: "center",
           alignItems: "center",
           marginTop: '10%',
-          marginBottom: '30px',
-            
-          
+          marginBottom: '30px',     
         };
         const centralizar2={
             justifyContent: "center",
             alignItems: "center",  
           };
-    
         return ( this.state.ready?
           <div>
              <div>
@@ -217,7 +177,6 @@ class perguntasProfessorPratica extends React.Component {
                <div style={{color: 'white',marginLeft: '120%', whiteSpace: 'nowrap',paddingTop:'160%'}}> {this.state.disciplinas.nome}
             </div>
             </div>
-            
           <Container >
           <div className="container ">
             <div className="row" style={{ display: 'flex', justifyContent: 'center', marginTop: '14%'}}>

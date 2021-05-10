@@ -1,10 +1,7 @@
 import * as React from 'react'
 import axios from 'axios'
-import PerguntaGeral3 from './perguntaGeral3';
-// import disciplinas from '../components/disciplinas'
 import '../App.css'
 import { ProgressBar} from 'react-bootstrap';
-
 
 class PaginaEspecifica2 extends React.Component {
     constructor(props){
@@ -17,50 +14,31 @@ class PaginaEspecifica2 extends React.Component {
       this.state.errormessage= '';
       this.state.ready=0;
       this.state.id = props.match.params.id
-        //this.state = {
-          //  respostas:[],
-          //  respostaPerguntaGeral2:"",
-          //  texto: "",
-          //  disciplinas:[],
-          //  perguntasGerais:[],
-          //  errormessage: '',
-          //  ready:0,
-          //  id: props.match.params.id
-       // };
-        console.log(props.match.params.id)
-        console.log(this.props)
-    }   
-    
+    }     
    async proximaPagina10(){
          this.setState({respostas:[...this.state.texto_especifica2]})
-         //this.props.match.params.respostaPerguntaGeral2 = this.state.texto
-         debugger;
-
+         var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x=> x.teorico)
+          if(listaProfessoresTeorico.length===1){
+              this.state.teacher = listaProfessoresTeorico[0].professor.nome
+              this.state.teacherId = listaProfessoresTeorico[0].professor.id_lusofona
+         }
          const requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          //body: JSON.stringify({ title: 'React POST Request Example' })
           body: JSON.stringify({ 
           "disciplinaId": this.state.disciplinas.id,
           "perguntaId": this.state.perguntasGerais[7].id,
-          "professorId": this.state.teacher,
+          "professorId": this.state.teacherId,
           "conteudo": this.state.texto_especifica2, })
       };
-
       const response = await fetch('http://localhost:8080/resposta/submit', requestOptions);
          this.props.match.params.estado = this.state
-         //PerguntaGeral3(this.state)
-         console.log(this.state)
-         debugger;
          var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x=> x.teorico )
-        
          if(listaProfessoresTeorico.length===1){
             this.props.history.push({
                 pathname: `/perguntasProfessorTeorica/${this.state.id}`,
                 state: this.state,
-                professor:(listaProfessoresTeorico[0].professor.nome)
-
-                
+                professor:(listaProfessoresTeorico[0].professor.nome)    
             })  
          }else if(listaProfessoresTeorico.length>1){
           this.props.history.push({
@@ -74,7 +52,6 @@ class PaginaEspecifica2 extends React.Component {
                 state: this.state  
             })
          }
-        // return <PerguntaGeral3 state= {this.state} />        
     };   
      async componentDidMount() {
          await axios.get(`http://localhost:8080/disciplina/exportacao?disciplina=${this.state.id}`)
@@ -87,7 +64,6 @@ class PaginaEspecifica2 extends React.Component {
             window.onpopstate = function () {
                 window.history.pushState(null, "", window.location.href);
             }
-        
           })
       }
       getPerguntas(value){
@@ -98,7 +74,6 @@ class PaginaEspecifica2 extends React.Component {
         this.setState({texto_especifica2:this.state.texto_especifica2=valor})
       }
         this.proximaPagina10();
-        console.log('Resposta da pergunta 2:' + this.state.texto);  
        }
        myChangeHandler = (event) => {
 
@@ -115,13 +90,9 @@ class PaginaEspecifica2 extends React.Component {
           if (val ==="") {
             err = <strong style={{color: "white"}}></strong>;
           }
-    
-        this.setState({errormessage: err});
-        
-      }
-       
+        this.setState({errormessage: err}); 
+      }  
     render(){
-        
         return( this.state.ready?
             <div>
                 <div> 
@@ -140,9 +111,7 @@ class PaginaEspecifica2 extends React.Component {
                             { this.getPerguntas(1).enunciado}
                         </p>
                         <br/>
-
                         {(() => {
-                         // console.log(this.state.disciplinas.perguntaEspecifica)
                         let teste = this.getPerguntas(1);
                           if(teste.tipo=='F'){
                             let valores = teste.opcoes.split(',');
@@ -159,7 +128,7 @@ class PaginaEspecifica2 extends React.Component {
                            <div className="form-group">
                            <label htmlFor="exampleTextarea"></label>
                            <div style={{marginBottom: '2%', marginTop: '-3%'}} ><div className="extra-info-icon-box"><div className="engine-sprite icon-engine-info"></div></div><div className="extra-info-text-box">{this.state.errormessage} </div></div>  
-                                <textarea /* onChange={this.myChangeHandler}  */onInput={(e) => this.setState({texto_especifica1: e.target.value})} type="text" name="message"className="form-control" id="exampleTextarea"  style={{borderBottomRightRadius: '0px', borderBottomLeftRadius: '0px'}} rows="7" placeholder="Escreva o texto aqui"></textarea> 
+                                <textarea onInput={(e) => this.setState({texto_especifica2: e.target.value})} type="text" name="message"className="form-control" id="exampleTextarea"  style={{borderBottomRightRadius: '0px', borderBottomLeftRadius: '0px'}} rows="7" placeholder="Escreva o texto aqui"></textarea> 
                                 <button onClick={() => {this.handleClick()}}   style= {{ borderTopLeftRadius: '0px',borderTopRightRadius: '0px', padding: '13pt', fontSize:'18pt', fontWeight: '500', borderWidth:'5px', width: '100%'}} type="button" className="btn btn-primary btn-lg">Responda e continue</button>
                            </div>
                             )}else{
@@ -168,21 +137,13 @@ class PaginaEspecifica2 extends React.Component {
                     </div>
                               )}
                           })()}
-
                 </div>
-            </div>
-            
-            </div>
-                
+            </div>   
+            </div>           
         </div>
         :<div>loading...</div>
         )
 
     }
-
-   
-   
-
 }
-
 export default PaginaEspecifica2
