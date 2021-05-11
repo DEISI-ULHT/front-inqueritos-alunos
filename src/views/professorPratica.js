@@ -44,9 +44,7 @@ class ProfessorPratica extends Home {
     this.getOptions()
   }
   handleChange(event) {
-    console.log(event)
     this.setState({ selectedId: event.value, selectedName: event.label });
-    console.log(this.props)
   };
   async handleClick() {
     this.proximaPagina7();
@@ -62,14 +60,12 @@ class ProfessorPratica extends Home {
     };
 
     const response = await fetch('http://localhost:8080/resposta/submit', requestOptions);
-    console.log('Resposta do professor teórico:' + this.state.texto_profPratica);
   }
   async getOptions() {
     await axios.get(`http://localhost:8080/disciplina/exportacao?disciplina=${this.state.id}`)
       .then(res => {
         const disciplinas = res.data.disciplina;
         const perguntasGerais = res.data.perguntasGerais;
-        console.log(disciplinas)
         const options = disciplinas.professores.filter(x => {
           return (x.pratico)
         }).map(x => {
@@ -81,8 +77,6 @@ class ProfessorPratica extends Home {
         window.onpopstate = function () {
           window.history.pushState(null, "", window.location.href);
         }
-        console.log(this.state.selectOptions)
-
       });
 
   }

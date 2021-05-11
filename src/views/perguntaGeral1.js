@@ -58,7 +58,7 @@ class PerguntaGeral1 extends React.Component {
                 <div className="container ">
                     <div className="row" style={{ display: 'flex', justifyContent: 'center' }}>
                         <div className="col-md-6" style={{ justifyContent: 'center', position: 'absolute', color: 'white', top: '25%', textAlign: 'center' }}>
-                            <p style={{ fontSize: '28pt', top: '50%' }}>
+                            <p style={{ fontSize: '23pt', top: '50%' }}>
                                 {this.state.perguntasGerais.find(pg => pg.id === 1).enunciado}
                             </p>
                             <Container>

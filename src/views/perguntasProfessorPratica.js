@@ -89,21 +89,30 @@ class perguntasProfessorPratica extends React.Component {
        
          })
      }
+     
      async enviaDados(){
       var listaPerguntas = [10,11,12,13,14,15];
+      var contador = 6;
       var perguntasFiltradas = this.state.perguntasGerais.filter(x=>listaPerguntas.includes(x.id));
       for (let i = 0; i < perguntasFiltradas.length; i++) {
-        var contador = i+1;
+        contador++;
         const element = perguntasFiltradas[i];
         const idPergunta = perguntasFiltradas[i].id;
         const resposta = this.state["pergunta"+contador];
+        var listaProfessoresPratico = this.state.disciplinas.professores.filter(x => x.pratico)
+        if (listaProfessoresPratico.length === 1) {
+          this.state.teacher = listaProfessoresPratico[0].professor.nome
+          this.state.teacherId = listaProfessoresPratico[0].professor.id_lusofona
+        }else{
+          this.state.teacherId = this.state.selectedId
+        }
         const requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ 
           "disciplinaId": this.state.disciplinas.id,
           "perguntaId": idPergunta,
-          "professorId": this.state.teacher,
+          "professorId": this.state.teacherId,
           "conteudo": resposta, })
       };
 
@@ -120,36 +129,30 @@ class perguntasProfessorPratica extends React.Component {
           pergunta7: resposta
           
         })
-        console.log('Resposta da pergunta : ' + resposta);
         }
         if(key === 2){
           this.setState({
             pergunta8: resposta
           })
-          console.log('Resposta da pergunta : ' + resposta);
         }
         if(key === 3){
           this.setState({
             pergunta9: resposta
           })
-          console.log('Resposta da pergunta : ' + resposta);
           }
         if(key === 4){
         this.setState({
             pergunta10: resposta
         })
-        console.log('Resposta da pergunta : ' + resposta);
      }
         if(key === 5){
             this.setState({
                 pergunta11: resposta
             })
-            console.log('Resposta da pergunta : ' + resposta);
         }
         if(key === 6){
             this.state.pergunta12 = resposta;
           
-            console.log('Resposta da pergunta : ' + resposta);
         }
     
         this.toggleCarousel('next', true);
@@ -179,10 +182,10 @@ class perguntasProfessorPratica extends React.Component {
             </div>
           <Container >
           <div className="container ">
-            <div className="row" style={{ display: 'flex', justifyContent: 'center', marginTop: '14%'}}>
+            <div className="row" style={{ display: 'flex', justifyContent: 'center', marginTop: '11%'}}>
             <p style= {{color: 'white' ,fontSize: '20pt', marginTop: '-5%',textAlign: 'center'}}> 
                 { this.state.perguntasGerais.find(pg=>pg.id===18).enunciado}
-                <p  style= {{fontSize: '13pt', top: '50%'}}> 
+                <p  style= {{fontSize: '11pt', top: '50%'}}> 
                           Estas questões são referentes ao professor <strong style={{color: '#008B8B'}}>{this.props.location.professor}</strong> 
                         </p>
              </p>

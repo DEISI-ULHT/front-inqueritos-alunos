@@ -50,7 +50,6 @@ class PerguntaGeral3 extends React.Component {
   }
   handleClick() {
     this.proximaPagina3();
-    console.log('Resposta da pergunta 3:' + this.state.texto);
   }
   myChangeHandler = (event) => {
     let val = event.target.value;

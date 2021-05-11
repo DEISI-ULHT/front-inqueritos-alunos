@@ -102,6 +102,14 @@ class perguntasProfessorTeorica extends React.Component {
       const element = perguntasFiltradas[i];
       const idPergunta = perguntasFiltradas[i].id;
       const resposta = this.state["pergunta" + contador];
+      var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x=> x.teorico)
+          if(listaProfessoresTeorico.length===1){
+              this.state.teacher = listaProfessoresTeorico[0].professor.nome
+              this.state.teacherId= listaProfessoresTeorico[0].professor.id_lusofona
+         }else{
+          this.state.teacherId = this.state.selectedId
+        }
+
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -109,21 +117,28 @@ class perguntasProfessorTeorica extends React.Component {
         body: JSON.stringify({
           "disciplinaId": this.state.disciplinas.id,
           "perguntaId": idPergunta,
-          "professorId": this.state.teacher,
+          "professorId": this.state.teacherId,
           "conteudo": resposta,
         })
       };
       const response = await fetch('http://localhost:8080/resposta/submit', requestOptions);
     }
     var listaProfessoresPratica = this.state.disciplinas.professores.filter(x => x.pratico)
-    if (listaProfessoresPratica.length === 0) {
+    if (listaProfessoresPratica.length === 1) {
       this.props.history.push({
         pathname: `/perguntasProfessorPratica/${this.state.id}`,
-        state: this.state
+        state: this.state,
+        professor:(listaProfessoresPratica[0].professor.nome)    
+
       })
-    } else {
+    } else if(listaProfessoresPratica.length>1){
       this.props.history.push({
-        pathname: `/professorPratica/${this.state.id}`,
+          pathname: `/professorPratica/${this.state.id}`,
+          state: this.state,
+      })
+    }else {
+      this.props.history.push({
+        pathname: `/perguntasProfessorPratica/${this.state.id}`,
         teacher: listaProfessoresPratica[0].professor.id_lusofona,
         state: this.state
       })
@@ -131,7 +146,6 @@ class perguntasProfessorTeorica extends React.Component {
   }
 
   handleClick(valor, key, resposta) {
-    console.log('Resposta da pergunta : ' + resposta);
 
     if (key === 1) {
       this.setState({
@@ -199,10 +213,10 @@ class perguntasProfessorTeorica extends React.Component {
 
         <Container >
           <div className="container ">
-            <div className="row" style={{ display: 'flex', justifyContent: 'center', marginTop: '14%' }}>
+            <div className="row" style={{ display: 'flex', justifyContent: 'center', marginTop: '11%' }}>
               <p style={{ color: 'white', fontSize: '20pt', marginTop: '-5%', textAlign: 'center' }}>
                 {this.state.perguntasGerais.find(pg => pg.id === 6).enunciado}
-                <p style={{ fontSize: '13pt', top: '50%' }}>
+                <p style={{ fontSize: '11pt', top: '50%' }}>
                   Estas questões são referentes ao professor <strong style={{ color: '#3960BA' }}> {this.props.location.professor}</strong>
                 </p>
               </p>

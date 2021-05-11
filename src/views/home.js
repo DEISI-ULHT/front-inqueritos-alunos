@@ -17,7 +17,6 @@ class Home extends React.Component {
     }
     proximaPagina() {
         this.props.match.params.estado = this.state
-        console.log(this.props)
         if (this.state.disciplinas.cursos.length > 1) {
             this.props.history.push({
                 pathname: `/EscolheCurso/${this.state.id}`,
@@ -33,7 +32,6 @@ class Home extends React.Component {
 
     handleClick(valor) {
         this.proximaPagina();
-        console.log('Resposta da pergunta 4: ' + this.state.texto);
     }
     async componentDidMount() {
         await axios.get(`http://localhost:8080/disciplina/exportacao?disciplina=${this.state.id}`)

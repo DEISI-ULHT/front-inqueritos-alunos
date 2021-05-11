@@ -53,9 +53,7 @@ class ProfessorTeorica extends Home {
   }
 
   handleChange(event) {
-    console.log(event)
     this.setState({ selectedId: event.value, selectedName: event.label });
-    console.log(this.props)
   };
   async handleClick() {
     this.proximaPagina6();
@@ -71,14 +69,12 @@ class ProfessorTeorica extends Home {
     };
 
     const response = await fetch('http://localhost:8080/resposta/submit', requestOptions);
-    console.log('Resposta do professor teórico:' + this.state.texto);
   }
   async getOptions() {
     await axios.get(`http://localhost:8080/disciplina/exportacao?disciplina=${this.state.id}`)
       .then(res => {
         const disciplinas = res.data.disciplina;
         const perguntasGerais = res.data.perguntasGerais;
-        console.log(disciplinas)
         const options = disciplinas.professores.filter(x => {
           return (x.teorico)
         }).map(x => {
@@ -90,14 +86,9 @@ class ProfessorTeorica extends Home {
         window.onpopstate = function () {
           window.history.pushState(null, "", window.location.href);
         }
-        console.log(this.state.selectOptions)
-
       });
 
   }
-
-
-
   render() {
     return (this.state.ready ?
       <div>

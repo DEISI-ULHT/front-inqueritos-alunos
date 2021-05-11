@@ -23,6 +23,7 @@ class PerguntaGeral4 extends Home {
             this.state.teacherId = listaProfessoresTeorico[0].professor.id_lusofona
 
         }
+       
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -35,7 +36,6 @@ class PerguntaGeral4 extends Home {
         };
         const response = await fetch('http://localhost:8080/resposta/submit', requestOptions);
         this.props.match.params.estado = this.state
-        console.log(this.props)
         if (this.state.disciplinas.perguntaEspecifica.length > 0) {
             this.props.history.push({
                 pathname: `/paginaEspecifica/${this.state.id}`,
@@ -97,7 +97,7 @@ class PerguntaGeral4 extends Home {
                 </div>
                 <div className="container ">
                     <div className="row" style={{ display: 'flex', justifyContent: 'center' }}>
-                        <div className="col-md-6" style={{ justifyContent: 'center', position: 'absolute', color: 'white', top: '25%', textAlign: 'center' }}>
+                        <div className="col-md-6" style={{ justifyContent: 'center', position: 'absolute', color: 'white', top: '18%', textAlign: 'center' }}>
                             <p style={{ fontSize: '18pt', top: '50%' }}>
                                 {this.state.perguntasGerais.find(pg => pg.id === 4).enunciado}
                             </p>

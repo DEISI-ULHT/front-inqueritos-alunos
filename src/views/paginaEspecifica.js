@@ -120,11 +120,14 @@ class PaginaEspecifica extends React.Component {
         </div>
         <div className="container ">
           <div className="row" style={{ display: 'flex', justifyContent: 'center' }}>
-            <div className="col-md-6" style={{ justifyContent: 'center', position: 'absolute', color: 'white', top: '25%', textAlign: 'center' }}>
+            <div className="col-md-6" style={{ justifyContent: 'center', position: 'absolute', color: 'white', top: '20%', textAlign: 'center' }}>
 
-              <p style={{ fontSize: '28pt', top: '50%' }}>
+              <p style={{ fontSize: '22pt', top: '40%' }}>
 
                 {this.getPerguntas(0).enunciado}
+                <p style={{ fontSize: '13pt', top: '50%' }}>
+                  Essa questão é específica da disciplina de <strong style={{ color: '#228B22' }}> {this.state.disciplinas.nome}</strong>
+                </p>
               </p>
               <br />
               {(() => {
@@ -134,7 +137,7 @@ class PaginaEspecifica extends React.Component {
                   let vetor = [];
                   valores.forEach(element => {
                     vetor.push(
-                      <button onClick={() => this.handleClick(element)} style={{ padding: '13pt', fontSize: '18pt', fontWeight: '500', borderWidth: '5px', width: '100%' }} type="button" className="btn btn-primary btn-lg">{element}</button>
+                      <button onClick={() => this.handleClick(element)} style={{ padding: '13pt', fontSize: '18pt', fontWeight: '500', borderWidth: '5px', width: '100%', marginBottom: '6px' }} type="button" className="btn btn-primary btn-lg">{element}</button>
                     );
                   });
                   return vetor;
