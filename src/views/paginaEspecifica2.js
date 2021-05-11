@@ -32,7 +32,7 @@ class PaginaEspecifica2 extends React.Component {
         "conteudo": this.state.texto_especifica2,
       })
     };
-    const response = await fetch('http://localhost:8080/resposta/submit', requestOptions);
+    const response = await fetch('/resposta/submit', requestOptions);
     this.props.match.params.estado = this.state
     var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x => x.teorico)
     if (listaProfessoresTeorico.length === 1) {
@@ -55,7 +55,7 @@ class PaginaEspecifica2 extends React.Component {
     }
   };
   async componentDidMount() {
-    await axios.get(`http://localhost:8080/disciplina/exportacao?disciplina=${this.state.id}`)
+    await axios.get(`/disciplina/exportacao?disciplina=${this.state.id}`)
       .then(res => {
         const disciplinas = res.data.disciplina;
         const perguntasGerais = res.data.perguntasGerais;

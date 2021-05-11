@@ -59,10 +59,10 @@ class ProfessorPratica extends Home {
       })
     };
 
-    const response = await fetch('http://localhost:8080/resposta/submit', requestOptions);
+    const response = await fetch('/resposta/submit', requestOptions);
   }
   async getOptions() {
-    await axios.get(`http://localhost:8080/disciplina/exportacao?disciplina=${this.state.id}`)
+    await axios.get(`/disciplina/exportacao?disciplina=${this.state.id}`)
       .then(res => {
         const disciplinas = res.data.disciplina;
         const perguntasGerais = res.data.perguntasGerais;

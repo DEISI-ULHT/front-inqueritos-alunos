@@ -16,7 +16,7 @@ export async function para_proxima(nPergunta, state, props, pagina, conteudoName
         })
     };
 
-    const response = await fetch('http://localhost:8080/resposta/submit', requestOptions);
+    const response = await fetch('/resposta/submit', requestOptions);
     props.match.params.estado = state
     props.history.push({
         pathname: `/${pagina}/${state.id}`,
@@ -42,7 +42,7 @@ class EscolheCurso extends React.Component {
         para_proxima(0, this.state, this.props, `perguntaGeral1`, 'respostaQualCurso');
     };
     async componentDidMount() {
-        await axios.get(`http://localhost:8080/disciplina/exportacao?disciplina=${this.state.id}`)
+        await axios.get(`/disciplina/exportacao?disciplina=${this.state.id}`)
             .then(res => {
                 const disciplinas = res.data.disciplina;
                 const perguntasGerais = res.data.perguntasGerais;

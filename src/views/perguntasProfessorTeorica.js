@@ -79,7 +79,7 @@ class perguntasProfessorTeorica extends React.Component {
     })
   }
   async componentDidMount() {
-    await axios.get(`http://localhost:8080/disciplina/exportacao?disciplina=${this.state.id}`)
+    await axios.get(`/disciplina/exportacao?disciplina=${this.state.id}`)
       .then(res => {
         const disciplinas = res.data.disciplina;
         const perguntasGerais = res.data.perguntasGerais;
@@ -121,7 +121,7 @@ class perguntasProfessorTeorica extends React.Component {
           "conteudo": resposta,
         })
       };
-      const response = await fetch('http://localhost:8080/resposta/submit', requestOptions);
+      const response = await fetch('/resposta/submit', requestOptions);
     }
     var listaProfessoresPratica = this.state.disciplinas.professores.filter(x => x.pratico)
     if (listaProfessoresPratica.length === 1) {

@@ -34,7 +34,7 @@ class PerguntaGeral4 extends Home {
                 "conteudo": this.state.texto_pergunta4,
             })
         };
-        const response = await fetch('http://localhost:8080/resposta/submit', requestOptions);
+        const response = await fetch('/resposta/submit', requestOptions);
         this.props.match.params.estado = this.state
         if (this.state.disciplinas.perguntaEspecifica.length > 0) {
             this.props.history.push({
@@ -69,7 +69,7 @@ class PerguntaGeral4 extends Home {
         this.proximaPagina4();
     }
     async componentDidMount() {
-        await axios.get(`http://localhost:8080/disciplina/exportacao?disciplina=${this.state.id}`)
+        await axios.get(`/disciplina/exportacao?disciplina=${this.state.id}`)
             .then(res => {
                 const disciplinas = res.data.disciplina;
                 const perguntasGerais = res.data.perguntasGerais;
