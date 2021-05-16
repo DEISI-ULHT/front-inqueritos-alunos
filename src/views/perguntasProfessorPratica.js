@@ -30,6 +30,8 @@ class perguntasProfessorPratica extends React.Component {
         this.state.perguntasGerais=[];
         this.state.ready=0;
         this.state.id = props.match.params.id
+        console.log(props.match.params.id)
+        console.log(this.props) 
       }
     
       toggleCarousel = (direction, valida) => {
@@ -59,8 +61,8 @@ class perguntasProfessorPratica extends React.Component {
         }
     
         if (index > max) {
-          index = 0
-          index2 = 0
+          index = max
+          index2 = max
         }
     
         if (index < min) {
@@ -89,7 +91,7 @@ class perguntasProfessorPratica extends React.Component {
        
          })
      }
-     
+   
      async enviaDados(){
       var listaPerguntas = [10,11,12,13,14,15];
       var contador = 6;

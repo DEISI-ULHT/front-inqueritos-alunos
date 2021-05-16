@@ -38,6 +38,7 @@ class Home extends React.Component {
             .then(res => {
                 const disciplinas = res.data.disciplina;
                 const perguntasGerais = res.data.perguntasGerais;
+
                 this.setState({ disciplinas, perguntasGerais, ready: 1 });
 
             })

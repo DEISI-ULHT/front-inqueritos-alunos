@@ -13,6 +13,7 @@ export async function para_proxima(nPergunta, state, props, pagina, conteudoName
             "perguntaId": state.perguntasGerais[nPergunta].id,
             "professorId": 'null',
             "conteudo": state[conteudoName],
+            //"token": state.token,
         })
     };
 
@@ -35,6 +36,8 @@ class EscolheCurso extends React.Component {
             id: props.match.params.id
 
         };
+        console.log(props.match.params.id)
+        console.log(this.props) 
 
     }
     async proximaPagina8() {
@@ -46,8 +49,9 @@ class EscolheCurso extends React.Component {
             .then(res => {
                 const disciplinas = res.data.disciplina;
                 const perguntasGerais = res.data.perguntasGerais;
+                const token = res.data.token
                 //const cursos = res.data.cursos;
-                this.setState({ disciplinas, perguntasGerais, ready: 1 });
+                this.setState({ disciplinas, perguntasGerais, ready: 1, token });
                 window.onbeforeunload = function () { return "Your work will be lost."; };
                 window.history.pushState(null, "", window.location.href);
                 window.onpopstate = function () {

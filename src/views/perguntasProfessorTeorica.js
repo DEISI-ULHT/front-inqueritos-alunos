@@ -56,14 +56,14 @@ class perguntasProfessorTeorica extends React.Component {
     }
 
     if (count >= 6 && index2 === 6) {
-
+    
       this.enviaDados();
 
     }
 
     if (index > max) {
-      index = 0
-      index2 = 0
+      index = max
+      index2 = max
     }
 
     if (index < min) {
@@ -175,7 +175,9 @@ class perguntasProfessorTeorica extends React.Component {
       })
     }
     if (key === 6) {
-      this.state.pergunta6 = resposta;
+      this.setState({
+        pergunta6: resposta
+      })
 
     }
 

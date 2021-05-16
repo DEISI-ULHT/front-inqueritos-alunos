@@ -15,7 +15,10 @@ class PerguntaGeral2 extends React.Component {
     this.state.errormessage = '';
     this.state.ready = 0;
     this.state.id = props.match.params.id
+    console.log(props.match.params.id)
+    console.log(this.props) 
   }
+
   async proximaPagina2() {
     this.setState({ respostas: [...this.state.texto_pergunta2] })
     const requestOptions = {
@@ -41,6 +44,7 @@ class PerguntaGeral2 extends React.Component {
       .then(res => {
         const disciplinas = res.data.disciplina;
         const perguntasGerais = res.data.perguntasGerais;
+        
         this.setState({ disciplinas, perguntasGerais, ready: 1 });
         window.onbeforeunload = function () { return "Your work will be lost."; };
         window.history.pushState(null, "", window.location.href);
