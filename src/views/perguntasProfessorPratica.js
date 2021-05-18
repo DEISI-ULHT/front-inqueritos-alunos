@@ -1,6 +1,4 @@
 import * as React from 'react';
-import Home from './home';
-import axios from 'axios'
 import API from '../main/api'
 import { ProgressBar} from 'react-bootstrap';
 import '../App.css';

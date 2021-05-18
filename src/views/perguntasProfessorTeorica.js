@@ -1,6 +1,4 @@
 import * as React from 'react';
-import Home from './home';
-import axios from 'axios'
 import API from '../main/api'
 import { ProgressBar } from 'react-bootstrap';
 import '../App.css';
@@ -100,7 +98,6 @@ class perguntasProfessorTeorica extends React.Component {
     var perguntasFiltradas = this.state.perguntasGerais.filter(x => listaPerguntas.includes(x.id));
     for (let i = 0; i < perguntasFiltradas.length; i++) {
       var contador = i + 1;
-      const element = perguntasFiltradas[i];
       const idPergunta = perguntasFiltradas[i].id;
       const resposta = this.state["pergunta" + contador];
       var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x=> x.teorico)
@@ -111,18 +108,6 @@ class perguntasProfessorTeorica extends React.Component {
           this.state.teacherId = this.state.selectedId
         }
 
-      // const requestOptions = {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   //body: JSON.stringify({ title: 'React POST Request Example' })
-      //   body: JSON.stringify({
-      //     "disciplinaId": this.state.disciplinas.id,
-      //     "perguntaId": idPergunta,
-      //     "professorId": this.state.teacherId,
-      //     "conteudo": resposta,
-      //   })
-      // };
-      //const response = await fetch('/resposta/submit', requestOptions);
       await API.post('resposta/submit', {
         "disciplinaId": this.state.disciplinas.id,
         "perguntaId": idPergunta,

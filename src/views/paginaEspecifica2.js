@@ -1,5 +1,4 @@
 import * as React from 'react'
-import axios from 'axios'
 import '../App.css'
 import { ProgressBar } from 'react-bootstrap';
 import API from "../main/api";
@@ -23,17 +22,7 @@ class PaginaEspecifica2 extends React.Component {
       this.state.teacher = listaProfessoresTeorico[0].professor.nome
       this.state.teacherId = listaProfessoresTeorico[0].professor.id_lusofona
     }
-    // const requestOptions = {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({
-    //     "disciplinaId": this.state.disciplinas.id,
-    //     "perguntaId": this.state.perguntasGerais[7].id,
-    //     "professorId": this.state.teacherId,
-    //     "conteudo": this.state.texto_especifica2,
-    //   })
-    // };
-    // const response = await fetch('/resposta/submit', requestOptions);
+
     await API.post('resposta/submit', {
       "disciplinaId": this.state.disciplinas.id,
       "perguntaId": this.state.perguntasGerais[7].id,

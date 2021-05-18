@@ -1,23 +1,10 @@
 import * as React from 'react'
-import axios from 'axios'
 import API from '../main/api'
 import PerguntaGeral3 from './perguntaGeral3';
 import '../App.css'
 import { ProgressBar } from 'react-bootstrap';
 
 export async function para_proxima(nPergunta, state, props, pagina, conteudoName) {
-    // const requestOptions = {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({
-    //         "disciplinaId": state.disciplinas.id,
-    //         "perguntaId": state.perguntasGerais[nPergunta].id,
-    //         "professorId": 'null',
-    //         "conteudo": state[conteudoName],
-    //     })
-    // };
-
-    // const response = await fetch('/resposta/submit', requestOptions);
     await API.post('resposta/submit', {
         "disciplinaId": state.disciplinas.id,
         "perguntaId": state.perguntasGerais[nPergunta].id,

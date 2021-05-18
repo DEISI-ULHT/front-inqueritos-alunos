@@ -1,10 +1,14 @@
 import * as React from 'react'
-import axios from 'axios'
 import '../App.css'
 import { Row, Col, Image, Container } from 'react-bootstrap';
 import { ProgressBar } from 'react-bootstrap';
 import { para_proxima } from '../views/EscolheCurso'
 import API from '../main/api'
+import smiley0 from '../images/0.png'
+import smiley1 from '../images/1.png'
+import smiley2 from '../images/2.png'
+import smiley3 from '../images/3.png'
+import smiley4 from '../images/4.png'
 
 class PerguntaGeral1 extends React.Component {
     constructor(props) {
@@ -70,19 +74,19 @@ class PerguntaGeral1 extends React.Component {
                                 <Row style={{ cursor: 'pointer', display: "flex", justifyContent: "center", alignItems: "center", marginTop: "10%", marginBottom: "10px" }}>
 
                                     <Col style={{ marginRight: '1.2%' }}>
-                                        <Image onClick={() => this.handleClick("Muito mal")} src="https://api.responster.com/engine/32/0.png " alt=" 1" width="130%" />
+                                        <Image onClick={() => this.handleClick("Muito mal")} src={smiley0} alt=" 1" width="130%" />
                                     </Col>
                                     <Col style={{ marginRight: '1.2%' }}>
-                                        <Image onClick={() => this.handleClick("Mal")} src="https://api.responster.com/engine/32/1.png " alt=" 2" width="130%" />
+                                        <Image onClick={() => this.handleClick("Mal")} src={smiley1} alt=" 2" width="130%" />
                                     </Col>
                                     <Col style={{ marginRight: '1.2%' }}>
-                                        <Image onClick={() => this.handleClick("Razoavel")} src="https://api.responster.com/engine/32/2.png " alt=" 3" width="130%" />
+                                        <Image onClick={() => this.handleClick("Razoavel")} src={smiley2} alt=" 3" width="130%" />
                                     </Col>
                                     <Col style={{ marginRight: '1.2%' }}>
-                                        <Image onClick={() => this.handleClick("Bem")} src="https://api.responster.com/engine/32/3.png " alt="4" width="130%" />
+                                        <Image onClick={() => this.handleClick("Bem")} src={smiley3} alt="4" width="130%" />
                                     </Col>
                                     <Col style={{ marginRight: '1.2%' }}>
-                                        <Image onClick={() => this.handleClick("Muito bem")} src="https://api.responster.com/engine/32/4.png " alt="5" width="130%" />
+                                        <Image onClick={() => this.handleClick("Muito bem")} src={smiley4} alt="5" width="130%" />
                                     </Col>
                                 </Row>
                             </Container>

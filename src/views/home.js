@@ -1,7 +1,6 @@
 import * as React from 'react'
 import DEISI from './deisi_logo.png'
 import 'bootswatch/dist/cyborg/bootstrap.css';
-import axios from 'axios'
 import API from '../main/api'
 
 class Home extends React.Component {

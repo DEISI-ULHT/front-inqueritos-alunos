@@ -11,6 +11,8 @@ Na raiz do projeto, correr
     
     npm start
 
+Aceder a http://localhost:3000/inqueritos/<sigla_disciplina>
+
 ## Preparar build para produção
 
 Na raiz do projeto, correr
