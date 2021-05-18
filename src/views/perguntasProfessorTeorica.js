@@ -3,7 +3,7 @@ import API from '../main/api'
 import { ProgressBar } from 'react-bootstrap';
 import '../App.css';
 import { Button, Container, Card, Row, Carousel } from 'react-bootstrap';
-
+import blueBg from '../images/blue-bg.png'
 
 
 class perguntasProfessorTeorica extends React.Component {
@@ -219,7 +219,7 @@ class perguntasProfessorTeorica extends React.Component {
           </div>
           <Carousel className="carousel1" id="quote-carousel" interval={null} indicators={false} controls={false} activeIndex={this.state.index2} direction={this.state.direction}>
             <Carousel.Item>
-              <img src="https://images-submarino.b2w.io/produtos/01/00/img/1895545/5/1895545511_1GG.jpg" height="200px" width=" 100%" />
+              <img src={blueBg} height="200px" width="100%" />
               <Carousel.Caption>
 
                 <p style={{ color: '#686571' }} className="questao">Questão 1/6 </p>
