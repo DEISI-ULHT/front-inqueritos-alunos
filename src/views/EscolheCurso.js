@@ -46,8 +46,8 @@ class EscolheCurso extends React.Component {
             .then(res => {
                 const disciplinas = res.data.disciplina;
                 const perguntasGerais = res.data.perguntasGerais;
-                //const cursos = res.data.cursos;
-                this.setState({ disciplinas, perguntasGerais, ready: 1 });
+                const token = res.data.token;
+                this.setState({ disciplinas, perguntasGerais, ready: 1, token });
                 window.onbeforeunload = function () { return "Your work will be lost."; };
                 window.history.pushState(null, "", window.location.href);
                 window.onpopstate = function () {
