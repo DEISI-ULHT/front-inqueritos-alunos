@@ -27,6 +27,8 @@ class PerguntaGeral2 extends React.Component {
       "perguntaId": this.state.perguntasGerais[3].id,
       "professorId": 'null',
       "conteudo": this.state.texto_pergunta2,
+      "session": this.state.token,
+
     }).then(res => {
       this.props.match.params.estado = this.state
       this.props.history.push({

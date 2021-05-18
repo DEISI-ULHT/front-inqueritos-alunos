@@ -65,6 +65,8 @@ class ProfessorTeorica extends Home {
       "perguntaId": this.state.perguntasGerais[9].id,
       "professorId": this.state.selectedId,
       "conteudo": this.state.selectedName,
+      "session": this.state.token,
+
     });
   }
   async getOptions() {

@@ -107,21 +107,14 @@ class perguntasProfessorPratica extends React.Component {
         }else{
           this.state.teacherId = this.state.selectedId
         }
-        const requestOptions = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ 
-          "disciplinaId": this.state.disciplinas.id,
-          "perguntaId": idPergunta,
-          "professorId": this.state.teacherId,
-          "conteudo": resposta, })
-        };
-
+      
         await API.post('resposta/submit', {
               "disciplinaId": this.state.disciplinas.id,
               "perguntaId": idPergunta,
               "professorId": this.state.teacherId,
-              "conteudo": resposta, });
+              "conteudo": resposta,
+            	"session": this.state.token,
+ });
       }
       this.props.history.push({
         pathname:`/final/${this.state.id}`,

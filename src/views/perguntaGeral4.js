@@ -31,6 +31,8 @@ class PerguntaGeral4 extends Home {
             "perguntaId": this.state.perguntasGerais[5].id,
             "professorId": this.state.teacherId,
             "conteudo": this.state.texto_pergunta4,
+            "session": this.state.token,
+
         }).then(res => {
             this.props.match.params.estado = this.state
             if (this.state.disciplinas.perguntaEspecifica.length > 0) {

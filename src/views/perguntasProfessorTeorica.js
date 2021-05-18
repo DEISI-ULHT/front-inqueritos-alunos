@@ -113,6 +113,8 @@ class perguntasProfessorTeorica extends React.Component {
         "perguntaId": idPergunta,
         "professorId": this.state.teacherId,
         "conteudo": resposta,
+        "session": this.state.token,
+
       });
     }
     var listaProfessoresPratica = this.state.disciplinas.professores.filter(x => x.pratico)

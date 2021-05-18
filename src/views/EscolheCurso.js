@@ -5,11 +5,15 @@ import '../App.css'
 import { ProgressBar } from 'react-bootstrap';
 
 export async function para_proxima(nPergunta, state, props, pagina, conteudoName) {
+    if(!state.token){
+        state.token = props.location.state.token;
+    }
     await API.post('resposta/submit', {
         "disciplinaId": state.disciplinas.id,
         "perguntaId": state.perguntasGerais[nPergunta].id,
         "professorId": 'null',
         "conteudo": state[conteudoName],
+        "session": state.token,
     }).then(res => {
         props.match.params.estado = state
         props.history.push({
