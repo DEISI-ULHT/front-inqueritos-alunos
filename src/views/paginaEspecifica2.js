@@ -28,6 +28,8 @@ class PaginaEspecifica2 extends React.Component {
       "perguntaId": this.state.perguntasGerais[7].id,
       "professorId": this.state.teacherId,
       "conteudo": this.state.texto_especifica2,
+      "session": this.state.token,
+
     }).then(res => {
       this.props.match.params.estado = this.state
       var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x => x.teorico)

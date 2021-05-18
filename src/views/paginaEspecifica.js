@@ -33,6 +33,8 @@ class PaginaEspecifica extends React.Component {
         "perguntaId": this.state.perguntasGerais[6].id,
         "professorId": this.state.teacherId,
         "conteudo": this.state.texto_especifica1,
+        "session": this.state.token,
+
       })
     };
 
