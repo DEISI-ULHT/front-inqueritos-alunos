@@ -1,6 +1,7 @@
 import * as React from 'react';
 import axios from 'axios'
 import { ProgressBar } from 'react-bootstrap';
+import API from "../main/api";
 
 class PerguntaGeral3 extends React.Component {
   constructor(props) {
@@ -18,26 +19,33 @@ class PerguntaGeral3 extends React.Component {
   }
   async proximaPagina3() {
     this.setState({ respostas: [...this.state.texto_pergunta3] })
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        "disciplinaId": this.state.disciplinas.id,
-        "perguntaId": this.state.perguntasGerais[4].id,
-        "professorId": 'null',
-        "conteudo": this.state.texto_pergunta3,
+    // const requestOptions = {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({
+    //     "disciplinaId": this.state.disciplinas.id,
+    //     "perguntaId": this.state.perguntasGerais[4].id,
+    //     "professorId": 'null',
+    //     "conteudo": this.state.texto_pergunta3,
+    //   })
+    // };
+    // const response = await fetch('/resposta/submit', requestOptions);
+    await API.post('resposta/submit', {
+      "disciplinaId": this.state.disciplinas.id,
+      "perguntaId": this.state.perguntasGerais[4].id,
+      "professorId": 'null',
+      "conteudo": this.state.texto_pergunta3,
+    }).then(res => {
+      this.props.match.params.estado = this.state
+      this.props.history.push({
+        pathname: `/perguntaGeral4/${this.state.id}`,
+        state: this.state.onClick,
+        state3: this.state,
       })
-    };
-    const response = await fetch('/resposta/submit', requestOptions);
-    this.props.match.params.estado = this.state
-    this.props.history.push({
-      pathname: `/perguntaGeral4/${this.state.id}`,
-      state: this.state.onClick,
-      state3: this.state,
-    })
+    });
   };
   async componentDidMount() {
-    await axios.get(`/disciplina/exportacao?disciplina=${this.state.id}`)
+    await API.get(`disciplina/exportacao?disciplina=${this.state.id}`)
       .then(res => {
         const disciplinas = res.data.disciplina;
         const perguntasGerais = res.data.perguntasGerais;

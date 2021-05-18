@@ -2,6 +2,7 @@ import * as React from 'react'
 import axios from 'axios'
 import '../App.css'
 import { ProgressBar } from 'react-bootstrap';
+import API from "../main/api";
 
 class PaginaEspecifica2 extends React.Component {
   constructor(props) {
@@ -22,40 +23,48 @@ class PaginaEspecifica2 extends React.Component {
       this.state.teacher = listaProfessoresTeorico[0].professor.nome
       this.state.teacherId = listaProfessoresTeorico[0].professor.id_lusofona
     }
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        "disciplinaId": this.state.disciplinas.id,
-        "perguntaId": this.state.perguntasGerais[7].id,
-        "professorId": this.state.teacherId,
-        "conteudo": this.state.texto_especifica2,
-      })
-    };
-    const response = await fetch('/resposta/submit', requestOptions);
-    this.props.match.params.estado = this.state
-    var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x => x.teorico)
-    if (listaProfessoresTeorico.length === 1) {
-      this.props.history.push({
-        pathname: `/perguntasProfessorTeorica/${this.state.id}`,
-        state: this.state,
-        professor: (listaProfessoresTeorico[0].professor.nome)
-      })
-    } else if (listaProfessoresTeorico.length > 1) {
-      this.props.history.push({
-        pathname: `/professorTeorica/${this.state.id}`,
-        state: this.state,
-      })
-    } else {
-      this.props.history.push({
-        pathname: `/perguntasProfessorTeorica/${this.state.id}`,
-        teacher: listaProfessoresTeorico[0].professor.id_lusofona,
-        state: this.state
-      })
-    }
+    // const requestOptions = {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({
+    //     "disciplinaId": this.state.disciplinas.id,
+    //     "perguntaId": this.state.perguntasGerais[7].id,
+    //     "professorId": this.state.teacherId,
+    //     "conteudo": this.state.texto_especifica2,
+    //   })
+    // };
+    // const response = await fetch('/resposta/submit', requestOptions);
+    await API.post('resposta/submit', {
+      "disciplinaId": this.state.disciplinas.id,
+      "perguntaId": this.state.perguntasGerais[7].id,
+      "professorId": this.state.teacherId,
+      "conteudo": this.state.texto_especifica2,
+    }).then(res => {
+      this.props.match.params.estado = this.state
+      var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x => x.teorico)
+      if (listaProfessoresTeorico.length === 1) {
+        this.props.history.push({
+          pathname: `/perguntasProfessorTeorica/${this.state.id}`,
+          state: this.state,
+          professor: (listaProfessoresTeorico[0].professor.nome)
+        })
+      } else if (listaProfessoresTeorico.length > 1) {
+        this.props.history.push({
+          pathname: `/professorTeorica/${this.state.id}`,
+          state: this.state,
+        })
+      } else {
+        this.props.history.push({
+          pathname: `/perguntasProfessorTeorica/${this.state.id}`,
+          teacher: listaProfessoresTeorico[0].professor.id_lusofona,
+          state: this.state
+        })
+      }
+    });
+
   };
   async componentDidMount() {
-    await axios.get(`/disciplina/exportacao?disciplina=${this.state.id}`)
+    await API.get(`disciplina/exportacao?disciplina=${this.state.id}`)
       .then(res => {
         const disciplinas = res.data.disciplina;
         const perguntasGerais = res.data.perguntasGerais;

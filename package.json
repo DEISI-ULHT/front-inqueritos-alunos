@@ -1,7 +1,8 @@
 {
   "name": "inqueritos-alunos-app",
   "version": "0.1.0",
-  "proxy": "http://localhost:8080",
+  "proxy": "http://localhost:8080/api",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "-": "^0.0.1",

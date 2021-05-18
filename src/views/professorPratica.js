@@ -2,6 +2,7 @@ import * as React from 'react';
 import Home from './home';
 import Select from 'react-select';
 import axios from 'axios'
+import API from '../main/api'
 import { ProgressBar } from 'react-bootstrap';
 
 const customStyles = {
@@ -50,21 +51,27 @@ class ProfessorPratica extends Home {
   };
   async handleClick() {
     this.proximaPagina7();
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        "disciplinaId": this.state.disciplinas.id,
-        "perguntaId": this.state.perguntasGerais[9].id,
-        "professorId": this.state.selectedId,
-        "conteudo": this.state.selectedName,
-      })
-    };
+    // const requestOptions = {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({
+    //     "disciplinaId": this.state.disciplinas.id,
+    //     "perguntaId": this.state.perguntasGerais[9].id,
+    //     "professorId": this.state.selectedId,
+    //     "conteudo": this.state.selectedName,
+    //   })
+    // };
 
-    const response = await fetch('/resposta/submit', requestOptions);
+    // const response = await fetch('/resposta/submit', requestOptions);
+    await API.post('resposta/submit', {
+      "disciplinaId": this.state.disciplinas.id,
+      "perguntaId": this.state.perguntasGerais[9].id,
+      "professorId": this.state.selectedId,
+      "conteudo": this.state.selectedName,
+    });
   }
   async getOptions() {
-    await axios.get(`/disciplina/exportacao?disciplina=${this.state.id}`)
+    await API.get(`disciplina/exportacao?disciplina=${this.state.id}`)
       .then(res => {
         const disciplinas = res.data.disciplina;
         const perguntasGerais = res.data.perguntasGerais;

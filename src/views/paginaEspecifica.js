@@ -4,6 +4,7 @@ import PerguntaGeral3 from './perguntaGeral3';
 // import disciplinas from '../components/disciplinas'
 import '../App.css'
 import { ProgressBar } from 'react-bootstrap';
+import API from "../main/api";
 
 
 class PaginaEspecifica extends React.Component {
@@ -35,41 +36,47 @@ class PaginaEspecifica extends React.Component {
       })
     };
 
-    const response = await fetch('/resposta/submit', requestOptions);
-    this.props.match.params.estado = this.state
-    //PerguntaGeral3(this.state)
+    // const response = await fetch('/resposta/submit', requestOptions);
+    await API.post('resposta/submit', {
+      "disciplinaId": this.state.disciplinas.id,
+      "perguntaId": this.state.perguntasGerais[6].id,
+      "professorId": this.state.teacherId,
+      "conteudo": this.state.texto_especifica1,
+    }).then(res => {
+      this.props.match.params.estado = this.state
+      //PerguntaGeral3(this.state)
 
-    var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x => x.teorico)
+      var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x => x.teorico)
 
-    if (this.state.disciplinas.perguntaEspecifica.length == 2) {
-      this.props.history.push({
-        pathname: `/paginaEspecifica2/${this.state.id}`,
-        state: this.state
-      })
-    } else if (listaProfessoresTeorico.length === 1) {
-      this.props.history.push({
-        pathname: `/perguntasProfessorTeorica/${this.state.id}`,
+      if (this.state.disciplinas.perguntaEspecifica.length == 2) {
+        this.props.history.push({
+          pathname: `/paginaEspecifica2/${this.state.id}`,
+          state: this.state
+        })
+      } else if (listaProfessoresTeorico.length === 1) {
+        this.props.history.push({
+          pathname: `/perguntasProfessorTeorica/${this.state.id}`,
 
-        state: this.state,
+          state: this.state,
 
-        professor: (listaProfessoresTeorico[0].professor.nome)
-      })
-    } else if (listaProfessoresTeorico.length > 1) {
-      this.props.history.push({
-        pathname: `/professorTeorica/${this.state.id}`,
-        state: this.state,
-      })
-    } else {
-      this.props.history.push({
-        pathname: `/perguntasProfessorTeorica/${this.state.id}`,
-        state: this.state
+          professor: (listaProfessoresTeorico[0].professor.nome)
+        })
+      } else if (listaProfessoresTeorico.length > 1) {
+        this.props.history.push({
+          pathname: `/professorTeorica/${this.state.id}`,
+          state: this.state,
+        })
+      } else {
+        this.props.history.push({
+          pathname: `/perguntasProfessorTeorica/${this.state.id}`,
+          state: this.state
+        })
+      }
+    });
 
-      })
-
-    }
   };
   async componentDidMount() {
-    await axios.get(`/disciplina/exportacao?disciplina=${this.state.id}`)
+    await API.get(`disciplina/exportacao?disciplina=${this.state.id}`)
       .then(res => {
         const disciplinas = res.data.disciplina;
         const perguntasGerais = res.data.perguntasGerais;

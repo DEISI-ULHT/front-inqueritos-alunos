@@ -2,10 +2,12 @@ import * as React from 'react'
 import DEISI from './deisi_logo.png'
 import 'bootswatch/dist/cyborg/bootstrap.css';
 import axios from 'axios'
+import API from '../main/api'
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
+        console.log('constructor')
         this.state = {
             // respostas:[],
             texto: "",
@@ -34,7 +36,8 @@ class Home extends React.Component {
         this.proximaPagina();
     }
     async componentDidMount() {
-        await axios.get(`/disciplina/exportacao?disciplina=${this.state.id}`)
+        console.log("componentDidMount " + this.state.id)
+        await API.get(`disciplina/exportacao?disciplina=${this.state.id}`)
             .then(res => {
                 const disciplinas = res.data.disciplina;
                 const perguntasGerais = res.data.perguntasGerais;

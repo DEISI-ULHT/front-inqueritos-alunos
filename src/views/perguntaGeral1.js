@@ -4,6 +4,7 @@ import '../App.css'
 import { Row, Col, Image, Container } from 'react-bootstrap';
 import { ProgressBar } from 'react-bootstrap';
 import { para_proxima } from '../views/EscolheCurso'
+import API from '../main/api'
 
 class PerguntaGeral1 extends React.Component {
     constructor(props) {
@@ -26,7 +27,7 @@ class PerguntaGeral1 extends React.Component {
     }
 
     async componentDidMount() {
-        await axios.get(`/disciplina/exportacao?disciplina=${this.state.id}`)
+        await API.get(`disciplina/exportacao?disciplina=${this.state.id}`)
             .then(res => {
                 const disciplinas = res.data.disciplina;
                 const perguntasGerais = res.data.perguntasGerais;

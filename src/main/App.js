@@ -4,7 +4,6 @@ import  Rotas from './rotas'
 
 import {Link,Router,Route} from 'react-router-dom'
 
-
 class App extends React.Component {
   render(){
     return(

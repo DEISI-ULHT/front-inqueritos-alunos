@@ -1,6 +1,7 @@
 import * as React from 'react'
 import 'bootswatch/dist/cyborg/bootstrap.css';
 import axios from 'axios'
+import API from '../main/api'
 
 class Final extends React.Component {
     constructor(props) {
@@ -15,7 +16,7 @@ class Final extends React.Component {
         this.state.id = props.match.params.id
     }
     async componentDidMount() {
-        await axios.get(`/disciplina/exportacao?disciplina=${this.state.id}`)
+        await API.get(`disciplina/exportacao?disciplina=${this.state.id}`)
             .then(res => {
                 const disciplinas = res.data.disciplina;
                 const perguntasGerais = res.data.perguntasGerais;

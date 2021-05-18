@@ -2,6 +2,7 @@ import * as React from 'react';
 import Home from './home';
 import axios from 'axios'
 import { ProgressBar } from 'react-bootstrap';
+import API from "../main/api";
 
 class PerguntaGeral4 extends Home {
     constructor(props) {
@@ -26,52 +27,60 @@ class PerguntaGeral4 extends Home {
 
         }
        
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                "disciplinaId": this.state.disciplinas.id,
-                "perguntaId": this.state.perguntasGerais[5].id,
-                "professorId": this.state.teacherId,
-                "conteudo": this.state.texto_pergunta4,
-            })
-        };
-        const response = await fetch('/resposta/submit', requestOptions);
-        this.props.match.params.estado = this.state
-        if (this.state.disciplinas.perguntaEspecifica.length > 0) {
-            this.props.history.push({
-                pathname: `/paginaEspecifica/${this.state.id}`,
-                state: this.state
-            })
-        } else {
-            var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x => x.teorico)
-
-            if (listaProfessoresTeorico.length === 1) {
+        // const requestOptions = {
+        //     method: 'POST',
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify({
+        //         "disciplinaId": this.state.disciplinas.id,
+        //         "perguntaId": this.state.perguntasGerais[5].id,
+        //         "professorId": this.state.teacherId,
+        //         "conteudo": this.state.texto_pergunta4,
+        //     })
+        // };
+        // const response = await fetch('/resposta/submit', requestOptions);
+        await API.post('resposta/submit', {
+            "disciplinaId": this.state.disciplinas.id,
+            "perguntaId": this.state.perguntasGerais[5].id,
+            "professorId": this.state.teacherId,
+            "conteudo": this.state.texto_pergunta4,
+        }).then(res => {
+            this.props.match.params.estado = this.state
+            if (this.state.disciplinas.perguntaEspecifica.length > 0) {
                 this.props.history.push({
-                    pathname: `/perguntasProfessorTeorica/${this.state.id}`,
-                    state: this.state,
-                    professor: (listaProfessoresTeorico[0].professor.nome)
-                })
-            } else if (listaProfessoresTeorico.length > 1) {
-                this.props.history.push({
-                    pathname: `/professorTeorica/${this.state.id}`,
-                    state: this.state,
-                })
-            }
-            else {
-                this.props.history.push({
-                    pathname: `/perguntasProfessorTeorica/${this.state.id}`,
+                    pathname: `/paginaEspecifica/${this.state.id}`,
                     state: this.state
                 })
+            } else {
+                var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x => x.teorico)
+
+                if (listaProfessoresTeorico.length === 1) {
+                    this.props.history.push({
+                        pathname: `/perguntasProfessorTeorica/${this.state.id}`,
+                        state: this.state,
+                        professor: (listaProfessoresTeorico[0].professor.nome)
+                    })
+                } else if (listaProfessoresTeorico.length > 1) {
+                    this.props.history.push({
+                        pathname: `/professorTeorica/${this.state.id}`,
+                        state: this.state,
+                    })
+                }
+                else {
+                    this.props.history.push({
+                        pathname: `/perguntasProfessorTeorica/${this.state.id}`,
+                        state: this.state
+                    })
+                }
             }
-        }
+        });
+
     };
     handleClick(valor) {
         this.setState({ texto_pergunta4: this.state.texto_pergunta4 = valor })
         this.proximaPagina4();
     }
     async componentDidMount() {
-        await axios.get(`/disciplina/exportacao?disciplina=${this.state.id}`)
+        await API.get(`disciplina/exportacao?disciplina=${this.state.id}`)
             .then(res => {
                 const disciplinas = res.data.disciplina;
                 const perguntasGerais = res.data.perguntasGerais;

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Home from './home';
 import axios from 'axios'
+import API from '../main/api'
 import { ProgressBar } from 'react-bootstrap';
 import '../App.css';
 import { Button, Container, Card, Row, Carousel } from 'react-bootstrap';
@@ -79,7 +80,7 @@ class perguntasProfessorTeorica extends React.Component {
     })
   }
   async componentDidMount() {
-    await axios.get(`/disciplina/exportacao?disciplina=${this.state.id}`)
+    await API.get(`disciplina/exportacao?disciplina=${this.state.id}`)
       .then(res => {
         const disciplinas = res.data.disciplina;
         const perguntasGerais = res.data.perguntasGerais;
@@ -110,18 +111,24 @@ class perguntasProfessorTeorica extends React.Component {
           this.state.teacherId = this.state.selectedId
         }
 
-      const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        //body: JSON.stringify({ title: 'React POST Request Example' })
-        body: JSON.stringify({
-          "disciplinaId": this.state.disciplinas.id,
-          "perguntaId": idPergunta,
-          "professorId": this.state.teacherId,
-          "conteudo": resposta,
-        })
-      };
-      const response = await fetch('/resposta/submit', requestOptions);
+      // const requestOptions = {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   //body: JSON.stringify({ title: 'React POST Request Example' })
+      //   body: JSON.stringify({
+      //     "disciplinaId": this.state.disciplinas.id,
+      //     "perguntaId": idPergunta,
+      //     "professorId": this.state.teacherId,
+      //     "conteudo": resposta,
+      //   })
+      // };
+      //const response = await fetch('/resposta/submit', requestOptions);
+      await API.post('resposta/submit', {
+        "disciplinaId": this.state.disciplinas.id,
+        "perguntaId": idPergunta,
+        "professorId": this.state.teacherId,
+        "conteudo": resposta,
+      });
     }
     var listaProfessoresPratica = this.state.disciplinas.professores.filter(x => x.pratico)
     if (listaProfessoresPratica.length === 1) {

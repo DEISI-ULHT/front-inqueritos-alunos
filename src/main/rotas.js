@@ -17,7 +17,7 @@ import PaginaEspecifica2 from '../views/paginaEspecifica2'
 
 function Rotas(){
     return(
-        <BrowserRouter>
+        <BrowserRouter basename="/inqueritos">
             <Switch>
                 <Route exact path="/:id" component={Home} />
                 <Route exact path="/" component={Home} />
