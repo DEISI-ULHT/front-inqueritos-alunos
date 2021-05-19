@@ -103,12 +103,12 @@ class PerguntaGeral4 extends Home {
                                 {this.state.perguntasGerais.find(pg => pg.id === 4).enunciado}
                             </p>
 
-                            <p style={{ fontSize: '12pt', verticalAlign: 'middle' }}>{this.state.perguntasGerais.find(pg => pg.id === 16).enunciado}</p>
+                            <p style={{ fontSize: '10pt', verticalAlign: 'middle' }}>{this.state.perguntasGerais.find(pg => pg.id === 16).enunciado}</p>
                             <div className="form-group">
-                                <button onClick={() => this.handleClick("Nenhuma Ligação")} style={{ padding: '13pt', fontSize: '18pt', fontWeight: '500', borderWidth: '5px', width: '100%' }} type="button" className="btn btn-primary btn-lg">Nenhuma ligação</button>
-                                <button onClick={() => this.handleClick("Pouca ligação")} style={{ marginTop: '1%', padding: '13pt', fontSize: '18pt', fontWeight: '500', borderWidth: '5px', width: '100%' }} type="button" className="btn btn-primary btn-lg">Pouca ligação</button>
-                                <button onClick={() => this.handleClick("Muita ligação")} style={{ marginTop: '1%', padding: '13pt', fontSize: '18pt', fontWeight: '500', borderWidth: '5px', width: '100%' }} type="button" className="btn btn-primary btn-lg">Muita ligação</button>
-                                <button onClick={() => this.handleClick("Não faz sentido nessa disciplina")} style={{ marginTop: '1%', padding: '13pt', fontSize: '18pt', fontWeight: '500', borderWidth: '5px', width: '100%' }} type="button" className="btn btn-primary btn-lg">Não faz sentido nessa disciplina</button>
+                                <button onClick={() => this.handleClick("Nenhuma Ligação")} style={{ padding: '11pt', fontSize: '13pt', fontWeight: '500', borderWidth: '5px', width: '100%' }} type="button" className="btn btn-primary btn-lg">Nenhuma ligação</button>
+                                <button onClick={() => this.handleClick("Pouca ligação")} style={{ marginTop: '1%', padding: '11pt', fontSize: '13pt', fontWeight: '500', borderWidth: '5px', width: '100%' }} type="button" className="btn btn-primary btn-lg">Pouca ligação</button>
+                                <button onClick={() => this.handleClick("Muita ligação")} style={{ marginTop: '1%', padding: '11pt', fontSize: '13pt', fontWeight: '500', borderWidth: '5px', width: '100%' }} type="button" className="btn btn-primary btn-lg">Muita ligação</button>
+                                <button onClick={() => this.handleClick("Não faz sentido nessa disciplina")} style={{ marginTop: '1%', padding: '11pt', fontSize: '13pt', fontWeight: '500', borderWidth: '5px', width: '100%' }} type="button" className="btn btn-primary btn-lg">Não faz sentido nessa disciplina</button>
 
                             </div>
                         </div>

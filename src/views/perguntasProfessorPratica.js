@@ -3,6 +3,7 @@ import API from '../main/api'
 import { ProgressBar} from 'react-bootstrap';
 import '../App.css';
 import { Button, Container, Card, Row, Carousel} from 'react-bootstrap';
+import blueBg from '../images/blue-bg.png'
 
 
 class perguntasProfessorPratica extends React.Component {
@@ -181,9 +182,9 @@ class perguntasProfessorPratica extends React.Component {
           <Container >
           <div className="container ">
             <div className="row" style={{ display: 'flex', justifyContent: 'center', marginTop: '11%'}}>
-            <p style= {{color: 'white' ,fontSize: '20pt', marginTop: '-5%',textAlign: 'center'}}> 
+            <p style= {{color: 'white' ,fontSize: '18pt', marginTop: '-5%',textAlign: 'center'}}> 
                 { this.state.perguntasGerais.find(pg=>pg.id===18).enunciado}
-                <p  style= {{fontSize: '11pt', top: '50%'}}> 
+                <p  style= {{fontSize: '9pt', top: '50%'}}> 
                           Estas questões são referentes ao professor <strong style={{color: '#008B8B'}}>{this.props.location.professor}</strong> 
                         </p>
              </p>
@@ -191,15 +192,15 @@ class perguntasProfessorPratica extends React.Component {
               </div>
             <Carousel className = "carousel1" id="quote-carousel" interval={null} indicators={false} controls={false} activeIndex={this.state.index2} direction={this.state.direction}>
               <Carousel.Item>
-                    <img  src="https://images-submarino.b2w.io/produtos/01/00/img/1895545/5/1895545511_1GG.jpg" height= "200px" width=" 100%"   />
-                  <Carousel.Caption>
-                    
-                  <p style= {{color: '#686571'}} className="questao">Questão 1/6 </p>
+                    <img src={blueBg} height="130px" width=" 100%"   />
+                  <Carousel.Caption>  
+                  <span style= {{color: '#686571', marginTop:"-5%"}} className="questao">Questão 1/6 </span>
+
                     <h2>
                       <Button variant="white" className="carousel-control-prev-icon left carousel-control" style = {{marginLeft:"-120%", border: "none"}} onClick={() => this.toggleCarousel('prev', false)}></Button>
                     </h2> 
                     <h2>
-                      <p  style= {{color: 'black', fontSize: '16pt', top: '50%', textAlign: 'center'}}> 
+                      <p  style= {{color: 'black', fontSize: '13pt', top: '50%', textAlign: 'center'}}> 
                             {this.state.perguntasGerais.find(pg=>pg.id===7).enunciado}
                            
                         </p>
@@ -211,14 +212,14 @@ class perguntasProfessorPratica extends React.Component {
                   </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item>
-                    <img  src="https://images-submarino.b2w.io/produtos/01/00/img/1895545/5/1895545511_1GG.jpg"  height= "200px" width=" 100%"   />
+                    <img  src={blueBg} height="130px" width=" 100%"   />
                   <Carousel.Caption>
-                  <p style= {{color: '#686571'}} className="questao">Questão 2/6 </p>
+                  <p style= {{color: '#686571',marginTop:"-5%"}} className="questao">Questão 2/6 </p>
                     <h2>
                       <Button variant="white" className="carousel-control-prev-icon left carousel-control" style = {{marginLeft:"-120%", border: "none"}} onClick={() => this.toggleCarousel('prev', false)}></Button>
                     </h2> 
                     <h2>
-                    <p  style= {{color: 'black', fontSize: '16pt', top: '50%', textAlign: 'center'}}> 
+                    <p  style= {{color: 'black', fontSize: '13pt', top: '50%', textAlign: 'center'}}> 
                             {this.state.perguntasGerais.find(pg=>pg.id===8).enunciado}
                         </p>
                     </h2>     
@@ -228,14 +229,14 @@ class perguntasProfessorPratica extends React.Component {
                   </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item>
-                    <img  src="https://images-submarino.b2w.io/produtos/01/00/img/1895545/5/1895545511_1GG.jpg"  height= "200px" width=" 100%"   />
+                    <img  src={blueBg} height="130px" width=" 100%"   />
                   <Carousel.Caption>
-                  <p style= {{color: '#686571'}} className="questao">Questão 3/6 </p>
+                  <p style= {{color: '#686571', marginTop:"-5%"}} className="questao">Questão 3/6 </p>
                     <h2>
                       <Button variant="white" className="carousel-control-prev-icon left carousel-control" style = {{marginLeft:"-120%", border: "none"}} onClick={() => this.toggleCarousel('prev', false)}></Button>
                     </h2> 
                     <h2>
-                    <p  style= {{color: 'black', fontSize: '16pt', top: '50%', textAlign: 'center'}}> 
+                    <p  style= {{color: 'black', fontSize: '13pt', top: '50%', textAlign: 'center'}}> 
                             {this.state.perguntasGerais.find(pg=>pg.id===9).enunciado}
                         </p>
                     </h2>     
@@ -245,14 +246,14 @@ class perguntasProfessorPratica extends React.Component {
                   </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item>
-                    <img  src="https://images-submarino.b2w.io/produtos/01/00/img/1895545/5/1895545511_1GG.jpg"  height= "200px" width=" 100%"   />
+                    <img src={blueBg} height="130px" width=" 100%"   />
                   <Carousel.Caption>
-                  <p style= {{color: '#686571'}} className="questao">Questão 4/6 </p>
+                  <p style= {{color: '#686571', marginTop:"-5%"}} className="questao">Questão 4/6 </p>
                     <h2>
                       <Button variant="white" className="carousel-control-prev-icon left carousel-control" style = {{marginLeft:"-120%", border: "none"}} onClick={() => this.toggleCarousel('prev', false)}></Button>
                     </h2> 
                     <h2>
-                    <p  style= {{color: 'black', fontSize: '16pt', top: '50%', textAlign: 'center'}}> 
+                    <p  style= {{color: 'black', fontSize: '13pt', top: '50%', textAlign: 'center'}}> 
                             {this.state.perguntasGerais.find(pg=>pg.id===10).enunciado}
                         </p>
                     </h2>     
@@ -262,14 +263,14 @@ class perguntasProfessorPratica extends React.Component {
                   </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item>
-                    <img  src="https://images-submarino.b2w.io/produtos/01/00/img/1895545/5/1895545511_1GG.jpg"  height= "200px" width=" 100%"   />
+                    <img src={blueBg} height="130px" width=" 100%"   />
                   <Carousel.Caption>
-                  <p style= {{color: '#686571'}} className="questao">Questão 5/6 </p>
+                  <p style= {{color: '#686571', marginTop:"-5%"}} className="questao">Questão 5/6 </p>
                     <h2>
                       <Button variant="white" className="carousel-control-prev-icon left carousel-control" style = {{marginLeft:"-120%", border: "none"}} onClick={() => this.toggleCarousel('prev', false)}></Button>
                     </h2> 
                     <h2>
-                    <p  style= {{color: 'black', fontSize: '16pt', top: '50%', textAlign: 'center'}}> 
+                    <p  style= {{color: 'black', fontSize: '13pt', top: '50%', textAlign: 'center'}}> 
                             {this.state.perguntasGerais.find(pg=>pg.id===14).enunciado}
                         </p>
                     </h2>     
@@ -279,14 +280,14 @@ class perguntasProfessorPratica extends React.Component {
                   </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item>
-                    <img  src="https://images-submarino.b2w.io/produtos/01/00/img/1895545/5/1895545511_1GG.jpg"  height= "200px" width=" 100%"   />
+                    <img src={blueBg} height="130px" width=" 100%"/>
                   <Carousel.Caption>
-                  <p style= {{color: '#686571'}} className="questao">Questão 6/6 </p>
+                  <p style= {{color: '#686571', marginTop:"-5%"}} className="questao">Questão 6/6 </p>
                     <h2>
                       <Button variant="white" className="carousel-control-prev-icon left carousel-control" style = {{marginLeft:"-120%", border: "none"}} onClick={() => this.toggleCarousel('prev', false)}></Button>
                     </h2> 
                     <h2>
-                    <p  style= {{color: 'black', fontSize: '16pt', top: '50%', textAlign: 'center'}}> 
+                    <p  style= {{color: 'black', fontSize: '13pt', top: '50%', textAlign: 'center'}}> 
                             {this.state.perguntasGerais.find(pg=>pg.id===12).enunciado}
                         </p>
                     </h2>     
@@ -297,7 +298,7 @@ class perguntasProfessorPratica extends React.Component {
               </Carousel.Item>
             </Carousel>
           
-          <Carousel className = "carousel2" style = {{marginTop: "2%"}} id="quote-carousel" interval={null} indicators={false} controls={false} activeIndex={this.state.index} direction={this.state.direction}>
+          <Carousel className = "carousel2" style = {{marginTop: "2%", marginBottom: "5%"}} id="quote-carousel" interval={null} indicators={false} controls={false} activeIndex={this.state.index} direction={this.state.direction}>
             <Carousel.Item>
                 <Card.Body>
               
@@ -347,12 +348,12 @@ class perguntasProfessorPratica extends React.Component {
     
                 </Row>
                 <Row style = {centralizar2}>  
-                <div style = {{marginLeft: "0%"}} >
+                <div style = {{marginLeft: "0%", fontSize: "8"}} >
                 <p className="label question-option-label-left" data-attr="placeholder_start" style={{ textAlign: "left"}}>NEM POR ISSO</p>
 
                     </div>
     
-                    <div style = {{marginLeft: "45%"}} >
+                    <div style={{ marginLeft: "17%", fontSize:"8"  }} >
                     <p className="label question-option-label-right" data-attr="placeholder_end" style={{ textAlign: "right"}}>PERFEITAMENTE</p>
 
                     </div>
@@ -410,12 +411,12 @@ class perguntasProfessorPratica extends React.Component {
     
                 </Row>
                 <Row style = {centralizar2}>  
-                <div style = {{marginLeft: "0%"}} >
+                <div style = {{marginLeft: "0%", fontSize: "8"}} >
                 <p className="label question-option-label-left" data-attr="placeholder_start" style={{ textAlign: "left"}}>NEM POR ISSO</p>
 
                     </div>
     
-                    <div style = {{marginLeft: "45%"}} >
+                    <div style={{ marginLeft: "17%", fontSize:"8"  }} >
                     <p className="label question-option-label-right" data-attr="placeholder_end" style={{ textAlign: "right"}}>PERFEITAMENTE</p>
 
                     </div>
@@ -473,12 +474,12 @@ class perguntasProfessorPratica extends React.Component {
     
                 </Row>
                 <Row style = {centralizar2}>  
-                <div style = {{marginLeft: "0%"}} >
+                <div style = {{marginLeft: "0%", fontSize: "8"}} >
                 <p className="label question-option-label-left" data-attr="placeholder_start" style={{ textAlign: "left"}}>NEM POR ISSO</p>
 
                     </div>
     
-                    <div style = {{marginLeft: "45%"}} >
+                    <div style={{ marginLeft: "17%", fontSize:"8"  }} >
                     <p className="label question-option-label-right" data-attr="placeholder_end" style={{ textAlign: "right"}}>PERFEITAMENTE</p>
 
                     </div>
@@ -538,12 +539,12 @@ class perguntasProfessorPratica extends React.Component {
     
                 </Row>
                 <Row style = {centralizar2}>  
-                <div style = {{marginLeft: "0%"}} >
+                <div style = {{marginLeft: "0%", fontSize: "8"}} >
                 <p className="label question-option-label-left" data-attr="placeholder_start" style={{ textAlign: "left"}}>NEM POR ISSO</p>
 
                     </div>
     
-                    <div style = {{marginLeft: "45%"}} >
+                    <div style={{ marginLeft: "17%", fontSize:"8"  }} >
                     <p className="label question-option-label-right" data-attr="placeholder_end" style={{ textAlign: "right"}}>PERFEITAMENTE</p>
 
                     </div>
@@ -601,12 +602,12 @@ class perguntasProfessorPratica extends React.Component {
     
                 </Row>
                 <Row style = {centralizar2}>  
-                <div style = {{marginLeft: "0%"}} >
+                <div style = {{marginLeft: "0%", fontSize: "8"}} >
                 <p className="label question-option-label-left" data-attr="placeholder_start" style={{ textAlign: "left"}}>NEM POR ISSO</p>
 
                     </div>
     
-                    <div style = {{marginLeft: "45%"}} >
+                    <div style={{ marginLeft: "17%", fontSize:"8"  }} >
                     <p className="label question-option-label-right" data-attr="placeholder_end" style={{ textAlign: "right"}}>PERFEITAMENTE</p>
 
                     </div>
@@ -666,12 +667,12 @@ class perguntasProfessorPratica extends React.Component {
     
                 </Row>
                 <Row style = {centralizar2}>  
-                <div style = {{marginLeft: "0%"}} >
+                <div style = {{marginLeft: "0%", fontSize: "8"}} >
                 <p className="label question-option-label-left" data-attr="placeholder_start" style={{ textAlign: "left"}}>NEM POR ISSO</p>
 
                     </div>
     
-                    <div style = {{marginLeft: "45%"}} >
+                    <div style={{ marginLeft: "17%", fontSize:"8"  }} >
                     <p className="label question-option-label-right" data-attr="placeholder_end" style={{ textAlign: "right"}}>PERFEITAMENTE</p>
 
                     </div>

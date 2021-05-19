@@ -116,7 +116,7 @@ img{
   background-color: #1c5880; /* Green */
   border: none;
   color: white;
-  padding: 12px 22px !important;
+  padding: 10px 16px !important;
   width: 100%;
   text-align: center;
   text-decoration: none;
@@ -135,7 +135,7 @@ img{
   background-color: #6da3c4  ; /* Green */
   border: none;
   color: white;
-  padding: 12px 22px !important;
+  padding: 10px 16px !important;
   width: 100%;
   text-align: center;
   text-decoration: none;
@@ -151,7 +151,7 @@ img{
 }
 h2 { 
   position: absolute; 
-  top: -140%; 
+  top: -80%; 
   left: 0; 
   width: 100%; 
 }

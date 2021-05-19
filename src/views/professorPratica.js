@@ -95,8 +95,8 @@ class ProfessorPratica extends Home {
         <div className="container ">
 
           <div className="row" style={{ display: 'flex', justifyContent: 'center' }}>
-            <div className="col-md-6" style={{ justifyContent: 'center', position: 'absolute', top: '30%', textAlign: 'center' }}>
-              <p style={{ fontSize: '25pt', top: '50%' }}>
+            <div className="col-md-6" style={{ justifyContent: 'center', position: 'absolute', top: '19%', textAlign: 'center' }}>
+              <p style={{ fontSize: '18pt', top: '50%' }}>
                 {this.state.perguntasGerais.find(pg => pg.id === 17).enunciado}
               </p>
               <br />
@@ -106,7 +106,7 @@ class ProfessorPratica extends Home {
                 onChange={this.handleChange.bind(this)}
                 options={this.state.selectOptions}
               />
-              <button onClick={() => { this.handleClick() }} style={{ marginTop: '35%', padding: '13pt', fontSize: '18pt', fontWeight: '500', borderRadius: '4pt', width: '100%' }} type="button" className="btn btn-primary btn-lg">Avançar</button>
+              <button onClick={() => { this.handleClick() }} style={{ marginTop: '50%', padding: '13pt', fontSize: '18pt', fontWeight: '500', borderRadius: '4pt', width: '100%' }} type="button" className="btn btn-primary btn-lg">Avançar</button>
             </div>
           </div>
         </div>

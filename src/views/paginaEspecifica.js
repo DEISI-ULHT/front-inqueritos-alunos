@@ -131,10 +131,10 @@ class PaginaEspecifica extends React.Component {
           <div className="row" style={{ display: 'flex', justifyContent: 'center' }}>
             <div className="col-md-6" style={{ justifyContent: 'center', position: 'absolute', color: 'white', top: '20%', textAlign: 'center' }}>
 
-              <p style={{ fontSize: '22pt', top: '40%' }}>
+              <p style={{ fontSize: '16pt', marginTop: '-10px' }}>
 
                 {this.getPerguntas(0).enunciado}
-                <p style={{ fontSize: '13pt', top: '50%' }}>
+                <p style={{ fontSize: '9pt', top: '50%', marginTop: '3%', marginBottom: "-16px" }}>
                   Essa questão é específica da disciplina de <strong style={{ color: '#228B22' }}> {this.state.disciplinas.nome}</strong>
                 </p>
               </p>
@@ -146,7 +146,7 @@ class PaginaEspecifica extends React.Component {
                   let vetor = [];
                   valores.forEach(element => {
                     vetor.push(
-                      <button onClick={() => this.handleClick(element)} style={{ padding: '13pt', fontSize: '18pt', fontWeight: '500', borderWidth: '5px', width: '100%', marginBottom: '6px' }} type="button" className="btn btn-primary btn-lg">{element}</button>
+                      <button onClick={() => this.handleClick(element)} style={{ padding: '13pt', fontSize: '13pt', fontWeight: '500', borderWidth: '5px', width: '100%', marginBottom: "5px" }} type="button" className="btn btn-primary btn-lg">{element}</button>
                     );
                   });
                   return vetor;
@@ -157,7 +157,7 @@ class PaginaEspecifica extends React.Component {
                       <label htmlFor="exampleTextarea"></label>
                       <div style={{ marginBottom: '2%', marginTop: '-3%' }} ><div className="extra-info-icon-box"><div className="engine-sprite icon-engine-info"></div></div><div className="extra-info-text-box">{this.state.errormessage} </div></div>
                       <textarea onInput={(e) => this.setState({ texto_especifica1: e.target.value })} type="text" name="message" className="form-control" id="exampleTextarea" style={{ borderBottomRightRadius: '0px', borderBottomLeftRadius: '0px' }} rows="7" placeholder="Escreva o texto aqui"></textarea>
-                      <button onClick={() => { this.handleClick() }} style={{ borderTopLeftRadius: '0px', borderTopRightRadius: '0px', padding: '13pt', fontSize: '18pt', fontWeight: '500', borderWidth: '5px', width: '100%' }} type="button" className="btn btn-primary btn-lg">Responda e continue</button>
+                      <button onClick={() => { this.handleClick() }} style={{ borderTopLeftRadius: '0px', borderTopRightRadius: '0px', padding: '11pt', fontSize: '13pt', fontWeight: '500', borderWidth: '5px', width: '100%' }} type="button" className="btn btn-primary btn-lg">Responde e continua</button>
                     </div>
                   )
                 } else {

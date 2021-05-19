@@ -104,7 +104,7 @@ class ProfessorTeorica extends Home {
 
           <div className="row" style={{ display: 'flex', justifyContent: 'center' }}>
             <div className="col-md-6" style={{ justifyContent: 'center', position: 'absolute', top: '30%', textAlign: 'center' }}>
-              <p style={{ fontSize: '25pt', top: '50%' }}>
+              <p style={{ fontSize: '18pt', top: '50%' }}>
                 {this.state.perguntasGerais.find(pg => pg.id === 5).enunciado}
               </p>
               <br />

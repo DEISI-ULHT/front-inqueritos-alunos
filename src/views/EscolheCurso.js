@@ -82,30 +82,30 @@ class EscolheCurso extends React.Component {
                 </div>
                 <div className="container ">
                     <div className="row" style={{ display: 'flex', justifyContent: 'center' }}>
-                        <div className="col-md-6" style={{ justifyContent: 'center', position: 'absolute', color: 'white', top: '25%', textAlign: 'center' }}>
-                            <p style={{ fontSize: '18pt', top: '50%' }}>
+                        <div className="col-md-6" style={{ justifyContent: 'center', position: 'absolute', color: 'white', top: '19%', textAlign: 'center' }}>
+                            <p style={{ fontSize: '15pt', top: '50%' }}>
                                 {this.state.perguntasGerais.find(pg => pg.id === 0).enunciado + " " + this.state.disciplinas.nome}
                             </p>
 
-                            <p style={{ fontSize: '15pt', top: '50%' }}>
-                                <p style={{ fontSize: '15pt', verticalAlign: 'middle' }}>{this.state.perguntasGerais.find(pg => pg.id === 15).enunciado}</p>
+                            <p style={{ fontSize: '13pt', top: '50%' }}>
+                                <p style={{ fontSize: '15pt', verticalAlign: 'middle', marginTop: '5%' }}>{this.state.perguntasGerais.find(pg => pg.id === 15).enunciado}</p>
                             </p>
 
                             <br />
                             <div className="form-group">
                                 <div>
                                     {this.state.disciplinas.cursos.find(pg => pg.id === 1) ?
-                                        <button onClick={() => { this.handleClick("Engenharia Informatica"); return <PerguntaGeral3 state={this.state} /> }} style={{ padding: '13pt', fontSize: '18pt', fontWeight: '500', borderWidth: '5px', width: '100%' }} type="button" className="btn btn-primary btn-lg">{this.state.disciplinas.cursos.find(pg => pg.id === 1).nome}</button>
+                                        <button onClick={() => { this.handleClick("Engenharia Informatica"); return <PerguntaGeral3 state={this.state} /> }} style={{ padding: '13pt', fontSize: '13pt', fontWeight: '500', borderWidth: '5px', width: '100%' }} type="button" className="btn btn-primary btn-lg">{this.state.disciplinas.cursos.find(pg => pg.id === 1).nome}</button>
                                         : null}
                                 </div>
                                 <div>
                                     {this.state.disciplinas.cursos.find(pg => pg.id === 2) ?
-                                        <button onClick={() => { this.handleClick("Informatica Gestao"); return <PerguntaGeral3 state={this.state} /> }} style={{ marginTop: '1%', padding: '13pt', fontSize: '18pt', fontWeight: '500', borderWidth: '5px', width: '100%' }} type="button" className="btn btn-primary btn-lg">{this.state.disciplinas.cursos.find(pg => pg.id === 2).nome}</button>
+                                        <button onClick={() => { this.handleClick("Informatica Gestao"); return <PerguntaGeral3 state={this.state} /> }} style={{ marginTop: '1%', padding: '13pt', fontSize: '13pt', fontWeight: '500', borderWidth: '5px', width: '100%' }} type="button" className="btn btn-primary btn-lg">{this.state.disciplinas.cursos.find(pg => pg.id === 2).nome}</button>
                                         : null}
                                 </div>
                                 <div>
                                     {this.state.disciplinas.cursos.find(pg => pg.id === 0) ?
-                                        <button onClick={() => { this.handleClick("LEIRT"); return <PerguntaGeral3 state={this.state} /> }} style={{ marginTop: '1%', padding: '13pt', fontSize: '18pt', fontWeight: '500', borderWidth: '5px', width: '100%' }} type="button" className="btn btn-primary btn-lg">{this.state.disciplinas.cursos.find(pg => pg.id === 0).nome}</button>
+                                        <button onClick={() => { this.handleClick("LEIRT"); return <PerguntaGeral3 state={this.state} /> }} style={{ marginTop: '1%', padding: '13pt', fontSize: '13pt', fontWeight: '500', borderWidth: '5px', width: '100%' }} type="button" className="btn btn-primary btn-lg">{this.state.disciplinas.cursos.find(pg => pg.id === 0).nome}</button>
                                         : null}
                                 </div>
                             </div>
