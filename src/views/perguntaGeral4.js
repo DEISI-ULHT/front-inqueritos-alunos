@@ -14,8 +14,6 @@ class PerguntaGeral4 extends Home {
         this.state.errormessage = '';
         this.state.ready = 0;
         this.state.id = props.match.params.id
-        console.log(props.match.params.id)
-        console.log(this.props) 
     }
     async proximaPagina4() {
         this.setState({ respostas: [...this.state.texto_pergunta4] })

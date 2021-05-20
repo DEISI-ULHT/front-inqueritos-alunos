@@ -7,7 +7,6 @@ import API from '../main/api'
 class Home extends React.Component {
     constructor(props) {
         super(props);
-        console.log('constructor')
         this.state = {
             // respostas:[],
             texto: "",
@@ -19,7 +18,6 @@ class Home extends React.Component {
     }
     proximaPagina() {
         this.props.match.params.estado = this.state
-        debugger;
         if(this.state.disciplinas.cursos === "undefined" ){
             <Link to="/notFound">
           </Link>
@@ -43,7 +41,6 @@ class Home extends React.Component {
         this.proximaPagina();
     }
     async componentDidMount() {
-        console.log("componentDidMount " + this.state.id)
         await API.get(`disciplina/exportacao?disciplina=${this.state.id}`)
             .then(res => {
                 const disciplinas = res.data.disciplina;

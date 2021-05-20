@@ -13,8 +13,6 @@ class PerguntaGeral3 extends React.Component {
     this.state.errormessage = '';
     this.state.ready = 0;
     this.state.id = props.match.params.id
-    console.log(props.match.params.id)
-        console.log(this.props) 
   }
   async proximaPagina3() {
     this.setState({ respostas: [...this.state.texto_pergunta3] })

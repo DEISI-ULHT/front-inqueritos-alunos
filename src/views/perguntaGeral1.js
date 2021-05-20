@@ -20,9 +20,7 @@ class PerguntaGeral1 extends React.Component {
             ready: 0,
             id: props.match.params.id
         };
-        console.log(props.match.params.id)
-        console.log(this.props) 
-
+    
     }
     setRespostaPergunta1(valor) {
         this.setState({
