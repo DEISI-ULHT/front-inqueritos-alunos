@@ -194,7 +194,7 @@ class perguntasProfessorPratica extends React.Component {
               <Carousel.Item>
                     <img src={blueBg} height="130px" width=" 100%"   />
                   <Carousel.Caption>  
-                  <span style= {{color: '#686571', marginTop:"-5%"}} className="questao">Questão 1/6 </span>
+                  <span  className="questao">Questão 1/6 </span>
 
                     <h2>
                       <Button variant="white" className="carousel-control-prev-icon left carousel-control" style = {{marginLeft:"-120%", border: "none"}} onClick={() => this.toggleCarousel('prev', false)}></Button>
@@ -214,7 +214,7 @@ class perguntasProfessorPratica extends React.Component {
               <Carousel.Item>
                     <img  src={blueBg} height="130px" width=" 100%"   />
                   <Carousel.Caption>
-                  <p style= {{color: '#686571',marginTop:"-5%"}} className="questao">Questão 2/6 </p>
+                  <p  className="questao">Questão 2/6 </p>
                     <h2>
                       <Button variant="white" className="carousel-control-prev-icon left carousel-control" style = {{marginLeft:"-120%", border: "none"}} onClick={() => this.toggleCarousel('prev', false)}></Button>
                     </h2> 
@@ -231,7 +231,7 @@ class perguntasProfessorPratica extends React.Component {
               <Carousel.Item>
                     <img  src={blueBg} height="130px" width=" 100%"   />
                   <Carousel.Caption>
-                  <p style= {{color: '#686571', marginTop:"-5%"}} className="questao">Questão 3/6 </p>
+                  <p className="questao">Questão 3/6 </p>
                     <h2>
                       <Button variant="white" className="carousel-control-prev-icon left carousel-control" style = {{marginLeft:"-120%", border: "none"}} onClick={() => this.toggleCarousel('prev', false)}></Button>
                     </h2> 
@@ -248,7 +248,7 @@ class perguntasProfessorPratica extends React.Component {
               <Carousel.Item>
                     <img src={blueBg} height="130px" width=" 100%"   />
                   <Carousel.Caption>
-                  <p style= {{color: '#686571', marginTop:"-5%"}} className="questao">Questão 4/6 </p>
+                  <p  className="questao">Questão 4/6 </p>
                     <h2>
                       <Button variant="white" className="carousel-control-prev-icon left carousel-control" style = {{marginLeft:"-120%", border: "none"}} onClick={() => this.toggleCarousel('prev', false)}></Button>
                     </h2> 
@@ -265,7 +265,7 @@ class perguntasProfessorPratica extends React.Component {
               <Carousel.Item>
                     <img src={blueBg} height="130px" width=" 100%"   />
                   <Carousel.Caption>
-                  <p style= {{color: '#686571', marginTop:"-5%"}} className="questao">Questão 5/6 </p>
+                  <p  className="questao">Questão 5/6 </p>
                     <h2>
                       <Button variant="white" className="carousel-control-prev-icon left carousel-control" style = {{marginLeft:"-120%", border: "none"}} onClick={() => this.toggleCarousel('prev', false)}></Button>
                     </h2> 
@@ -282,7 +282,7 @@ class perguntasProfessorPratica extends React.Component {
               <Carousel.Item>
                     <img src={blueBg} height="130px" width=" 100%"/>
                   <Carousel.Caption>
-                  <p style= {{color: '#686571', marginTop:"-5%"}} className="questao">Questão 6/6 </p>
+                  <p  className="questao">Questão 6/6 </p>
                     <h2>
                       <Button variant="white" className="carousel-control-prev-icon left carousel-control" style = {{marginLeft:"-120%", border: "none"}} onClick={() => this.toggleCarousel('prev', false)}></Button>
                     </h2> 

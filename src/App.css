@@ -79,7 +79,6 @@
 }
 .carousel1 {
   width:500px;
-  height:190px;
   margin: auto;
   
 }
@@ -151,7 +150,7 @@ img{
 }
 h2 { 
   position: absolute; 
-  top: -80%; 
+  top: -30%; 
   left: 0; 
   width: 100%; 
 }
@@ -165,9 +164,10 @@ h2 span {
 }
 
 .questao { 
-  position: absolute; 
-  top: -320%; 
-  left: 0; 
-  width: 100%; 
+  position: absolute;
+  top: -130%;
+  left: 0;
+  width: 100%;
+  color: #686571;
 }
 

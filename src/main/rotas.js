@@ -14,13 +14,15 @@ import EscolheCurso from '../views/EscolheCurso'
 import perguntasProfessorPratica from '../views/perguntasProfessorPratica'
 import Final from '../views/final'
 import PaginaEspecifica2 from '../views/paginaEspecifica2'
+import NotFound from '../views/notFound'
+
 
 function Rotas(){
     return(
         <BrowserRouter basename="/inqueritos">
             <Switch>
-                <Route exact path="/:id" component={Home} />
-                <Route exact path="/" component={Home} />
+            <Route exact path="/:id" component={Home} />
+                
                 <Route path="/EscolheCurso/:id" component={EscolheCurso}/>
                 <Route path="/perguntaGeral1/:id" component={PerguntaGeral1}/>
                 <Route path="/perguntaGeral2/:id" component={PerguntaGeral2}/>
@@ -34,7 +36,7 @@ function Rotas(){
                 <Route path="/perguntasProfessorTeorica/:id" component={perguntasProfessorTeorica}/>
                 <Route path="/perguntasProfessorPratica/:id" component={perguntasProfessorPratica}/>
                 <Route path="/card/:id" component={Card}/>
-
+                <Route component={NotFound} />                
                 </Switch>
         </BrowserRouter>
     )

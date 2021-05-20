@@ -1,6 +1,7 @@
 import * as React from 'react'
 import DEISI from './deisi_logo.png'
 import 'bootswatch/dist/cyborg/bootstrap.css';
+import { Link } from 'react-router-dom';
 import API from '../main/api'
 
 class Home extends React.Component {
@@ -18,7 +19,11 @@ class Home extends React.Component {
     }
     proximaPagina() {
         this.props.match.params.estado = this.state
-        if (this.state.disciplinas.cursos.length > 1) {
+        debugger;
+        if(this.state.disciplinas.cursos === "undefined" ){
+            <Link to="/notFound">
+          </Link>
+        }else if (this.state.disciplinas.cursos !== "undefined" || this.state.disciplinas.cursos.length > 1 ) {
             this.props.history.push({
                 pathname: `/EscolheCurso/${this.state.id}`,
                 state: this.state
@@ -29,7 +34,10 @@ class Home extends React.Component {
                 state: this.state
             })
         }
+     
     };
+    
+  
 
     handleClick(valor) {
         this.proximaPagina();
@@ -40,9 +48,7 @@ class Home extends React.Component {
             .then(res => {
                 const disciplinas = res.data.disciplina;
                 const perguntasGerais = res.data.perguntasGerais;
-
                 this.setState({ disciplinas, perguntasGerais, ready: 1 });
-
             })
     }
     render() {
