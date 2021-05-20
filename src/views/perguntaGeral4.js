@@ -115,7 +115,7 @@ class PerguntaGeral4 extends Home {
                     </div>
                 </div>
             </div>
-            : <div>loading...</div>
+            : <div>Verifique o endereço...</div>
         )
     }
 

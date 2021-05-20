@@ -105,7 +105,7 @@ class PerguntaGeral2 extends React.Component {
         </div>
 
       </div>
-      : <div>loading...</div>
+      : <div>Verifique o endereço...</div>
     )
 
   }

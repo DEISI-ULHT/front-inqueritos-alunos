@@ -686,7 +686,7 @@ class perguntasProfessorPratica extends React.Component {
       </Container>
       </div>
       
-      :<div>loading...</div>
+      :<div>Verifique o endereço...</div>
       );}
     }
 export default perguntasProfessorPratica
