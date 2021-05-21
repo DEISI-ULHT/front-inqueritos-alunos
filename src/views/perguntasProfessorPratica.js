@@ -268,7 +268,7 @@ class perguntasProfessorPratica extends React.Component {
                       <Button variant="white" className="carousel-control-prev-icon left carousel-control" style = {{marginLeft:"-120%", border: "none"}} onClick={() => this.toggleCarousel('prev', false)}></Button>
                     </h2> 
                     <h2>
-                    <p  style= {{color: 'black', fontSize: '13pt', top: '50%', textAlign: 'center'}}> 
+                    <p  style= {{color: 'black', fontSize: '12pt', top: '50%', textAlign: 'center'}}> 
                             {this.state.perguntasGerais.find(pg=>pg.id===14).enunciado}
                         </p>
                     </h2>     
