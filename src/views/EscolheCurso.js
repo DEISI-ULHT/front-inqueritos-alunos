@@ -53,13 +53,24 @@ class EscolheCurso extends React.Component {
                 window.onpopstate = function () {
                     window.history.pushState(null, "", window.location.href);
                 }
+
                 if (this.state.disciplinas.cursos.length === 1) {
+                    debugger;
+                    API.post('resposta/submit', {
+                        "conteudo": this.state.disciplinas.cursos[0].nome,
+                        "disciplinaId": this.state.disciplinas.id,
+                        "perguntaId": this.state.perguntasGerais[0].id,
+                        "professorId": 'null',
+                        "session": this.state.token,
+                    }).then(res => {
+                        
+                    });
                     this.props.history.push({
                         pathname: `/perguntaGeral1/${this.state.id}`,
                         state: this.state
 
                     })
-
+                    
                 }
 
             })
