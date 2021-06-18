@@ -25,7 +25,7 @@ class PaginaEspecifica2 extends React.Component {
 
     await API.post('resposta/submit', {
       "disciplinaId": this.state.disciplinas.id,
-      "perguntaId": this.state.perguntasGerais[7].id,
+      "perguntaId": this.state.disciplinas.perguntaEspecifica[1].id,
       "professorId": this.state.teacherId,
       "conteudo": this.state.texto_especifica2,
       "session": this.state.token,

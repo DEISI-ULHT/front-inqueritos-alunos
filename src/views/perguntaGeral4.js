@@ -26,7 +26,7 @@ class PerguntaGeral4 extends Home {
 
         await API.post('resposta/submit', {
             "disciplinaId": this.state.disciplinas.id,
-            "perguntaId": this.state.perguntasGerais[5].id,
+            "perguntaId": this.state.perguntasGerais[4].id,
             "professorId": this.state.teacherId,
             "conteudo": this.state.texto_pergunta4,
             "session": this.state.token,

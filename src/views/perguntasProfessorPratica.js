@@ -90,10 +90,13 @@ class perguntasProfessorPratica extends React.Component {
          })
      }
    
+
      async enviaDados(){
-      var listaPerguntas = [10,11,12,13,14,15];
+     
+      var listaPerguntas = [7, 8, 9, 10, 14, 12];
       var contador = 6;
       var perguntasFiltradas = this.state.perguntasGerais.filter(x=>listaPerguntas.includes(x.id));
+      debugger;
       for (let i = 0; i < perguntasFiltradas.length; i++) {
         contador++;
         const element = perguntasFiltradas[i];
@@ -150,8 +153,7 @@ class perguntasProfessorPratica extends React.Component {
         if(key === 6){
             this.state.pergunta12 = resposta;
           
-        }
-    
+        }    
         this.toggleCarousel('next', true);
       };
       render(){
@@ -269,7 +271,7 @@ class perguntasProfessorPratica extends React.Component {
                     </h2> 
                     <h2>
                     <p  style= {{color: 'black', fontSize: '12pt', top: '50%', textAlign: 'center'}}> 
-                            {this.state.perguntasGerais.find(pg=>pg.id===14).enunciado}
+                            {this.state.perguntasGerais.find(pg=>pg.id===12).enunciado}
                         </p>
                     </h2>     
                     <h2>
@@ -286,7 +288,7 @@ class perguntasProfessorPratica extends React.Component {
                     </h2> 
                     <h2>
                     <p  style= {{color: 'black', fontSize: '13pt', top: '50%', textAlign: 'center'}}> 
-                            {this.state.perguntasGerais.find(pg=>pg.id===12).enunciado}
+                            {this.state.perguntasGerais.find(pg=>pg.id===14).enunciado}
                         </p>
                     </h2>     
                     <h2>

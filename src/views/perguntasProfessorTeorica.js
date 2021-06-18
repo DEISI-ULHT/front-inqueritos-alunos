@@ -94,7 +94,7 @@ class perguntasProfessorTeorica extends React.Component {
   }
 
   async enviaDados() {
-    var listaPerguntas = [10, 11, 12, 13, 14, 15];
+    var listaPerguntas = [7, 8, 9, 10, 11, 12];
     var perguntasFiltradas = this.state.perguntasGerais.filter(x => listaPerguntas.includes(x.id));
     for (let i = 0; i < perguntasFiltradas.length; i++) {
       var contador = i + 1;

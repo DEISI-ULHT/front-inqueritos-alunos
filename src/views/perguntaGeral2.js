@@ -22,7 +22,7 @@ class PerguntaGeral2 extends React.Component {
 
     await API.post('resposta/submit', {
       "disciplinaId": this.state.disciplinas.id,
-      "perguntaId": this.state.perguntasGerais[3].id,
+      "perguntaId": this.state.perguntasGerais[2].id,
       "professorId": 'null',
       "conteudo": this.state.texto_pergunta2,
       "session": this.state.token,

@@ -25,25 +25,14 @@ class PaginaEspecifica extends React.Component {
       this.state.teacher = listaProfessoresTeorico[0].professor.nome
       this.state.teacherId = listaProfessoresTeorico[0].professor.id_lusofona
     }
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        "disciplinaId": this.state.disciplinas.id,
-        "perguntaId": this.state.perguntasGerais[6].id,
-        "professorId": this.state.teacherId,
-        "conteudo": this.state.texto_especifica1,
-        "session": this.state.token,
-
-      })
-    };
-
     // const response = await fetch('/resposta/submit', requestOptions);
+    debugger;
     await API.post('resposta/submit', {
       "disciplinaId": this.state.disciplinas.id,
-      "perguntaId": this.state.perguntasGerais[6].id,
+      "perguntaId": this.state.disciplinas.perguntaEspecifica[0].id,
       "professorId": this.state.teacherId,
       "conteudo": this.state.texto_especifica1,
+      "session": this.state.token,
     }).then(res => {
       this.props.match.params.estado = this.state
       //PerguntaGeral3(this.state)

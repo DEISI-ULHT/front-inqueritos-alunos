@@ -51,7 +51,7 @@ class ProfessorPratica extends Home {
 
     await API.post('resposta/submit', {
       "disciplinaId": this.state.disciplinas.id,
-      "perguntaId": this.state.perguntasGerais[9].id,
+      "perguntaId": this.state.perguntasGerais[13].id,
       "professorId": this.state.selectedId,
       "conteudo": this.state.selectedName,
       "session": this.state.token,
