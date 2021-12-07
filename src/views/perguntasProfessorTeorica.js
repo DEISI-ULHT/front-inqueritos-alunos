@@ -117,25 +117,33 @@ class perguntasProfessorTeorica extends React.Component {
 
       });
     }
-    var listaProfessoresPratica = this.state.disciplinas.professores.filter(x => x.pratico)
-    if (listaProfessoresPratica.length === 1) {
-      this.props.history.push({
-        pathname: `/perguntasProfessorPratica/${this.state.id}`,
-        state: this.state,
-        professor:(listaProfessoresPratica[0].professor.nome)    
 
-      })
-    } else if(listaProfessoresPratica.length>1){
+    if (this.state.disciplinas.cursos[0].id == 3) {
       this.props.history.push({
-          pathname: `/professorPratica/${this.state.id}`,
-          state: this.state,
-      })
-    }else {
-      this.props.history.push({
-        pathname: `/perguntasProfessorPratica/${this.state.id}`,
-        teacher: listaProfessoresPratica[0].professor.id_lusofona,
+        pathname: `/final/${this.state.id}`,
         state: this.state
       })
+    } else {
+      var listaProfessoresPratica = this.state.disciplinas.professores.filter(x => x.pratico)
+      if (listaProfessoresPratica.length === 1) {
+        this.props.history.push({
+          pathname: `/perguntasProfessorPratica/${this.state.id}`,
+          state: this.state,
+          professor: (listaProfessoresPratica[0].professor.nome)
+
+        })
+      } else if (listaProfessoresPratica.length > 1) {
+        this.props.history.push({
+          pathname: `/professorPratica/${this.state.id}`,
+          state: this.state,
+        })
+      } else {
+        this.props.history.push({
+          pathname: `/perguntasProfessorPratica/${this.state.id}`,
+          teacher: listaProfessoresPratica[0].professor.id_lusofona,
+          state: this.state
+        })
+      }
     }
   }
 

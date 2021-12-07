@@ -21,3 +21,7 @@ Na raiz do projeto, correr
 
 Isto vai gerar os ficheiros para produção na pasta build. 
 De seguida, copiar esses ficheiros para a pasta src/main/resources/public do projeto do backend.
+
+## Manutenção
+
+Todos os semestres é necessário atualizar a informação que está na BD. Ver inserts-S1.sql

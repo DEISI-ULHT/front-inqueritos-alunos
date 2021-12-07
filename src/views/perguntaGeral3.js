@@ -25,12 +25,24 @@ class PerguntaGeral3 extends React.Component {
       "session": this.state.token,
 
     }).then(res => {
+
       this.props.match.params.estado = this.state
-      this.props.history.push({
-        pathname: `/perguntaGeral4/${this.state.id}`,
-        state: this.state.onClick,
-        state3: this.state,
-      })
+      if (this.state.disciplinas.cursos[0].id == 3) {
+
+          var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x => x.teorico)
+
+          this.props.history.push({
+            pathname: `/perguntasProfessorTeorica/${this.state.id}`,
+            state: this.state,
+            professor: (listaProfessoresTeorico[0].professor.nome)
+          })
+      } else {
+          this.props.history.push({
+            pathname: `/perguntaGeral4/${this.state.id}`,
+            state: this.state.onClick,
+            state3: this.state,
+          })
+      }
     });
   };
   async componentDidMount() {
