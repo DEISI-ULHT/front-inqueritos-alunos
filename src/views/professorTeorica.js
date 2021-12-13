@@ -31,22 +31,12 @@ class ProfessorTeorica extends Home {
   proximaPagina6 = () => {
     this.setState({ respostas: [...this.state.texto_profTeorica] })
     this.props.match.params.estado = this.state
-    var listaProfessoresTeorico = this.state.disciplinas.professores.nome.filter(x => x.pratico)
-    if (listaProfessoresTeorico.length === 0) {
-      this.props.history.push({
-        pathname: `/professorPratica/${this.state.id}`,
-        state: this.state
-      })
-    } else {
-      this.props.history.push({
-        pathname: `/perguntasProfessorPratica/${this.state.id}`,
-        teacher: this.state.selectedName,
-        state: this.state,
-        professor: this.state.selectedName
-
-      })
-
-    }
+    this.props.history.push({
+      pathname: `/perguntasProfessorTeorica/${this.state.id}`,
+      teacher: this.state.selectedName,
+      state: this.state,
+      professor: this.state.selectedName
+    })
   };
   componentDidMount() {
     this.getOptions()

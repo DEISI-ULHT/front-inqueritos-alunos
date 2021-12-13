@@ -110,7 +110,7 @@ class PaginaEspecifica2 extends React.Component {
             <div className="col-md-6" style={{ justifyContent: 'center', position: 'absolute', color: 'white', top: '20%', textAlign: 'center' }}>
               <p style={{ fontSize: '18pt', top: '50%' }}>
                 {this.getPerguntas(1).enunciado}
-                <p style={{ fontSize: '9pt', top: '50%', marginTop: '3%', marginTop: '3%', marginBottom: "-16px"  }}>
+                <p style={{ fontSize: '9pt', top: '50%', marginTop: '3%', marginBottom: "-16px"  }}>
                   Essa questão é específica da disciplina de <strong style={{ color: '#3960BA' }}> {this.state.disciplinas.nome}</strong>
                 </p>
               </p>
