@@ -55,9 +55,19 @@ class EscolheCurso extends React.Component {
                 }
 
                 if (this.state.disciplinas.cursos.length === 1) {
-                    debugger;
+
+                    if (this.state.disciplinas.cursos[0].id === 1) {
+                        var cursoName = "Engenharia Informatica";
+                    } else if (this.state.disciplinas.cursos[0].id === 2) {
+                        var cursoName = "Informatica Gestao";
+                    } else if (this.state.disciplinas.cursos[0].id === 0) {
+                        var cursoName = "LEIRT";
+                    } else {  // this shouldn't happen?
+                        var cursoName = this.state.disciplinas.cursos[0].name
+                    }
+
                     API.post('resposta/submit', {
-                        "conteudo": this.state.disciplinas.cursos[0].nome,
+                        "conteudo": cursoName,
                         "disciplinaId": this.state.disciplinas.id,
                         "perguntaId": this.state.perguntasGerais[0].id,
                         "professorId": 'null',
