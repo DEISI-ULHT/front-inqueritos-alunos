@@ -89,41 +89,39 @@ class perguntasProfessorPratica extends React.Component {
        
          })
      }
-   
 
-     async enviaDados(){
-     
-      var listaPerguntas = [7, 8, 9, 10, 14, 12];
-      var contador = 6;
-      var perguntasFiltradas = this.state.perguntasGerais.filter(x=>listaPerguntas.includes(x.id));
-      debugger;
-      for (let i = 0; i < perguntasFiltradas.length; i++) {
-        contador++;
-        const element = perguntasFiltradas[i];
-        const idPergunta = perguntasFiltradas[i].id;
-        const resposta = this.state["pergunta"+contador];
-        var listaProfessoresPratico = this.state.disciplinas.professores.filter(x => x.pratico)
-        if (listaProfessoresPratico.length === 1) {
-          this.state.teacher = listaProfessoresPratico[0].professor.nome
-          this.state.teacherId = listaProfessoresPratico[0].professor.id_lusofona
-        }else{
-          this.state.teacherId = this.state.selectedId
+
+    async enviaDados() {
+
+        var listaPerguntas = [7, 8, 9, 10, 14, 12];
+        var contador = 6;
+        for (let i = 0; i < listaPerguntas.length; i++) {
+            contador++;
+            const idPergunta = listaPerguntas[i];
+            const resposta = this.state["pergunta" + contador];
+            var listaProfessoresPratico = this.state.disciplinas.professores.filter(x => x.pratico)
+            if (listaProfessoresPratico.length === 1) {
+                this.state.teacher = listaProfessoresPratico[0].professor.nome
+                this.state.teacherId = listaProfessoresPratico[0].professor.id_lusofona
+            } else {
+                this.state.teacherId = this.state.selectedId
+            }
+
+            await API.post('resposta/submit', {
+                "disciplinaId": this.state.disciplinas.id,
+                "perguntaId": idPergunta,
+                "professorId": this.state.teacherId,
+                "conteudo": resposta,
+                "session": this.state.token,
+            });
         }
-      
-        await API.post('resposta/submit', {
-              "disciplinaId": this.state.disciplinas.id,
-              "perguntaId": idPergunta,
-              "professorId": this.state.teacherId,
-              "conteudo": resposta,
-            	"session": this.state.token,
- });
-      }
-      this.props.history.push({
-        pathname:`/final/${this.state.id}`,
-        state: this.state
-      })
-     }
-      handleClick(valor, key, resposta){    
+        this.props.history.push({
+            pathname: `/final/${this.state.id}`,
+            state: this.state
+        })
+    }
+
+    handleClick(valor, key, resposta){
         if(key === 1){
         this.setState({
           pergunta7: resposta
@@ -151,7 +149,9 @@ class perguntasProfessorPratica extends React.Component {
             })
         }
         if(key === 6){
-            this.state.pergunta12 = resposta;
+            this.setState({
+                pergunta12: resposta
+            })
           
         }    
         this.toggleCarousel('next', true);
@@ -271,7 +271,7 @@ class perguntasProfessorPratica extends React.Component {
                     </h2> 
                     <h2>
                     <p  style= {{color: 'black', fontSize: '12pt', top: '50%', textAlign: 'center'}}> 
-                            {this.state.perguntasGerais.find(pg=>pg.id===12).enunciado}
+                            {this.state.perguntasGerais.find(pg=>pg.id===14).enunciado}
                         </p>
                     </h2>     
                     <h2>
@@ -288,7 +288,7 @@ class perguntasProfessorPratica extends React.Component {
                     </h2> 
                     <h2>
                     <p  style= {{color: 'black', fontSize: '13pt', top: '50%', textAlign: 'center'}}> 
-                            {this.state.perguntasGerais.find(pg=>pg.id===14).enunciado}
+                            {this.state.perguntasGerais.find(pg=>pg.id===12).enunciado}
                         </p>
                     </h2>     
                     <h2>
