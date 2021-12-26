@@ -118,7 +118,7 @@ class perguntasProfessorTeorica extends React.Component {
       });
     }
 
-    if (this.state.disciplinas.cursos[0].id == 3) {
+    if (this.state.disciplinas.cursos[0].id === 3 || this.state.disciplinas.cursos[0].id === 4) {
       this.props.history.push({
         pathname: `/final/${this.state.id}`,
         state: this.state
