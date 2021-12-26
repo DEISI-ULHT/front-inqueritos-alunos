@@ -219,7 +219,8 @@ class perguntasProfessorTeorica extends React.Component {
           <div className="container ">
             <div className="row" style={{ display: 'flex', justifyContent: 'center', marginTop: '11%' }}>
               <p style={{ color: 'white', fontSize: '18pt', marginTop: '-5%', textAlign: 'center' }}>
-                {this.state.perguntasGerais.find(pg => pg.id === 6).enunciado}
+                { (this.state.disciplinas.cursos[0].id !== 3 && this.state.disciplinas.cursos[0].id !== 4) ?
+                    this.state.perguntasGerais.find(pg => pg.id === 6).enunciado : "Relativamente ao professor(a)"}
                 <p style={{ fontSize: '9pt', top: '50%' }}>
                   Estas questões são referentes ao professor <strong style={{ color: '#3960BA' }}> {this.props.location.professor}</strong>
                 </p>

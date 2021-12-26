@@ -93,12 +93,14 @@ class ProfessorTeorica extends Home {
           <div className="row" style={{ display: 'flex', justifyContent: 'center' }}>
             <div className="col-md-6" style={{ justifyContent: 'center', position: 'absolute', top: '30%', textAlign: 'center' }}>
               <p style={{ fontSize: '18pt', top: '50%' }}>
-                {this.state.perguntasGerais.find(pg => pg.id === 5).enunciado}
+                { (this.state.disciplinas.cursos[0].id !== 3 && this.state.disciplinas.cursos[0].id !== 4) ?
+                    this.state.perguntasGerais.find(pg => pg.id === 5).enunciado : "Indique o seu professor(a)"}
               </p>
               <br />
               <Select
                 styles={customStyles}
-                placeholder={"Selecione seu professor(a) das teóricas"}
+                placeholder={"Selecione seu professor(a)" + ((this.state.disciplinas.cursos[0].id !== 3 && this.state.disciplinas.cursos[0].id !== 4) ?
+                    " das teóricas" : "")}
                 onChange={this.handleChange.bind(this)}
                 options={this.state.selectOptions}
               />

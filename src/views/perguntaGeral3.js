@@ -27,15 +27,25 @@ class PerguntaGeral3 extends React.Component {
     }).then(res => {
 
       this.props.match.params.estado = this.state
-      if (this.state.disciplinas.cursos[0].id == 3) {
 
-          var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x => x.teorico)
+      // mestrados não pergunta a pergunta 4
+      if (this.state.disciplinas.cursos[0].id === 3 || this.state.disciplinas.cursos[0].id === 4) {
 
+        var listaProfessoresTeorico = this.state.disciplinas.professores.filter(x => x.teorico)
+
+        if (listaProfessoresTeorico.length === 1) {
           this.props.history.push({
             pathname: `/perguntasProfessorTeorica/${this.state.id}`,
             state: this.state,
             professor: (listaProfessoresTeorico[0].professor.nome)
           })
+        } else if (listaProfessoresTeorico.length > 1) {
+          this.props.history.push({
+            pathname: `/professorTeorica/${this.state.id}`,
+            state: this.state,
+          })
+        }
+
       } else {
           this.props.history.push({
             pathname: `/perguntaGeral4/${this.state.id}`,
