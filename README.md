@@ -11,7 +11,9 @@ Na raiz do projeto, correr
     
     npm start
 
-Aceder a http://localhost:3000/inqueritos/<sigla_disciplina>
+Aceder a http://localhost:3000/inqueritos/<codigo_disciplina>
+
+em que <codigo_disciplina> é uma string começada pelo caracter '_' seguida de 6 caracteres aleatórios, previamente atribuídos a cada disciplina.
 
 ## Preparar build para produção
 
@@ -24,4 +26,5 @@ De seguida, copiar esses ficheiros para a pasta src/main/resources/public do pro
 
 ## Manutenção
 
-Todos os semestres é necessário atualizar a informação que está na BD. Ver inserts-S1.sql
+Todos os semestres é necessário atualizar a informação que está na BD, nomeadamente quais as disciplinas que existem e quais
+os professores associados a cada uma delas.
