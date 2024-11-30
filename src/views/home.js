@@ -16,26 +16,33 @@ class Home extends React.Component {
             id: props.match.params.id
         };
     }
-    proximaPagina() {
+
+    async proximaPagina() {
         this.props.match.params.estado = this.state
-        if(this.state.disciplinas.cursos === "undefined" ){
+        if (this.state.disciplinas.cursos === "undefined") {
             <Link to="/notFound">
-          </Link>
-        }else if (this.state.disciplinas.cursos !== "undefined" || this.state.disciplinas.cursos.length > 1 ) {
-            this.props.history.push({
-                pathname: `/EscolheCurso/${this.state.id}`,
-                state: this.state
-            })
+            </Link>
+        } else if (this.state.disciplinas.cursos !== "undefined" || this.state.disciplinas.cursos.length > 1) {
+            await API.post('resposta/submit', {
+                "disciplinaId": this.state.disciplinas.id,
+                "perguntaId": this.state.perguntasGerais[0].id,
+                "professorId": 'null',
+                "conteudo": 'Engenharia Informatica',
+                "session": this.state.token,
+            }).then(res => {
+                this.props.match.params.estado = this.state
+                this.props.history.push({
+                    pathname: `/perguntaGeral1/${this.state.id}`,
+                    state: this.state
+                })
+            });
         } else {
             this.props.history.push({
                 pathname: `/perguntaGeral1/${this.state.id}`,
                 state: this.state
             })
         }
-     
     };
-    
-  
 
     handleClick(valor) {
         this.proximaPagina();
@@ -45,7 +52,8 @@ class Home extends React.Component {
             .then(res => {
                 const disciplinas = res.data.disciplina;
                 const perguntasGerais = res.data.perguntasGerais;
-                this.setState({ disciplinas, perguntasGerais, ready: 1 });
+                const token = res.data.token;
+                this.setState({ disciplinas, perguntasGerais, ready: 1, token });
             })
     }
     render() {
